@@ -1,0 +1,67 @@
+{
+  "bit_depth": 8,
+  "chroma": "420",
+  "entries": [
+    {
+      "bit_depth": 8,
+      "chroma": "420",
+      "expected_raw_bytes": 6144,
+      "frames": 1,
+      "height": 64,
+      "id": "flat_64x64_1f_420",
+      "path": "flat_64x64_1f_420.y4m",
+      "pattern": "flat",
+      "seed": null,
+      "sha256": "51ca8228d59e41ef6c63ef9923ced4c3251c05b2088cf4e160d1b40f3b679b29",
+      "width": 64,
+      "y4m_bytes": 6187
+    },
+    {
+      "bit_depth": 8,
+      "chroma": "420",
+      "expected_raw_bytes": 6144,
+      "frames": 1,
+      "height": 64,
+      "id": "gradient_64x64_1f_420",
+      "path": "gradient_64x64_1f_420.y4m",
+      "pattern": "gradient",
+      "seed": null,
+      "sha256": "130b9f59663d9dcfd519809fa0e27d0d2eba5380ce5e9e2b87d9f60432a1cd1c",
+      "width": 64,
+      "y4m_bytes": 6187
+    },
+    {
+      "bit_depth": 8,
+      "chroma": "420",
+      "expected_raw_bytes": 6144,
+      "frames": 1,
+      "height": 64,
+      "id": "checkerboard_64x64_1f_420",
+      "path": "checkerboard_64x64_1f_420.y4m",
+      "pattern": "checkerboard",
+      "seed": null,
+      "sha256": "0e68a636cf054d378135ebc685e94f6fc303b624abb1de76d5d14bf74906f388",
+      "width": 64,
+      "y4m_bytes": 6187
+    },
+    {
+      "bit_depth": 8,
+      "chroma": "420",
+      "expected_raw_bytes": 6144,
+      "frames": 1,
+      "height": 64,
+      "id": "noise_64x64_1f_420",
+      "path": "noise_64x64_1f_420.y4m",
+      "pattern": "noise",
+      "seed": 24301,
+      "sha256": "edc1e30ab207f4f8a671a19ecfa76ae3b6dc985b729b8e8a1440788956f257a8",
+      "width": 64,
+      "y4m_bytes": 6187
+    }
+  ],
+  "frames": 1,
+  "generator": "tests/corpus/gen_corpus.py",
+  "height": 64,
+  "manifest_version": 1,
+  "width": 64
+}

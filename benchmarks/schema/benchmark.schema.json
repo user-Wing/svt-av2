@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://svt-av2.local/schemas/benchmark.schema.json",
+  "title": "SVT-AV2 benchmark record",
+  "description": "Versioned benchmark record for the SVT-AV2 project. One record describes one measured run. M0 records parse/init only and must not carry fabricated encode fps.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "milestone",
+    "task",
+    "mode",
+    "snapshot",
+    "environment",
+    "input",
+    "config",
+    "timing",
+    "encoded",
+    "status",
+    "correctness",
+    "logs"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "integer", "enum": [1] },
+    "milestone": { "type": "string", "enum": ["M0", "M1", "M2"] },
+    "task": { "type": "string", "minLength": 1 },
+    "mode": { "type": "string", "enum": ["parse_init", "encode"] },
+    "snapshot": {
+      "type": "object",
+      "required": ["type", "id"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string", "enum": ["git", "non-git"] },
+        "id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": ["os", "cpu", "compiler", "compiler_version", "build_type"],
+      "additionalProperties": false,
+      "properties": {
+        "os": { "type": "string" },
+        "cpu": { "type": "string" },
+        "compiler": { "type": "string" },
+        "compiler_version": { "type": "string" },
+        "build_type": { "type": "string" },
+        "python": { "type": "string" }
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["path", "sha256", "width", "height", "bit_depth", "chroma", "frame_count"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string" },
+        "sha256": { "type": "string" },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "bit_depth": { "type": "integer", "enum": [8, 10, 12] },
+        "chroma": { "type": "string", "enum": ["420", "422", "444", "400"] },
+        "frame_count": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "config": {
+      "type": "object",
+      "required": ["qp", "threads", "preset", "deterministic"],
+      "additionalProperties": false,
+      "properties": {
+        "qp": { "type": ["integer", "null"] },
+        "threads": { "type": "integer", "minimum": 1 },
+        "preset": { "type": ["integer", "null"] },
+        "deterministic": { "type": "boolean" }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "required": ["wall_time_s", "cpu_time_s", "cpu_time_reason", "peak_rss_bytes", "rss_reason"],
+      "additionalProperties": false,
+      "properties": {
+        "wall_time_s": { "type": ["number", "null"] },
+        "cpu_time_s": { "type": ["number", "null"] },
+        "cpu_time_reason": { "type": "string" },
+        "peak_rss_bytes": { "type": ["integer", "null"] },
+        "rss_reason": { "type": "string" }
+      }
+    },
+    "encoded": {
+      "type": "object",
+      "required": ["encoded_frames", "fps", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "encoded_frames": { "type": ["integer", "null"] },
+        "fps": { "type": ["number", "null"] },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "status": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED"] },
+    "correctness": {
+      "type": "object",
+      "required": ["checked"],
+      "additionalProperties": true,
+      "properties": {
+        "checked": { "type": "boolean" },
+        "detail": { "type": "string" }
+      }
+    },
+    "logs": {
+      "type": "object",
+      "required": ["path"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+# License status: UNRESOLVED
+
+`svt-av2/` 的对外许可**尚未确定**，因此本文件暂不放置任何许可正文。
+
+原因：
+
+- 本目录是独立实现（clean-room 目标），不直接复制 AVM 源码；但参考了 SVT-AV1 的架构思想，
+  而 SVT-AV1 采用 BSD+Patent (AOMedia) 许可，AVM 采用 BSD+Patent，AV2 规范本身另有使用条款。
+- 在选定许可并核对上述条款之前，写入任何许可文本都可能给出错误的法律承诺。
+
+因此：
+
+- 本仓库当前**不对外分发**，仅作为本地开发与验证使用。
+- 在 `project.md` 的 M0 记录中，许可决策被列为未完成项。
+- 一旦确定许可，用正式许可正文替换本文件，并在 `README.md` 与 `project.md` 中同步说明。
+
+参考（仅记录，不代表本项目的许可选择）：
+
+- SVT-AV1: https://github.com/AOMediaCodec/SVT-AV1/blob/main/LICENSE
+- AVM: https://aomedia.googlesource.com/avm/+/refs/heads/main/LICENSE
+- AV2 specification: https://av2.aomedia.org/v1.0.0/

@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "listing_sha256": "878362ad8f270b085941e5626885e72d1539b8099eb70167daeaaaaf043a5115",
+  "sources": [
+    {
+      "id": "narrator",
+      "key": "aom_test_materials/rd_curves/elfuente/Narrator_4096x2160_60fps__4096_2160__qp15__vmaf99.33__psnr48.36__kbps52443.71__fps60.mp4",
+      "url": "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/rd_curves/elfuente/Narrator_4096x2160_60fps__4096_2160__qp15__vmaf99.33__psnr48.36__kbps52443.71__fps60.mp4",
+      "expected_size": 32775116,
+      "expected_etag": "4e59efc9dec9649e42c093b7b80d74ff-4",
+      "expected_sha256": null,
+      "split": "test",
+      "category": "人物访谈",
+      "license": "CC BY 4.0 (Netflix Open Content homepage, 2026-10-17)",
+      "license_url": "https://opencontent.netflix.com/",
+      "source_note": "Official Netflix QP15 pre-encoded SDR reference; not an uncompressed camera master"
+    },
+    {
+      "id": "foodmarket",
+      "key": "aom_test_materials/rd_curves/elfuente/FoodMarket2_4096x2160_60fps__4096_2160__qp15__vmaf100.00__psnr43.90__kbps95948.27__fps60.mp4",
+      "url": "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/rd_curves/elfuente/FoodMarket2_4096x2160_60fps__4096_2160__qp15__vmaf100.00__psnr43.90__kbps95948.27__fps60.mp4",
+      "expected_size": 59965470,
+      "expected_etag": "c80884c923ec10b91e583f6e054f4aa7-8",
+      "expected_sha256": null,
+      "split": "test",
+      "category": "自然细节与市场纹理",
+      "license": "CC BY 4.0 (Netflix Open Content homepage, 2026-10-17)",
+      "license_url": "https://opencontent.netflix.com/",
+      "source_note": "Official Netflix QP15 pre-encoded SDR reference; not an uncompressed camera master"
+    },
+    {
+      "id": "boxing",
+      "key": "aom_test_materials/rd_curves/elfuente/BoxingPractice_4096x2160_60fps__4096_2160__qp15__vmaf100.00__psnr43.78__kbps109644.88__fps60.mp4",
+      "url": "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/rd_curves/elfuente/BoxingPractice_4096x2160_60fps__4096_2160__qp15__vmaf100.00__psnr43.78__kbps109644.88__fps60.mp4",
+      "expected_size": 58014102,
+      "expected_etag": "dd17c98aea01c35071c6c82dc92a4a23-7",
+      "expected_sha256": null,
+      "split": "test",
+      "category": "快速运动",
+      "license": "CC BY 4.0 (Netflix Open Content homepage, 2026-10-17)",
+      "license_url": "https://opencontent.netflix.com/",
+      "source_note": "Official Netflix QP15 pre-encoded SDR reference; not an uncompressed camera master"
+    },
+    {
+      "id": "chimera01",
+      "key": "aom_test_materials/rd_curves/chimera/Chimera-ep01_4096x2160_2997fps__4096_2160__qp15__vmaf99.61__psnr42.97__kbps91645.80__fps29.97.mp4",
+      "url": "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/rd_curves/chimera/Chimera-ep01_4096x2160_2997fps__4096_2160__qp15__vmaf99.61__psnr42.97__kbps91645.80__fps29.97.mp4",
+      "expected_size": 80268986,
+      "expected_etag": "0175ba8b7df5396645b70d99ccf67e03-10",
+      "expected_sha256": null,
+      "split": "test",
+      "category": "相机移动（待缩略图复核）",
+      "license": "CC BY 4.0 (Netflix Open Content homepage, 2026-10-17)",
+      "license_url": "https://opencontent.netflix.com/",
+      "source_note": "Official Netflix QP15 pre-encoded SDR reference; not an uncompressed camera master"
+    },
+    {
+      "id": "chimera02",
+      "key": "aom_test_materials/rd_curves/chimera/Chimera-ep02_4096x2160_2997fps__4096_2160__qp15__vmaf96.02__psnr41.76__kbps211810.61__fps29.97.mp4",
+      "url": "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/rd_curves/chimera/Chimera-ep02_4096x2160_2997fps__4096_2160__qp15__vmaf96.02__psnr41.76__kbps211810.61__fps29.97.mp4",
+      "expected_size": 184618155,
+      "expected_etag": "583c9c9a3b8dfa0458d4e231832c9581-23",
+      "expected_sha256": null,
+      "split": "test",
+      "category": "低照纹理（待缩略图复核）",
+      "license": "CC BY 4.0 (Netflix Open Content homepage, 2026-10-17)",
+      "license_url": "https://opencontent.netflix.com/",
+      "source_note": "Official Netflix QP15 pre-encoded SDR reference; not an uncompressed camera master"
+    },
+    {
+      "id": "cosmos",
+      "key": "aom_test_materials/rd_curves/cosmos/cosmos_aom_1573-1749__4096_2160__qp15__vmaf99.98__psnr49.18__kbps57034.02__fps24.mp4",
+      "url": "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/rd_curves/cosmos/cosmos_aom_1573-1749__4096_2160__qp15__vmaf99.98__psnr49.18__kbps57034.02__fps24.mp4",
+      "expected_size": 52577286,
+      "expected_etag": "862b0838ad67887bd6a54865641d0b2c-7",
+      "expected_sha256": null,
+      "split": "test",
+      "category": "动画",
+      "license": "CC BY 3.0 (Blender Foundation)",
+      "license_url": "https://gooseberry.blender.org/license/",
+      "source_note": "Official Netflix QP15 pre-encoded SDR reference; not an uncompressed camera master"
+    },
+    {
+      "id": "tango",
+      "key": "aom_test_materials/rd_curves/elfuente/Tango_4096x2160_60fps__4096_2160__qp15__vmaf99.91__psnr42.23__kbps178500.17__fps60.mp4",
+      "url": "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/rd_curves/elfuente/Tango_4096x2160_60fps__4096_2160__qp15__vmaf99.91__psnr42.23__kbps178500.17__fps60.mp4",
+      "expected_size": 109329219,
+      "expected_etag": "2fa0feded6374c40e52159c23c802d85-14",
+      "expected_sha256": null,
+      "split": "holdout",
+      "category": "人物与运动",
+      "license": "CC BY 4.0 (Netflix Open Content homepage, 2026-10-17)",
+      "license_url": "https://opencontent.netflix.com/",
+      "source_note": "Official Netflix QP15 pre-encoded SDR reference; not an uncompressed camera master"
+    },
+    {
+      "id": "ritual",
+      "key": "aom_test_materials/rd_curves/elfuente/RitualDanceShot_4096x2160_60fps__4096_2160__qp15__vmaf100.00__psnr44.54__kbps75620.73__fps60.mp4",
+      "url": "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/rd_curves/elfuente/RitualDanceShot_4096x2160_60fps__4096_2160__qp15__vmaf100.00__psnr44.54__kbps75620.73__fps60.mp4",
+      "expected_size": 44425157,
+      "expected_etag": "5d1e0a1ccddaafd8a15435988d023b23-6",
+      "expected_sha256": null,
+      "split": "holdout",
+      "category": "独立运动场景",
+      "license": "CC BY 4.0 (Netflix Open Content homepage, 2026-10-17)",
+      "license_url": "https://opencontent.netflix.com/",
+      "source_note": "Official Netflix QP15 pre-encoded SDR reference; not an uncompressed camera master"
+    },
+    {
+      "id": "calibration",
+      "key": "aom_test_materials/rd_curves/chimera/Chimera-ep08_4096x2160_2997fps__4096_2160__qp15__vmaf99.71__psnr44.06__kbps109191.65__fps29.97.mp4",
+      "url": "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/rd_curves/chimera/Chimera-ep08_4096x2160_2997fps__4096_2160__qp15__vmaf99.71__psnr44.06__kbps109191.65__fps29.97.mp4",
+      "expected_size": 204935462,
+      "expected_etag": "a9c0be961c4d84bafc7cdf87e4ffd260-25",
+      "expected_sha256": null,
+      "split": "calibration",
+      "category": "独立标定片",
+      "license": "CC BY 4.0 (Netflix Open Content homepage, 2026-10-17)",
+      "license_url": "https://opencontent.netflix.com/",
+      "source_note": "Official Netflix QP15 pre-encoded SDR reference; not an uncompressed camera master"
+    }
+  ]
+}

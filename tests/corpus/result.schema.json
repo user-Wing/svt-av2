@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://svt-av2.local/schemas/t014-matrix-result.schema.json",
+  "title": "SVT-AV2 T014 matrix run result",
+  "description": "One record per tool invocation of tools/run_matrix.py. The record always distinguishes what was actually encoded/decoded (encoded_frames) from what was only unit-tested, and it lists every check that was NOT verified so a missing dependency can never read as a full-milestone PASS.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "mode",
+    "status",
+    "reason",
+    "encoder",
+    "decoder",
+    "cases",
+    "summary",
+    "unverified"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "integer", "enum": [1] },
+    "mode": {
+      "type": "string",
+      "enum": ["oracle_material", "encoder_recon", "self_test", "metadata_probe", "check_bitstream", "check_oracle"]
+    },
+    "status": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED"] },
+    "reason": { "type": "string", "minLength": 1 },
+    "encoder": {
+      "type": "object",
+      "required": ["kind", "path"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "type": "string", "enum": ["avmenc", "svt_av2_app", "none"] },
+        "path": { "type": ["string", "null"] },
+        "sha256": { "type": ["string", "null"] }
+      }
+    },
+    "decoder": {
+      "type": "object",
+      "required": ["kind", "path"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "type": "string", "enum": ["avmdec", "none"] },
+        "path": { "type": ["string", "null"] },
+        "sha256": { "type": ["string", "null"] }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "pattern": { "type": ["string", "null"] },
+          "status": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED"] },
+          "reason": { "type": "string", "minLength": 1 },
+          "declared": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "width": { "type": ["integer", "null"] },
+              "height": { "type": ["integer", "null"] },
+              "frames": { "type": ["integer", "null"] },
+              "bit_depth": { "type": ["integer", "null"] },
+              "chroma": { "type": ["string", "null"] }
+            }
+          },
+          "decoder_metadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "width": { "type": ["integer", "null"] },
+              "height": { "type": ["integer", "null"] },
+              "bit_depth": { "type": ["integer", "null"] },
+              "chroma": { "type": ["string", "null"] },
+              "y4m_header": { "type": ["string", "null"] }
+            }
+          },
+          "encoded_frames": { "type": ["integer", "null"] },
+          "raw_bytes": { "type": ["integer", "null"] },
+          "expected_raw_bytes": { "type": ["integer", "null"] },
+          "compare": {
+            "type": ["object", "null"],
+            "additionalProperties": false,
+            "properties": {
+              "status": { "type": "string" },
+              "match": { "type": "boolean" },
+              "expected_sha256": { "type": ["string", "null"] },
+              "actual_sha256": { "type": ["string", "null"] },
+              "first_mismatch": { "type": ["object", "null"], "additionalProperties": true },
+              "mismatch_counts": { "type": ["object", "null"], "additionalProperties": true }
+            }
+          },
+          "artifacts": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "bitstream": { "type": ["string", "null"] },
+              "decoded_raw": { "type": ["string", "null"] },
+              "internal_recon": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["total", "passed", "failed", "blocked"],
+      "additionalProperties": false,
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 },
+        "blocked": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "unverified": {
+      "type": "array",
+      "description": "Checks that could not be run (missing tool, missing upstream feature). Empty only when everything in the mode was executed.",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

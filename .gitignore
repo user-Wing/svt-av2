@@ -1,0 +1,8 @@
+build/
+dist/
+*.obj
+*.pdb
+*.exe
+CMakeFiles/
+CMakeCache.txt
+__pycache__/

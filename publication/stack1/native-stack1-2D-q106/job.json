@@ -1,0 +1,108 @@
+{
+  "profile": "AgentDock-r5-stack1-mixed8",
+  "kind": "av2",
+  "q": 106,
+  "out": "C:\\Private\\ffmpeg-native-m6-tests\\agentdock-r5-20261026\\native-stack1-2D-q106",
+  "encode": [
+    "C:\\Private\\ffmpeg-native-m6-tests\\agentdock-r5-20261026\\build-stack1\\bin\\SvtAv2EncApp.exe",
+    "--input",
+    "C:\\Private\\ffmpeg-native-m6-tests\\intra-20261024\\dev-input\\2D-frame48.y4m",
+    "--output",
+    "C:\\Private\\ffmpeg-native-m6-tests\\agentdock-r5-20261026\\native-stack1-2D-q106\\stream.obu",
+    "--export-recon",
+    "C:\\Private\\ffmpeg-native-m6-tests\\agentdock-r5-20261026\\native-stack1-2D-q106\\recon.yuv",
+    "--still-picture",
+    "--threads",
+    "1",
+    "--qp",
+    "106",
+    "--intra-select",
+    "cfl",
+    "--partition-select",
+    "mixed8",
+    "--rd-mode",
+    "fast",
+    "--entropy-adapt",
+    "on",
+    "--transform-select",
+    "full",
+    "--coeff-opt",
+    "rdoq",
+    "--angle-search",
+    "rd",
+    "--mrl-search",
+    "rd",
+    "--tree-refine",
+    "wide",
+    "--cfl-search",
+    "rd",
+    "--mhccp-search",
+    "rd",
+    "--rd-lambda",
+    "avm-ai"
+  ],
+  "decode": [
+    "C:\\Private\\ffmpeg-native-m6-tests\\intra-r3-20261024\\integrated-r4c-2D-curves\\avmdec.exe",
+    "--rawvideo",
+    "--output-bit-depth=10",
+    "-o",
+    "C:\\Private\\ffmpeg-native-m6-tests\\agentdock-r5-20261026\\native-stack1-2D-q106\\decoded.yuv",
+    "C:\\Private\\ffmpeg-native-m6-tests\\agentdock-r5-20261026\\native-stack1-2D-q106\\stream.obu"
+  ],
+  "vmaf": "C:\\Private\\ffmpeg-native\\deps-full\\bin\\bin\\vmaf.exe",
+  "models": {
+    "v1": {
+      "path": "C:/Private/ffmpeg-native/deps-full/vmaf/model/vmaf_v1.0.16/vmaf_v1.0.16_3d0h.json",
+      "sha256": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f"
+    },
+    "neg": {
+      "path": "C:/Private/ffmpeg-native/deps-full/vmaf/model/vmaf_v0.6.1neg.json",
+      "sha256": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+    }
+  },
+  "source_raw": "C:\\Private\\ffmpeg-native-m6-tests\\speed-r2-v1-20261025\\rescore-existing-r4\\sources\\2D.yuv",
+  "timeout": 7200,
+  "identities": [
+    {
+      "path": "C:\\Private\\ffmpeg-native-m6-tests\\intra-r3-20261024\\integrated-r4c-2D-curves\\avmdec.exe",
+      "sha256": "110c7a30b2d429f1c75adb3340df149638929863eaaa241e3c3735f3e6b7c1ac"
+    },
+    {
+      "path": "C:\\Private\\ffmpeg-native\\deps-full\\bin\\bin\\vmaf.exe",
+      "sha256": "1b1f9478066c1cbf0dcaba213e6a3ea42b01f15547d87b16a58890c1c5e78ec5"
+    },
+    {
+      "path": "C:\\Private\\ffmpeg-native-m6-tests\\intra-20261024\\dev-input\\2D-frame48.y4m",
+      "sha256": "5536d9a3296378f3a073513eff15d211550b0d677e6e8c90596af60781f4eefd"
+    },
+    {
+      "path": "C:\\Private\\ffmpeg-native-m6-tests\\speed-r2-v1-20261025\\rescore-existing-r4\\sources\\2D.yuv",
+      "sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09"
+    },
+    {
+      "path": "C:/Private/ffmpeg-native/deps-full/vmaf/model/vmaf_v1.0.16/vmaf_v1.0.16_3d0h.json",
+      "sha256": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f"
+    },
+    {
+      "path": "C:/Private/ffmpeg-native/deps-full/vmaf/model/vmaf_v0.6.1neg.json",
+      "sha256": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+    },
+    {
+      "path": "C:\\Private\\ffmpeg-native-m6-tests\\speed-r3-v1-20261025\\agent-rd\\ccso-native-auto-r1\\build-r1\\bin\\SvtAv2EncApp.exe",
+      "sha256": "51def9e0c6015be713744980fa80475beca1a891fc8cf1c774b96648abfc8f5e"
+    },
+    {
+      "path": "C:\\Private\\ffmpeg-native-m6-tests\\speed-r3-v1-20261025\\agent-rd\\ccso-native-auto-r1\\source-manifest.json",
+      "sha256": "cad286f01ea20af2c71d73dc0a65bc8640ebade90567cbfa2124f80cd1d431cd"
+    },
+    {
+      "path": "C:\\Private\\ffmpeg-native-m6-tests\\agentdock-r5-20261026\\build-stack1\\bin\\SvtAv2EncApp.exe",
+      "sha256": "4f4a97923ea811e11d290898bb798f26a8cd99be67edf4134760632ce47d21ea"
+    },
+    {
+      "path": "C:\\Private\\ffmpeg-native-m6-tests\\agentdock-r5-20261026\\stack1-source-manifest.json",
+      "sha256": "5d54f00354a62a558b36bfb7580f454df6193bbf2966b5f6835caf0e92b33e4f"
+    }
+  ],
+  "runner_sha256": "6bd2f136ded8dbbfd10aaba0c96da5f9d12f44ff74fbf1324fb555507eba9151"
+}
