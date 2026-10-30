@@ -1,8 +1,49 @@
+# --- build output ------------------------------------------------------------
 build/
-dist/
-*.obj
-*.pdb
-*.exe
-CMakeFiles/
+build-*/
+out/
+cmake-build-*/
 CMakeCache.txt
+CMakeFiles/
+CMakeUserPresets.json
+compile_commands.json
+.ninja_deps
+.ninja_log
+
+# --- IDE ---------------------------------------------------------------------
+.vs/
+.vscode/
+*.user
+*.suo
+
+# --- binaries ----------------------------------------------------------------
+*.exe
+*.dll
+*.lib
+*.pdb
+*.ilk
+*.so
+*.a
+*.dylib
+*.obj
+
+# --- local research and media ------------------------------------------------
+/artifacts/
+/dist/
+/tests/Sources/
+/tests/Comparison/
+/tests/r13/
+
+# --- test / benchmark artifacts ---------------------------------------------
+tests/corpus/generated/
+benchmarks/results/
+*.ivf
+*.obu
+*.y4m
+*.yuv
+!tests/corpus/**/*.md
+
+# --- python ------------------------------------------------------------------
 __pycache__/
+*.pyc
+.venv/
