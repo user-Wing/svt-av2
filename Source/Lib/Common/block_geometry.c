@@ -1,3 +1,18 @@
+#ifndef M6_FINE16
+#define M6_FINE16 0
+#endif
+#ifndef M6_FINE16_PAIR
+#define M6_FINE16_PAIR 0
+#endif
+#if M6_FINE16_PAIR && !M6_FINE16
+#error M6_FINE16_PAIR_requires_M6_FINE16
+#endif
+#ifndef M6_FINE16_RETAIN_OLD
+#define M6_FINE16_RETAIN_OLD 0
+#endif
+#ifndef M6_FINE16_REVERSE_CHOICES
+#define M6_FINE16_REVERSE_CHOICES 0
+#endif
 #ifndef M6_ROOT_ASYM
 #define M6_ROOT_ASYM 0
 #endif
@@ -502,7 +517,7 @@ uint16_t svt_av2_partition_mixed7_plan(uint32_t code) {
 SvtAv2Error svt_av2_partition_plan_validate_sb(const SvtAv2FrameGeometry* geometry,
     size_t sb_index, uint16_t decision) {
     if (!valid_plan_geometry(geometry) ||
-        sb_index >= (size_t)geometry->sb_cols * geometry->sb_rows || decision > (M6_ROOT_ASYM ? 3288u : 3284u) ||
+        sb_index >= (size_t)geometry->sb_cols * geometry->sb_rows || (decision > (M6_ROOT_ASYM ? 3288u : 3284u) && (!M6_FINE16 || decision<4096u || decision>11095u) && (!M6_FINE16_PAIR || decision<11096u || decision>40495u)) ||
         (decision >= 882u && decision <= 3282u &&
          svt_av2_partition_mixed7_plan((uint32_t)decision - 882u) != decision))
         return SVT_AV2_ERROR_INVALID_PARAMETER;
@@ -575,6 +590,75 @@ SvtAv2Error svt_av2_partition_coded_type_plan_validated(const SvtAv2FrameGeometr
     if (error != SVT_AV2_ERROR_NONE) return error;
     const uint16_t decision = decisions == NULL ? 0u :
         decisions[(size_t)(block->y / 64u) * geometry->sb_cols + block->x / 64u];
+#if M6_FINE16_PAIR
+    if (decision>=11096u && decision<=40495u) {
+        static const uint32_t pairs[6][2]={{0u,1u},{0u,2u},{0u,3u},{1u,2u},{1u,3u},{2u,3u}};
+        const uint32_t code=(uint32_t)decision-11096u;
+        const uint32_t pair=code/(25u*14u*14u),lo=pairs[pair][0],hi=pairs[pair][1];
+        const uint32_t low_mask=code/(25u*14u)%14u+1u,high_mask=code/25u%14u+1u;
+        const uint32_t q=(block->y%64u/32u)*2u+block->x%64u/32u;
+        if (block->w>32u || block->h>32u) {
+            *partition=block->w>block->h?SVT_AV2_PARTITION_VERT:SVT_AV2_PARTITION_HORZ;
+        } else if (q==lo || q==hi) {
+            if (block->w>16u || block->h>16u) {
+                *partition=block->w>block->h?SVT_AV2_PARTITION_VERT:SVT_AV2_PARTITION_HORZ;
+            } else {
+                const uint32_t cell=(block->y%32u/16u)*2u+block->x%32u/16u;
+                const uint32_t mask=q==lo?low_mask:high_mask;
+                const uint32_t size=(mask&(1u<<cell))?8u:16u;
+                if (block->w==size && block->h==size) *partition=SVT_AV2_PARTITION_NONE;
+                else if (block->w<size || block->h<size) return SVT_AV2_ERROR_INVALID_PARAMETER;
+                else *partition=block->w>block->h?SVT_AV2_PARTITION_VERT:SVT_AV2_PARTITION_HORZ;
+            }
+        } else {
+            static const uint32_t widths[5]={16u,8u,16u,8u,32u};
+            static const uint32_t heights[5]={16u,8u,8u,16u,32u};
+            const uint32_t slot=q-(q>lo)-(q>hi);
+            const uint32_t shape=code%25u/(slot?5u:1u)%5u;
+            const uint32_t w=widths[shape],h=heights[shape];
+            if (block->w==w && block->h==h) *partition=SVT_AV2_PARTITION_NONE;
+            else if (block->w==w) *partition=SVT_AV2_PARTITION_HORZ;
+            else if (block->h==h) *partition=SVT_AV2_PARTITION_VERT;
+            else *partition=block->w>block->h?SVT_AV2_PARTITION_VERT:SVT_AV2_PARTITION_HORZ;
+        }
+        *is_implied=0;return SVT_AV2_ERROR_NONE;
+    }
+#endif
+#if M6_FINE16
+    if (decision>=4096u && decision<=11095u) {
+        const uint32_t code=(uint32_t)decision-4096u;
+        const uint32_t special=(code/125u)/14u;
+        const uint32_t mask=(code/125u)%14u+1u;
+        const uint32_t q=(block->y%64u/32u)*2u+block->x%64u/32u;
+        if (block->w>32u || block->h>32u) {
+            *partition=block->w>block->h?SVT_AV2_PARTITION_VERT:SVT_AV2_PARTITION_HORZ;
+        } else if (q==special) {
+            if (block->w>16u || block->h>16u) {
+                *partition=block->w>block->h?SVT_AV2_PARTITION_VERT:SVT_AV2_PARTITION_HORZ;
+            } else {
+                const uint32_t cell=(block->y%32u/16u)*2u+block->x%32u/16u;
+                const uint32_t size=(mask&(1u<<cell))?8u:16u;
+                if (block->w==size && block->h==size) *partition=SVT_AV2_PARTITION_NONE;
+                else if (block->w<size || block->h<size) return SVT_AV2_ERROR_INVALID_PARAMETER;
+                else *partition=block->w>block->h?SVT_AV2_PARTITION_VERT:SVT_AV2_PARTITION_HORZ;
+            }
+        } else {
+            static const uint32_t widths[5]={16u,8u,16u,8u,32u};
+            static const uint32_t heights[5]={16u,8u,8u,16u,32u};
+            static const uint32_t powers[3]={1u,5u,25u};
+            const uint32_t slot=q-(q>special);
+            const uint32_t shape=(code%125u)/powers[slot]%5u;
+            const uint32_t w=widths[shape],h=heights[shape];
+            if (block->w==w && block->h==h) *partition=SVT_AV2_PARTITION_NONE;
+            else if (block->w==w) *partition=SVT_AV2_PARTITION_HORZ;
+            else if (block->h==h) *partition=SVT_AV2_PARTITION_VERT;
+            else *partition=block->w>block->h?SVT_AV2_PARTITION_VERT:SVT_AV2_PARTITION_HORZ;
+        }
+        *is_implied=0;
+        return SVT_AV2_ERROR_NONE;
+    }
+#endif
+
 #if M6_ROOT_ASYM
     if (decision >= 3285u) {
         const uint32_t vertical = ((uint32_t)decision - 3285u) / 2u;

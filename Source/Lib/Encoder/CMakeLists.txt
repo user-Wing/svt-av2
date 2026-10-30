@@ -21,7 +21,8 @@ add_library(svt_av2_encoder_core STATIC
     inter_frame.c
     transform_path.c
     rd_frame.c
-    deblock_luma.c)
+    deblock_luma.c
+    content_filter_guard.c)
 
 target_include_directories(svt_av2_encoder_core
     PUBLIC

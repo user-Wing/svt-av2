@@ -28,7 +28,7 @@ target_include_directories(svt_av2_enc
         "${CMAKE_SOURCE_DIR}/Source/Lib/Bitstream"
         "${CMAKE_SOURCE_DIR}/Source/Lib/Reconstruction")
 
-target_link_libraries(svt_av2_enc PUBLIC svt_av2_common svt_av2_bitstream svt_av2_reconstruction svt_av2_encoder_core)
+target_link_libraries(svt_av2_enc PUBLIC svt_av2_common svt_av2_bitstream svt_av2_reconstruction svt_av2_encoder_core svt_av2_restoration)
 
 set_target_properties(svt_av2_enc PROPERTIES OUTPUT_NAME "svt_av2_enc")
 
@@ -48,7 +48,7 @@ if(SVT_AV2_BUILD_SHARED)
             "${CMAKE_SOURCE_DIR}/Source/Lib/Bitstream"
             "${CMAKE_SOURCE_DIR}/Source/Lib/Reconstruction")
 
-    target_link_libraries(svt_av2_enc_shared PUBLIC svt_av2_common svt_av2_bitstream svt_av2_reconstruction svt_av2_encoder_core)
+    target_link_libraries(svt_av2_enc_shared PUBLIC svt_av2_common svt_av2_bitstream svt_av2_reconstruction svt_av2_encoder_core svt_av2_restoration)
 
     target_compile_definitions(svt_av2_enc_shared PRIVATE SVT_AV2_BUILD_SHARED)
 

@@ -93,6 +93,7 @@ void svt_av2_sequence_header_config_default(SvtAv2SequenceHeaderConfig* cfg,
     cfg->enable_mrls = 0u;
     cfg->enable_mhccp = 0u;
     cfg->enable_ccso64 = 0u;
+    cfg->enable_pc_wiener = 0u;
 }
 
 /* Shared body validation (everything the M1 subset checks except the
@@ -103,9 +104,14 @@ static int seq_validate_config(const SvtAv2SequenceHeaderConfig* cfg,
                               uint32_t* width_bits,
                               uint32_t* height_bits) {
     if (cfg->low_delay_p > 1u || cfg->chroma_dct_only > 1u || cfg->enable_cfl_intra > 1u || cfg->enable_mrls > 1u || cfg->enable_mhccp > 1u) return SVT_AV2_BW_ERROR_RANGE;
+    if (cfg->enable_pc_wiener > 1u || (cfg->enable_pc_wiener &&
+        ((cfg->max_frame_width & 7u) || (cfg->max_frame_height & 7u) ||
+         cfg->max_frame_width > 4096u || cfg->max_frame_height > 2160u ||
+         cfg->use_256x256_superblock || cfg->use_128x128_superblock)))
+        return SVT_AV2_BW_ERROR_RANGE;
     if (cfg->enable_ccso64 > 1u || (cfg->enable_ccso64 &&
         ((cfg->max_frame_width & 7u) || (cfg->max_frame_height & 7u) ||
-         cfg->max_frame_width > 1920u || cfg->max_frame_height > 1080u ||
+         cfg->max_frame_width > 4096u || cfg->max_frame_height > 2160u ||
          cfg->chroma_format != 1u || cfg->use_256x256_superblock || cfg->use_128x128_superblock)))
         return SVT_AV2_BW_ERROR_RANGE;
     if (cfg->seq_header_id >= SVT_AV2_SEQ_MAX_SEQ_NUM) {
@@ -143,7 +149,7 @@ static int seq_validate_config(const SvtAv2SequenceHeaderConfig* cfg,
 
 int svt_av2_sequence_header_write_multi(SvtAv2BitWriter* bw,
                                        const SvtAv2SequenceHeaderConfig* cfg) {
-    if (cfg != NULL && cfg->enable_ccso64) return SVT_AV2_BW_ERROR_RANGE;
+    if (cfg != NULL && (cfg->enable_ccso64 || cfg->enable_pc_wiener)) return SVT_AV2_BW_ERROR_RANGE;
     if (bw == NULL || cfg == NULL) {
         return SVT_AV2_BW_ERROR_NULL;
     }
@@ -681,10 +687,13 @@ int svt_av2_sequence_header_write(SvtAv2BitWriter* bw,
         return status;
     }
     /* enable_gdf == 0: no gdf_unit_matches_sb_size. */
-    if ((status = seq_write_bit(bw, 0u)) != SVT_AV2_BW_OK) { /* enable_restoration */
+    if ((status = seq_write_bit(bw, cfg->enable_pc_wiener)) != SVT_AV2_BW_OK) { /* enable_restoration */
         return status;
     }
-    /* enable_restoration == 0: no lr_tools_disable bits. */
+    if (cfg->enable_pc_wiener) {
+        /* Enable Y PC-Wiener only; UV inherits and disables PC-Wiener. */
+        if ((status = seq_write_bits(bw, 2u, 3u)) != SVT_AV2_BW_OK) return status;
+    }
     if ((status = seq_write_bit(bw, cfg->enable_ccso64)) != SVT_AV2_BW_OK) { /* enable_ccso */
         return status;
     }

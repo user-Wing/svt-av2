@@ -24,7 +24,33 @@ option(SVT_AV2_BUILD_TESTS        "Build unit tests and register CTest cases"  O
 option(SVT_AV2_BUILD_SHARED       "Also build a shared library variant"        ON)
 option(SVT_AV2_ENABLE_SANITIZERS  "Enable ASan/UBSan (GCC/Clang only)"         OFF)
 option(SVT_AV2_WARNINGS_AS_ERRORS "Treat compiler warnings as errors"          OFF)
+option(SVT_AV2_STILL_PROFILE "Enable the tested single-frame search profile" OFF)
+option(SVT_AV2_EXPERIMENTAL_FINE16_PAIR "Enable experimental fine16 pair search (requires still profile)" OFF)
+option(SVT_AV2_EXPERIMENTAL_SATD_ANGLES "Enable experimental SATD angle candidates (requires still profile)" OFF)
 set(SVT_AV2_ORACLE_DIR "" CACHE PATH "Directory containing the AVM reference decoder (avmdec)")
+
+if(SVT_AV2_EXPERIMENTAL_FINE16_PAIR AND NOT SVT_AV2_STILL_PROFILE)
+    message(FATAL_ERROR "SVT_AV2_EXPERIMENTAL_FINE16_PAIR requires SVT_AV2_STILL_PROFILE")
+endif()
+if(SVT_AV2_EXPERIMENTAL_SATD_ANGLES AND NOT SVT_AV2_STILL_PROFILE)
+    message(FATAL_ERROR "SVT_AV2_EXPERIMENTAL_SATD_ANGLES requires SVT_AV2_STILL_PROFILE")
+endif()
+if(SVT_AV2_STILL_PROFILE)
+    add_compile_definitions(
+        M6_TX_CACHE=1 M6_TX_CACHE_SLOTS=8192 M6_FLIP_TX=1 M6_JOINT_Y_TX=1
+        M6_ROOT_ASYM=1 M6_Y_BOUND=1 M6_RDOQ_WIDE=1 M6_TREE_RDOQ=1
+        M6_TOOL_REPEAT=1 M6_TREE_SHARED=1 M6_TX_CACHE_WAYS=8 M6_DEBLOCK=1
+        M6_FINE16=1 M6_RDOQ_CONTEXT=1 M6_PC_WIENER=1
+        M6_LAMBDA_NUMERATOR=4 M6_LAMBDA_DENOMINATOR=4 M6_CONTENT_GUARD=1)
+    if(SVT_AV2_EXPERIMENTAL_FINE16_PAIR)
+        add_compile_definitions(M6_FINE16_PAIR=1)
+    else()
+        add_compile_definitions(M6_FINE16_PAIR=0)
+    endif()
+    if(SVT_AV2_EXPERIMENTAL_SATD_ANGLES)
+        add_compile_definitions(M6_SATD_ANGLES=1)
+    endif()
+endif()
 
 # --- build type --------------------------------------------------------------
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -61,6 +87,7 @@ add_subdirectory(Source/Lib/Prediction)
 # T010 owns Source/Lib/Quantization (fixed-QP quantize + decoder-path dequant).
 # Registered by 00 during M2 integration; depends on Common for shared types.
 add_subdirectory(Source/Lib/Quantization)
+add_subdirectory(Source/Lib/Restoration)
 # T009 owns Source/Lib/Transform (scalar forward/inverse DCT_DCT, 8-bit, <=16x16).
 # Registered by 00 during M2 integration; depends on Common for shared types.
 add_subdirectory(Source/Lib/Transform)

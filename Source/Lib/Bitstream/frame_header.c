@@ -48,6 +48,8 @@ void svt_av2_frame_header_config_default(SvtAv2FrameHeaderConfig* cfg,
     cfg->enable_mrls = 0u;
     cfg->enable_mhccp = 0u;
     cfg->ccso64 = NULL;
+    cfg->enable_pc_wiener = 0u;
+    cfg->pc_wiener_none_mask[0] = cfg->pc_wiener_none_mask[1] = 0u;
     cfg->deblock_y = 0u;cfg->deblock_delta = 0;cfg->deblock_delta_h = 0;
 }
 
@@ -182,6 +184,10 @@ int svt_av2_frame_header_write(SvtAv2BitWriter* bw,
         return SVT_AV2_BW_ERROR_RANGE;
     }
     if (cfg->entropy_adaptation > 1u || cfg->enable_mrls > 1u || cfg->enable_mhccp > 1u) return SVT_AV2_BW_ERROR_RANGE;
+    if (cfg->enable_pc_wiener > 1u || (cfg->enable_pc_wiener &&
+        (cfg->multi_frame || cfg->inter_frame || cfg->sb_shift != 4u ||
+         (cfg->frame_width & 7u) || (cfg->frame_height & 7u) ||
+         cfg->frame_width > 4096u || cfg->frame_height > 2160u))) return SVT_AV2_BW_ERROR_RANGE;
     const uint32_t tile_bits = svt_av2_frame_header_tile_params_bits(cfg);
     if (tile_bits == SVT_AV2_FRAME_TILE_PARAMS_ERROR) {
         return SVT_AV2_BW_ERROR_RANGE;
@@ -295,6 +301,10 @@ int svt_av2_frame_header_write(SvtAv2BitWriter* bw,
             if (explicit_delta && (st=svt_av2_bit_writer_write_bits(bw,
                 (uint32_t)(cfg->deblock_delta_h+2),2u))!=0) return st;
         }
+    }
+    if (cfg->enable_pc_wiener) {
+        /* Y type PC-Wiener (1/2), UV only NONE (no bits), RU 512/2. */
+        if ((st = svt_av2_bit_writer_write_bits(bw, 3u, 2u)) != 0) return st;
     }
     if (cfg->ccso64 != NULL) { /* single-picture CCSO frame_flag is inferred1. */
         if ((st = svt_av2_bit_writer_write_bit(bw, 0u)) != 0) return st; /* Yoff */

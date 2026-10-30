@@ -5,7 +5,7 @@
 int svt_av2_ccso64_validate(const SvtAv2Ccso64Plan* plan,
     uint32_t width, uint32_t height, uint32_t bit_depth, uint32_t chroma_format) {
     if (plan == NULL) return 0;
-    if (width == 0u || width > 1920u || height == 0u || height > 1080u ||
+    if (width == 0u || width > 4096u || height == 0u || height > 2160u ||
         (width & 7u) || (height & 7u) || chroma_format != 1u ||
         (bit_depth != 8u && bit_depth != 10u)) return SVT_AV2_BW_ERROR_RANGE;
     const size_t units = (size_t)((width + 63u) / 64u) * ((height + 63u) / 64u);

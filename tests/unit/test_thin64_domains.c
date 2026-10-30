@@ -33,7 +33,8 @@ int main(void) {
         SVT_TEST_CHECK_EQ_INT(part,SVT_AV2_PARTITION_NONE);
         SVT_TEST_CHECK_EQ_INT(implied,1);
     }
-    const uint16_t invalid[4]={882u,3282u,3285u,UINT16_MAX};
+    /* 3285..3288 are root-asymmetric plans; 3289 remains reserved. */
+    const uint16_t invalid[4]={882u,3282u,3289u,UINT16_MAX};
     for(uint32_t i=0u;i<4u;++i)
         SVT_TEST_CHECK_EQ_INT(svt_av2_partition_plan_validate(&g,invalid+i,1u),SVT_AV2_ERROR_INVALID_PARAMETER);
     const uint32_t w[4]={8u,64u,4u,32u},h[4]={64u,8u,32u,4u};

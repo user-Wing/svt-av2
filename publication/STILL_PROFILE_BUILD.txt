@@ -1,0 +1,25 @@
+单帧构建配置
+
+使用 CMake 3.16+、Ninja 和支持 C11 的 MSVC 或 GCC。Windows 请先打开
+Visual Studio 的 x64 Native Tools 命令提示符；Linux 请使用配置好的 C 编译器。
+以下命令在仓库根目录执行，无需机器专用环境脚本。
+
+cmake -S . -B build-still -G Ninja -DCMAKE_BUILD_TYPE=Release -DSVT_AV2_BUILD_SHARED=OFF -DSVT_AV2_WARNINGS_AS_ERRORS=ON -DSVT_AV2_STILL_PROFILE=ON
+cmake --build build-still
+
+SVT_AV2_STILL_PROFILE 默认 OFF，保留原构建行为。ON 启用冻结的单帧搜索
+宏集合，lambda 编译比例为 4/4，内容保护已编译。默认不启用 fine16 pair。
+CLI --rd-lambda avm-ai 使用此 4/4 比例；--rd-lambda avm-ai150 使用 6/4。
+内容类型与 QP、lambda 是独立显式设置，分类不会在编码器内自动修改参数。
+
+实验 pair 构建在另一个构建目录添加：
+-DSVT_AV2_STILL_PROFILE=ON -DSVT_AV2_EXPERIMENTAL_FINE16_PAIR=ON
+单独打开 pair 而不打开 still profile 会配置失败。pair 尚不作为默认配置。
+独立实验 SATD 角度候选可在新构建目录添加：
+-DSVT_AV2_STILL_PROFILE=ON -DSVT_AV2_EXPERIMENTAL_SATD_ANGLES=ON
+该选项默认 OFF，必须启用 still profile。它保留原完整帧，再增加一次候选搜索，
+仅在完整码流成本更小时选用候选，因此会增加编码开销。
+复现已验证的 SATD 配置时保持 pair OFF，并显式使用 --rd-lambda avm-ai150。
+SATD 与 pair 同时启用的组合尚未建立质量曲线；不能借用两个独立配置的结果。
+构建输出位于所选构建目录的 bin/。运行 ctest --test-dir build-still -N
+可查看已注册测试；完整测试集包含耗时较长的编码矩阵。

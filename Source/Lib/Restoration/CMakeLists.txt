@@ -1,0 +1,5 @@
+add_library(svt_av2_restoration STATIC pc_wiener.c)
+target_include_directories(svt_av2_restoration PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}")
+target_link_libraries(svt_av2_restoration PUBLIC svt_av2_quantization)
+svt_av2_set_target_flags(svt_av2_restoration)
+svt_av2_enable_pic(svt_av2_restoration)

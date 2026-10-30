@@ -147,7 +147,8 @@ static void geometry_tests(void) {
         SVT_TEST_CHECK_EQ_INT(added,1774u);SVT_TEST_CHECK_EQ_INT(first,887u);SVT_TEST_CHECK_EQ_INT(last,3281u);
         SVT_TEST_CHECK_EQ_INT(svt_av2_partition_mixed7_plan(2401u),UINT16_MAX);
         SVT_TEST_CHECK_EQ_INT(svt_av2_partition_mixed7_plan(UINT32_MAX),UINT16_MAX);
-        const uint16_t invalid[2]={3285u,UINT16_MAX};
+        /* 3285..3288 are root-asymmetric plans; 3289 remains reserved. */
+        const uint16_t invalid[2]={3289u,UINT16_MAX};
         Walk untouched={0};
         for(uint32_t i=0u;i<2u;++i)
             SVT_TEST_CHECK_EQ_INT(svt_av2_partition_traverse_sb_plan(&g,0u,invalid+i,1u,collect,&untouched),SVT_AV2_ERROR_INVALID_PARAMETER);

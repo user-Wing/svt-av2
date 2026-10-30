@@ -23,6 +23,10 @@ int main(void) {
             SVT_TEST_CHECK_EQ_INT(svt_av2_rd_lambda_ai(qindex,bd,&ai,&q1),0);
             SVT_TEST_CHECK_EQ_INT(q0,q1);
             SVT_TEST_CHECK(ai>=previous && ai>0u && original>=12u*ai && original<=14u*ai);
+            uint64_t ai150=0u; uint32_t q150=0u;
+            SVT_TEST_CHECK_EQ_INT(svt_av2_rd_lambda_ai150(qindex,bd,&ai150,&q150),0);
+            SVT_TEST_CHECK_EQ_INT(q150,q1);
+            SVT_TEST_CHECK_EQ_INT(ai150,(ai*6u+2u)/4u);
             previous=ai;
         }
     }
@@ -32,5 +36,8 @@ int main(void) {
     SVT_TEST_CHECK(svt_av2_rd_lambda_ai(1u,12u,&lambda,&qstep)!=0);
     SVT_TEST_CHECK(svt_av2_rd_lambda_ai(1u,8u,NULL,&qstep)!=0);
     SVT_TEST_CHECK(svt_av2_rd_lambda_ai(1u,8u,&lambda,NULL)!=0);
+    SVT_TEST_CHECK(svt_av2_rd_lambda_ai150(0u,8u,&lambda,&qstep)!=0);
+    SVT_TEST_CHECK(svt_av2_rd_lambda_ai150(1u,8u,NULL,&qstep)!=0);
+    SVT_TEST_CHECK(svt_av2_rd_lambda_ai150(1u,8u,&lambda,NULL)!=0);
     SVT_TEST_REPORT("test_intra_lambda");
 }

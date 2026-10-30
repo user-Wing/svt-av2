@@ -79,6 +79,16 @@ typedef enum SvtAv2Preset {
     SVT_AV2_PRESET_PLACEBO = 0
 } SvtAv2Preset;
 
+/* Optional externally supplied content hint. This is context state, not a
+ * member of SvtAv2EncoderConfig; that public structure retains its ABI.
+ * No detector is run and no lambda/QP is changed. Only the isolated compiled
+ * animation PCW guard may use the hint, in its documented narrow domain. */
+typedef enum SvtAv2ContentType {
+    SVT_AV2_CONTENT_NONE = 0,
+    SVT_AV2_CONTENT_ANIMATION = 1,
+    SVT_AV2_CONTENT_REAL = 2
+} SvtAv2ContentType;
+
 /* --- opaque handle -------------------------------------------------------- */
 
 typedef struct SvtAv2EncoderContext* SvtAv2Handle;
@@ -116,7 +126,7 @@ typedef struct SvtAv2EncoderConfig {
     uint32_t angle_search; /* Appended: nonzero Y deltas with inherited UV V/H; still + directional/CfL + RD. */
     uint32_t mrl_search; /* Appended: bounded square/rectangle Y multiple-reference-line RD, still + directional/CfL + RD. */
     uint32_t tree_refinement; /* Appended: 1=refine best two basic trees, 2=also preserve seeds before long rectangles; with partition>=8, global four plus two before long and two before thin rectangles. */
-    uint32_t rd_lambda_model; /* Appended: 0=original, 1=fixed AVM AI base lambda in current distortion units; still + RD. */
+    uint32_t rd_lambda_model; /* Appended: 0=original, 1=AVM AI with compile-time scale, 2=AVM AI base x6/4; still + RD. */
     uint32_t cfl_search; /* Appended: 0=implicit only, 1=also bounded classic explicit alpha RD; still + cfl + RD. */
     uint32_t mhccp_search; /* Appended: 0=off, 1=also causal multi-hypothesis cross-component RD; still + cfl + RD. */
     uint32_t intra_joint; /* Appended: 0=off, 1=bounded Y mode/TX joint RD; still + directional/cfl + RD + full TX. */
@@ -199,6 +209,11 @@ typedef enum SvtAv2Parameter {
     SVT_AV2_PARAM_CFL_SEARCH,
     SVT_AV2_PARAM_MHCCP_SEARCH,
     SVT_AV2_PARAM_INTRA_JOINT,
+    /* value: const SvtAv2ContentType*. Optional, default NONE; set before init.
+     * Unknown values return INVALID_PARAMETER, initialized handles return
+     * INVALID_STATE. Stored privately; get_config() retains its old layout.
+     * Macro-off builds accept the hint but do not change encoding decisions. */
+    SVT_AV2_PARAM_CONTENT_TYPE,
     SVT_AV2_PARAM_COUNT
 } SvtAv2Parameter;
 

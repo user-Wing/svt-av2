@@ -1,0 +1,6 @@
+依赖官方 OpenAI CLIP，不捆绑其源码或checkpoint。
+源码：https://github.com/openai/CLIP/tree/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6
+MIT许可：https://github.com/openai/CLIP/blob/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6/LICENSE
+完整CLIP许可见LICENSE.CLIP.txt。
+官方仓库说明代码及模型权重按MIT发布：https://github.com/openai/CLIP#license
+Torch、TorchVision、NumPy、Pillow等依赖遵循各自上游许可；本包不捆绑这些依赖。

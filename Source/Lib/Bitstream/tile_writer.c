@@ -1,3 +1,18 @@
+#ifndef M6_FINE16
+#define M6_FINE16 0
+#endif
+#ifndef M6_FINE16_PAIR
+#define M6_FINE16_PAIR 0
+#endif
+#if M6_FINE16_PAIR && !M6_FINE16
+#error M6_FINE16_PAIR_requires_M6_FINE16
+#endif
+#ifndef M6_FINE16_RETAIN_OLD
+#define M6_FINE16_RETAIN_OLD 0
+#endif
+#ifndef M6_FINE16_REVERSE_CHOICES
+#define M6_FINE16_REVERSE_CHOICES 0
+#endif
 #ifndef M6_ROOT_ASYM
 #define M6_ROOT_ASYM 0
 #endif
@@ -67,6 +82,9 @@ typedef struct TileTree {
     uint32_t enable_mrls;
     uint32_t enable_mhccp;
     const SvtAv2Ccso64Plan* ccso64;
+    uint32_t enable_pc_wiener;
+    uint64_t pc_wiener_none_mask[2];
+    uint16_t pc_wiener_cdf[6];
     uint16_t ccso_cdf[2][4][6]; /* Canonical inverse boundary, terminal, count, AVM_PARA2. */
     uint8_t mrl_above[SVT_AV2_COEFF_CTX_UNITS];
     uint8_t mrl_left[SVT_AV2_COEFF_CTX_UNITS];
@@ -434,8 +452,27 @@ static int tile_leaf_write(TileTree* tree, const SvtAv2BlockView* b) {
     return st;
 }
 
+static int tile_pc_wiener_write(TileTree* tree, const SvtAv2BlockView* b) {
+    if (tree->enable_pc_wiener && b->w == 64u && b->h == 64u &&
+        (b->x & 255u) == 0u && (b->y & 255u) == 0u) {
+        const uint32_t cols = (tree->geometry.visible_width + 128u) / 256u;
+        const uint32_t rows = (tree->geometry.visible_height + 128u) / 256u;
+        if (b->x / 256u < (cols ? cols : 1u) && b->y / 256u < (rows ? rows : 1u)) {
+            const uint32_t unit = (b->y / 256u) * (cols ? cols : 1u) + b->x / 256u;
+            if (unit >= 128u) return SVT_AV2_ENTROPY_ERROR_RANGE;
+            const int status = svt_av2_ccso64_symbol(tree->enc, tree->pc_wiener_cdf,
+                1u ^ (uint32_t)((tree->pc_wiener_none_mask[unit / 64u] >> (unit & 63u)) & 1u),
+                tree->enc->models != NULL);
+            if (status != 0) return status;
+        }
+    }
+    return 0;
+}
+
 static int tile_tree_write(TileTree* tree, const SvtAv2BlockView* b) {
     if (b->x >= tree->geometry.visible_width || b->y >= tree->geometry.visible_height) return 0;
+    const int restoration_status = tile_pc_wiener_write(tree, b);
+    if (restoration_status != 0) return restoration_status;
     SvtAv2PartitionType part;
     int implied;
     if (svt_av2_partition_coded_type_plan_validated(&tree->geometry, b,
@@ -464,7 +501,7 @@ static int tile_write_coeffs(SvtAv2EntropyEncoder* enc, const SvtAv2FrameHeaderC
         cfg->bit_depth, cfg->chroma_format) != 0 ||
         (cfg->ccso64 && (cfg->multi_frame || cfg->inter_frame || cfg->sb_shift != 4u)))
         return SVT_AV2_ENTROPY_ERROR_RANGE;
-    if ((cfg->base_q_idx < (cfg->bit_depth == 10u ? 49u : 1u) || cfg->base_q_idx > (cfg->bit_depth == 10u ? 303u : 255u)) || cfg->frame_width > 1920u || cfg->frame_height > 1080u)
+    if ((cfg->base_q_idx < (cfg->bit_depth == 10u ? 49u : 1u) || cfg->base_q_idx > (cfg->bit_depth == 10u ? 303u : 255u)) || cfg->frame_width > 4096u || cfg->frame_height > 2160u)
         return SVT_AV2_ENTROPY_ERROR_RANGE;
     TileTree tree;
     memset(&tree, 0, sizeof(tree));
@@ -477,6 +514,10 @@ static int tile_write_coeffs(SvtAv2EntropyEncoder* enc, const SvtAv2FrameHeaderC
     tree.enable_mrls = cfg->enable_mrls;
     tree.enable_mhccp = cfg->enable_mhccp;
     tile_ccso64_init(&tree, cfg->ccso64);
+    tree.enable_pc_wiener = cfg->enable_pc_wiener;
+    memcpy(tree.pc_wiener_none_mask, cfg->pc_wiener_none_mask, sizeof(tree.pc_wiener_none_mask));
+    { const uint16_t initial[6] = {19969, 0, 0, 1, 3, 4};
+      memcpy(tree.pc_wiener_cdf, initial, sizeof(initial)); }
     tree.chroma_shift = cfg->chroma_format == 3u ? 0u : 1u;
     tree.q_ctx = svt_av2_coeff_q_context(cfg->base_q_idx);
     if (svt_av2_frame_geometry_init_ex(&tree.geometry, cfg->frame_width, cfg->frame_height, 64u,
@@ -525,7 +566,7 @@ int svt_av2_tile_rate_create(const SvtAv2FrameHeaderConfig* cfg,
     const uint32_t qmin = cfg->bit_depth == 10u ? 49u : 1u;
     const uint32_t qmax = cfg->bit_depth == 10u ? 303u : 255u;
     if (cfg->base_q_idx < qmin || cfg->base_q_idx > qmax ||
-        cfg->frame_width > 1920u || cfg->frame_height > 1080u ||
+        cfg->frame_width > 4096u || cfg->frame_height > 2160u ||
         (cfg->bit_depth != 8u && cfg->bit_depth != 10u) ||
         (cfg->chroma_format != 1u && cfg->chroma_format != 3u) ||
         (cfg->bit_depth == 8u && cfg->chroma_format == 3u) || cfg->inter_frame > 1u)
@@ -546,6 +587,10 @@ int svt_av2_tile_rate_create(const SvtAv2FrameHeaderConfig* cfg,
     s->tree.enable_mrls = cfg->enable_mrls;
     s->tree.enable_mhccp = cfg->enable_mhccp;
     tile_ccso64_init(&s->tree, cfg->ccso64);
+    s->tree.enable_pc_wiener = cfg->enable_pc_wiener;
+    memcpy(s->tree.pc_wiener_none_mask, cfg->pc_wiener_none_mask, sizeof(s->tree.pc_wiener_none_mask));
+    { const uint16_t initial[6] = {19969, 0, 0, 1, 3, 4};
+      memcpy(s->tree.pc_wiener_cdf, initial, sizeof(initial)); }
     s->tree.chroma_shift = cfg->chroma_format == 3u ? 0u : 1u;
     s->tree.q_ctx = svt_av2_coeff_q_context(cfg->base_q_idx);
     s->inter_frame = cfg->inter_frame;
@@ -575,7 +620,7 @@ int svt_av2_tile_rate_trial(SvtAv2TileRateSession* s, size_t sb_index,
     if (s == NULL || blocks == NULL || rate_q12 == NULL)
         return SVT_AV2_ENTROPY_ERROR_NULL;
     *rate_q12 = 0u;
-    if (sb_index != s->cursor || sb_index >= s->sb_count || partition > (M6_ROOT_ASYM ? 3288u : 3284u) ||
+    if (sb_index != s->cursor || sb_index >= s->sb_count || (partition > (M6_ROOT_ASYM ? 3288u : 3284u) && (!M6_FINE16 || partition<4096u || partition>11095u) && (!M6_FINE16_PAIR || partition<11096u || partition>40495u)) ||
         (commit != 0 && commit != 1) || block_count == 0u || block_count % 3u ||
         (s->inter_frame ? modes == NULL || mode_count != block_count / 3u :
                          modes != NULL || mode_count != 0u))
@@ -634,7 +679,7 @@ int svt_av2_tile_rate_trial(SvtAv2TileRateSession* s, size_t sb_index,
 /* Rate-only intra transaction. Partition symbols are consumed in the original
  * preorder; partition neighbours change only after a complete coding leaf. */
 #define TILE_PREFIX_NODES 127u
-#define TILE_PREFIX_SBS 510u
+#define TILE_PREFIX_SBS (64u * 34u)
 typedef struct TilePrefixEvent {
     SvtAv2BlockView block;
     SvtAv2PartitionType part;
@@ -717,7 +762,8 @@ int svt_av2_tile_rate_prefix_begin(SvtAv2TileRatePrefix* p,
     svt_av2_entropy_rate_init(&enc);
     if (s->adaptive) {p->scratch_models=s->committed_models;enc.models=&p->scratch_models;}
     p->trial.enc=&enc;
-    st=tile_prefix_advance(&p->trial,p->pending,count,&pos);
+    st=tile_pc_wiener_write(&p->trial,&sb);
+    if (st==0) st=tile_prefix_advance(&p->trial,p->pending,count,&pos);
     if (st!=0) return st;
     p->tree=p->trial;p->tree.enc=NULL;
     p->enc=enc;p->adaptive=s->adaptive;

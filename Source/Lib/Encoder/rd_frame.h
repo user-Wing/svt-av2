@@ -14,6 +14,7 @@ typedef struct SvtAv2RdFrameConfig {
     uint32_t rd_mode; /* 1=exhaustive, 2=pruned, 3=fast still intra */
     uint32_t partition_selection; /* 4=small rectangles, 5=also uniform long rectangles, 6=also bounded 32-quadrant rectangles, 7=also bounded small-rectangle mixtures, 8=also uniform thin rectangles, 9=also bounded thin mixtures, 10=also uniform 8x64/64x8 */
     uint32_t motion_optimization; /* 1=legacy-range RD, 2=legacy-range RD plus bounded wide refinement */
+    uint32_t satd_angles; /* Additional SATD shortlist; original candidates retained. */
     uint32_t angle_search; /* 48-angle Y-SAD shortlist plus exact refinement on the winning tree */
     uint32_t transform_selection; /* 1=binary DCT/ADST_ADST, 2=full syntax with four Y primary types */
     uint32_t coeff_optimization; /* 1=legacy tail trim, 2=single-picture level/EOB RD */
@@ -25,7 +26,7 @@ typedef struct SvtAv2RdFrameConfig {
     void* candidate_hook_user;
     uint32_t reverse_candidates;
     uint32_t tree_finalists; /* 0=original winner, 2=best two basic trees, 4=also preserve two seeds before long rectangles, 8=global four plus two before long and thin rectangles, 10=also retain both 8x64/64x8 seeds */
-    uint32_t rd_lambda_model; /* 0=original, 1=fixed AVM AI base in current distortion units */
+    uint32_t rd_lambda_model; /* 0=original, 1=AVM AI with compile-time scale, 2=AVM AI base x6/4 */
     uint32_t mhccp_search; /* 1=three shared filter0 MHCCP directions, exact whole-SB RD. */
     uint32_t intra_joint; /* 1=bounded Y mode/TX joint RD; complete original route retained. */
 } SvtAv2RdFrameConfig;
@@ -62,6 +63,8 @@ typedef struct SvtAv2RdFrameStats {
 SvtAv2Error svt_av2_rd_lambda(uint32_t qindex, uint32_t bit_depth,
     uint64_t* lambda_q8, uint32_t* qstep_qtx);
 SvtAv2Error svt_av2_rd_lambda_ai(uint32_t qindex, uint32_t bit_depth,
+    uint64_t* lambda_q8, uint32_t* qstep_qtx);
+SvtAv2Error svt_av2_rd_lambda_ai150(uint32_t qindex, uint32_t bit_depth,
     uint64_t* lambda_q8, uint32_t* qstep_qtx);
 SvtAv2Error svt_av2_rd_cost(uint64_t distortion, uint64_t lambda_q8,
     uint64_t rate_q12, uint64_t* cost);

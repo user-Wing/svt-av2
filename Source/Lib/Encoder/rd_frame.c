@@ -1,3 +1,30 @@
+#ifndef M6_SATD_ANGLES
+#define M6_SATD_ANGLES 0
+#endif
+#ifndef M6_LAMBDA_NUMERATOR
+#define M6_LAMBDA_NUMERATOR 1u
+#endif
+#ifndef M6_LAMBDA_DENOMINATOR
+#define M6_LAMBDA_DENOMINATOR 1u
+#endif
+#if M6_LAMBDA_NUMERATOR <= 0 || M6_LAMBDA_DENOMINATOR <= 0
+#error Lambda scale must be positive
+#endif
+#ifndef M6_FINE16
+#define M6_FINE16 0
+#endif
+#ifndef M6_FINE16_PAIR
+#define M6_FINE16_PAIR 0
+#endif
+#if M6_FINE16_PAIR && !M6_FINE16
+#error M6_FINE16_PAIR_requires_M6_FINE16
+#endif
+#ifndef M6_FINE16_RETAIN_OLD
+#define M6_FINE16_RETAIN_OLD 0
+#endif
+#ifndef M6_FINE16_REVERSE_CHOICES
+#define M6_FINE16_REVERSE_CHOICES 0
+#endif
 #ifndef M6_TREE_SHARED
 #define M6_TREE_SHARED 0
 #endif
@@ -13,6 +40,10 @@
 #ifndef M6_TREE_RDOQ
 #define M6_TREE_RDOQ 0
 #endif
+#ifndef M6_RDOQ_CONTEXT
+#define M6_RDOQ_CONTEXT 0
+#endif
+
 #ifndef M6_ROOT_ASYM
 #define M6_ROOT_ASYM 0
 #endif
@@ -49,8 +80,8 @@ SvtAv2Error svt_av2_rd_lambda(uint32_t qindex, uint32_t bit_depth,
     return SVT_AV2_ERROR_NONE;
 }
 
-SvtAv2Error svt_av2_rd_lambda_ai(uint32_t qindex, uint32_t bit_depth,
-    uint64_t* lambda_q8, uint32_t* qstep_qtx) {
+static SvtAv2Error rd_lambda_ai_scaled(uint32_t qindex, uint32_t bit_depth,
+    uint32_t numerator, uint32_t denominator, uint64_t* lambda_q8, uint32_t* qstep_qtx) {
     SvtAv2Error error = svt_av2_rd_lambda(qindex, bit_depth, lambda_q8, qstep_qtx);
     if (error != SVT_AV2_ERROR_NONE) return error;
     const uint64_t q = *qstep_qtx;
@@ -58,7 +89,22 @@ SvtAv2Error svt_av2_rd_lambda_ai(uint32_t qindex, uint32_t bit_depth,
     if (bit_depth == 10u) rdmult = (rdmult + 8u) >> 4u;
     if (rdmult == 0u) rdmult = 1u;
     *lambda_q8 = (rdmult + 1u) >> 1u;
+    if (numerator != denominator) {
+        *lambda_q8 = (*lambda_q8 * numerator + denominator / 2u) / denominator;
+        if (*lambda_q8 == 0u) *lambda_q8 = 1u;
+    }
     return SVT_AV2_ERROR_NONE;
+}
+
+SvtAv2Error svt_av2_rd_lambda_ai(uint32_t qindex, uint32_t bit_depth,
+    uint64_t* lambda_q8, uint32_t* qstep_qtx) {
+    return rd_lambda_ai_scaled(qindex, bit_depth, M6_LAMBDA_NUMERATOR,
+        M6_LAMBDA_DENOMINATOR, lambda_q8, qstep_qtx);
+}
+
+SvtAv2Error svt_av2_rd_lambda_ai150(uint32_t qindex, uint32_t bit_depth,
+    uint64_t* lambda_q8, uint32_t* qstep_qtx) {
+    return rd_lambda_ai_scaled(qindex, bit_depth, 6u, 4u, lambda_q8, qstep_qtx);
 }
 
 SvtAv2Error svt_av2_rd_cost(uint64_t distortion, uint64_t lambda_q8,
@@ -109,25 +155,7 @@ uint64_t svt_av2_rd_distortion(const uint64_t sse[3], uint32_t bit_depth,
 #if M6_TX_CACHE_SLOTS == 0 || (M6_TX_CACHE_SLOTS & (M6_TX_CACHE_SLOTS - 1u)) != 0
 #error M6_TX_CACHE_SLOTS_must_be_a_power_of_two
 #endif
-typedef struct RdTransformCacheEntry {
-    uint64_t hash;
-    uint32_t key[6];
-    int all_zero;
-    int16_t residual[64u * 64u];
-    int32_t coeff[32u * 32u], qcoeff[32u * 32u], dqcoeff[32u * 32u];
-} RdTransformCacheEntry;
-typedef struct RdTransformCache {
-    RdTransformCacheEntry entries[M6_TX_CACHE_SLOTS];
-    uint8_t valid[M6_TX_CACHE_SLOTS];
-    uint64_t stamp[M6_TX_CACHE_SLOTS], clock;
-    uint64_t hits, misses, replaces, collisions;
-    uint64_t bound_trials, bound_pruned;
-    uint64_t treeq_trials, treeq_wins, treeq_changes, treeq_finalists;
-    uint64_t treeq_plan_commits, treeq_plan_repairs;
-    uint64_t shared_f, shared_g;
-    uint64_t repeat_trials, repeat_wins, repeat_rounds, repeat_changes, repeat_after_joint;
-    uint64_t repeat_pair_trials, repeat_pair_illegal, repeat_pair_default;
-} RdTransformCache;
+#include "rd_transform_memo.inc"
 #endif
 
 typedef struct RdWork {
@@ -141,6 +169,10 @@ typedef struct RdWork {
     SvtAv2FrameGeometry geometry;
     SvtAv2TileRateSession* rate;
     SvtAv2TileRatePrefix* basic_rate_prefix;
+    SvtAv2TileRatePrefix* rdoq_rate_prefix; /* One frame owner; snapshots borrow. */
+    SvtAv2TileCoeffBlock rdoq_rate_blocks[3];
+    int32_t rdoq_rate_coeffs[3u*1024u];
+    uint32_t rdoq_rate_active,rdoq_rate_ready,rdoq_rate_leaf,rdoq_use_context;
     uint32_t basic_rate_active, defer_rdoq, tree_rdoq, tool_rounds;
     struct RdBasicMemo* basic_memo;
 #if M6_TX_CACHE
@@ -435,6 +467,45 @@ static SvtAv2Error predict(RdWork* work, uint32_t leaf, uint32_t mode,
     return SVT_AV2_ERROR_NONE;
 }
 
+#if M6_SATD_ANGLES
+/* Hadamard cost only screens additional modes; exact R+D still decides. */
+static uint64_t angle_satd(const RdWork* work,const SvtAv2BlockView* b) {
+    uint64_t cost=0u;
+    const uint32_t step=work->source->bit_depth>8u?2u:1u;
+    for (uint32_t y=0u;y<b->h;y+=4u) for (uint32_t x=0u;x<b->w;x+=4u) {
+        int32_t tmp[4][4];
+        for (uint32_t j=0u;j<4u;++j) {
+            int32_t d[4];
+            const uint8_t* row=work->source->planes[0]+(size_t)(b->y+y+j)*work->source->strides[0]+(size_t)(b->x+x)*step;
+            for (uint32_t i=0u;i<4u;++i) d[i]=(int32_t)svt_av2_sample_load(row+i*step,work->source->bit_depth)-work->prediction[0][(size_t)(y+j)*b->w+x+i];
+            const int32_t a=d[0]+d[3],b0=d[1]+d[2],c=d[1]-d[2],e=d[0]-d[3];
+            tmp[j][0]=a+b0;tmp[j][1]=e+c;tmp[j][2]=a-b0;tmp[j][3]=e-c;
+        }
+        for (uint32_t i=0u;i<4u;++i) {
+            const int32_t a=tmp[0][i]+tmp[3][i],b0=tmp[1][i]+tmp[2][i],c=tmp[1][i]-tmp[2][i],e=tmp[0][i]-tmp[3][i];
+            const int32_t d[4]={a+b0,e+c,a-b0,e-c};
+            for (uint32_t j=0u;j<4u;++j) cost+=(uint64_t)(d[j]<0?-d[j]:d[j]);
+        }
+    }
+    return (cost+1u)>>1u;
+}
+static void angle_satd_rank(const RdWork* work,const SvtAv2BlockView* b,uint32_t mode,uint8_t ranked[4],uint64_t scores[4]) {
+    if (!work->config->satd_angles) return;
+    const uint64_t score=angle_satd(work,b);
+    for (uint32_t slot=0u;slot<4u;++slot) if (score<scores[slot] || (score==scores[slot] && mode<ranked[slot])) {
+        for (uint32_t j=3u;j>slot;--j) {scores[j]=scores[j-1u];ranked[j]=ranked[j-1u];}
+        scores[slot]=score;ranked[slot]=(uint8_t)mode;break;
+    }
+}
+static void angle_satd_append(const RdWork* work,uint8_t candidates[14],uint32_t* count,const uint8_t ranked[4]) {
+    if (!work->config->satd_angles) return;
+    for (uint32_t slot=0u;slot<4u;++slot) {
+        uint32_t i=0u;while(i<*count && candidates[i]!=ranked[slot]) ++i;
+        if (i==*count) candidates[(*count)++]=ranked[slot];
+    }
+}
+#endif
+
 static SvtAv2Error rank_modes(RdWork* work, uint32_t leaf,
     const SvtAv2BlockView blocks[3], uint8_t ranked[4], uint32_t* count, int partial) {
     uint64_t costs[4] = {UINT64_MAX, UINT64_MAX, UINT64_MAX, UINT64_MAX};
@@ -476,6 +547,28 @@ static SvtAv2Error rank_modes(RdWork* work, uint32_t leaf,
  * actual neighbours, adaptive CDFs and inverse/clip pixel distortion. */
 static SvtAv2Error rdoq_rate(const RdWork* work, uint32_t plane,
     const SvtAv2BlockView* block, const int32_t* qcoeff, uint32_t tx_type, uint32_t mode, uint64_t* rate) {
+#if M6_RDOQ_CONTEXT
+    if (work->rdoq_rate_active) {
+        if (plane>=3u || work->rdoq_target/3u!=work->rdoq_rate_leaf ||
+            work->rdoq_target%3u!=plane) return SVT_AV2_ERROR_INVALID_STATE;
+        SvtAv2TileCoeffBlock trial[3];
+        memcpy(trial,work->rdoq_rate_blocks,sizeof(trial));
+        /* Rebind borrowed views after every RdWork copy; snapshots contain
+         * no self-referential anchor pointers. */
+        for (uint32_t p=0u;p<3u;++p) trial[p].qcoeff=work->rdoq_rate_coeffs+p*1024u;
+#if M6_TX_CACHE
+        if (work->transform_cache) ++work->transform_cache->rdoq_live_rate_calls;
+#endif
+        if (trial[plane].width!=block->w || trial[plane].height!=block->h)
+            return SVT_AV2_ERROR_INVALID_STATE;
+        trial[plane].qcoeff=qcoeff;trial[plane].tx_type=(uint8_t)tx_type;
+        uint64_t total=0u;
+        const uint64_t prefix=svt_av2_tile_rate_prefix_current_rate(work->rdoq_rate_prefix);
+        if (svt_av2_tile_rate_prefix_trial(work->rdoq_rate_prefix,work->rdoq_rate_leaf,
+            trial,0,&total)!=0 || total<prefix) return SVT_AV2_ERROR_INVALID_STATE;
+        *rate=total-prefix;return SVT_AV2_ERROR_NONE;
+    }
+#endif
     SvtAv2TxSize tx;
     if (svt_av2_coeff_tx_size_from_dims(block->w, block->h, &tx) != SVT_AV2_COEFF_OK)
         return SVT_AV2_ERROR_INVALID_STATE;
@@ -616,79 +709,47 @@ static SvtAv2Error rdoq_propose(RdWork* work, uint32_t plane,
 static SvtAv2Error forward_trial(RdWork* work, uint32_t plane,
     const SvtAv2BlockView* block, uint32_t tx_type, int* all_zero) {
 #if M6_TX_CACHE
-    RdTransformCacheEntry* entry = NULL;
-    uint32_t slot = 0u;
+    RdTransformCache* const cache = work->transform_cache;
     const uint32_t key[6] = {plane, block->w, block->h, tx_type,
         work->config->frame_header.base_q_idx, (uint32_t)work->source->bit_depth};
-    const size_t count = (size_t)SVT_AV2_MIN(block->w,32u) * SVT_AV2_MIN(block->h,32u);
     uint64_t hash = RD_HASH_OFFSET;
-    if (work->transform_cache != NULL) {
-        for (uint32_t i=0u;i<6u;++i) hash=hash_word(hash,key[i]);
-        for (uint32_t y=0u;y<block->h;++y)
-            for (uint32_t x=0u;x<block->w;++x)
-                hash=(hash ^ (uint16_t)work->scratch->residual[(size_t)y*work->scratch->stride+x])*RD_HASH_PRIME;
-        RdTransformCache* const cache=work->transform_cache;
-        /* Recency is shared with the entries, never rewound by RD snapshots.
-         * Even counter wrap can only discard cached work, never reuse it. */
-        if (++cache->clock==0u) {
-            memset(cache->valid,0,sizeof(cache->valid));cache->clock=1u;
+    if (cache != NULL) {
+        uint32_t area = block->w * block->h, group = 0u;
+        while (area > 16u && group < 8u) { area >>= 1u; ++group; }
+        ++cache->requests_by_area[group];
+        for (uint32_t i = 0u; i < 6u; ++i) hash = hash_word(hash, key[i]);
+        for (uint32_t y = 0u; y < block->h; ++y)
+            for (uint32_t x = 0u; x < block->w; ++x)
+                hash = (hash ^ (uint16_t)work->scratch->residual[
+                    (size_t)y * work->scratch->stride + x]) * RD_HASH_PRIME;
+        const uint32_t id = rd_tx_memo_find(cache, hash, key,
+            work->scratch->residual, work->scratch->stride);
+        if (id) {
+            if (!rd_tx_memo_restore(cache, id, work->scratch->coeff,
+                    work->scratch->qcoeff, work->scratch->dqcoeff, all_zero))
+                return SVT_AV2_ERROR_INVALID_STATE;
+            return SVT_AV2_ERROR_NONE;
         }
-        const uint32_t first=((uint32_t)(hash ^ (hash >> 32u)) &
-            (M6_TX_CACHE_SLOTS/M6_TX_CACHE_WAYS-1u))*M6_TX_CACHE_WAYS;
-        uint32_t empty=UINT32_MAX,oldest=first;
-        uint64_t oldest_stamp=UINT64_MAX;
-        for (uint32_t way=0u;way<M6_TX_CACHE_WAYS;++way) {
-            const uint32_t probe=first+way;
-            if (!cache->valid[probe]) {
-                if (empty==UINT32_MAX) empty=probe;
-                continue;
-            }
-            if (cache->stamp[probe]<oldest_stamp) {
-                oldest=probe;oldest_stamp=cache->stamp[probe];
-            }
-            RdTransformCacheEntry* const found=cache->entries+probe;
-            if (found->hash!=hash || memcmp(found->key,key,sizeof(key))!=0) continue;
-            uint32_t y=0u;
-            while (y<block->h && memcmp(found->residual+(size_t)y*block->w,
-                work->scratch->residual+(size_t)y*work->scratch->stride,
-                (size_t)block->w*sizeof(int16_t))==0) ++y;
-            if (y==block->h) {
-                memcpy(work->scratch->coeff,found->coeff,count*sizeof(int32_t));
-                memcpy(work->scratch->qcoeff,found->qcoeff,count*sizeof(int32_t));
-                memcpy(work->scratch->dqcoeff,found->dqcoeff,count*sizeof(int32_t));
-                *all_zero=found->all_zero;cache->stamp[probe]=cache->clock;
-                ++cache->hits;return SVT_AV2_ERROR_NONE;
-            }
-            ++cache->collisions;
-        }
-        slot=empty!=UINT32_MAX?empty:oldest;
-        entry=cache->entries+slot;
-        ++work->transform_cache->misses;
-        if (work->transform_cache->valid[slot]) ++work->transform_cache->replaces;
+        ++cache->misses;
+        ++cache->misses_by_area[group];
     }
 #endif
-    const SvtAv2Error error = tx_type ?
-        work->config->transform.forward_type(work->config->transform.user,plane,block->w,block->h,
-            work->scratch->residual,work->scratch->stride,work->scratch->coeff,
-            work->scratch->qcoeff,work->scratch->dqcoeff,all_zero,tx_type) :
-        work->config->transform.forward(work->config->transform.user,plane,block->w,block->h,
-            work->scratch->residual,work->scratch->stride,work->scratch->coeff,
-            work->scratch->qcoeff,work->scratch->dqcoeff,all_zero);
+    /* The only work counter increment is an actual callback dispatch. */
     ++work->stats.forward_calls;
+    const SvtAv2Error error = tx_type ?
+        work->config->transform.forward_type(work->config->transform.user,
+            plane, block->w, block->h, work->scratch->residual,
+            work->scratch->stride, work->scratch->coeff, work->scratch->qcoeff,
+            work->scratch->dqcoeff, all_zero, tx_type) :
+        work->config->transform.forward(work->config->transform.user,
+            plane, block->w, block->h, work->scratch->residual,
+            work->scratch->stride, work->scratch->coeff, work->scratch->qcoeff,
+            work->scratch->dqcoeff, all_zero);
 #if M6_TX_CACHE
-    if (entry != NULL && error == SVT_AV2_ERROR_NONE) {
-        work->transform_cache->valid[slot]=0u;
-        entry->hash=hash;memcpy(entry->key,key,sizeof(key));entry->all_zero=*all_zero;
-        for (uint32_t y=0u;y<block->h;++y)
-            memcpy(entry->residual+(size_t)y*block->w,
-                work->scratch->residual+(size_t)y*work->scratch->stride,
-                (size_t)block->w*sizeof(int16_t));
-        memcpy(entry->coeff,work->scratch->coeff,count*sizeof(int32_t));
-        memcpy(entry->qcoeff,work->scratch->qcoeff,count*sizeof(int32_t));
-        memcpy(entry->dqcoeff,work->scratch->dqcoeff,count*sizeof(int32_t));
-        work->transform_cache->stamp[slot]=work->transform_cache->clock;
-        work->transform_cache->valid[slot]=1u;
-    }
+    if (cache != NULL && error == SVT_AV2_ERROR_NONE)
+        (void)rd_tx_memo_store(cache, hash, key, work->scratch->residual,
+            work->scratch->stride, work->scratch->coeff,
+            work->scratch->qcoeff, *all_zero);
 #endif
     return error;
 }
@@ -801,7 +862,18 @@ static SvtAv2Error reconstruct_leaf_planes(RdWork* work, uint32_t leaf, uint32_t
 #else
             const uint32_t tx_mode=mode;
 #endif
+#if M6_RDOQ_CONTEXT
+            const uint64_t prefix_before=work->rdoq_rate_ready?
+                svt_av2_tile_rate_prefix_current_rate(work->rdoq_rate_prefix):0u;
+            work->rdoq_rate_active=work->rdoq_rate_ready;
+#endif
             error = rdoq_propose(work, plane, block, count, tx_type, tx_mode);
+#if M6_RDOQ_CONTEXT
+            work->rdoq_rate_active=0u;
+            if (error==SVT_AV2_ERROR_NONE && work->rdoq_rate_ready &&
+                prefix_before!=svt_av2_tile_rate_prefix_current_rate(work->rdoq_rate_prefix))
+                error=SVT_AV2_ERROR_INVALID_STATE;
+#endif
             if (error != SVT_AV2_ERROR_NONE) return error;
             work->rdoq_tx_types[rdoq_block] = (uint8_t)tx_type;
             memcpy(work->rdoq_coeff + work->coeff_count, work->scratch->qcoeff, count * sizeof(int32_t));
@@ -1407,6 +1479,46 @@ static SvtAv2Error refine_joint_y_tx(RdWork* work, size_t sb, int partial,
     return SVT_AV2_ERROR_NONE;
 }
 
+#if M6_RDOQ_CONTEXT
+static SvtAv2Error prepare_rdoq_rate_context(RdWork* work,size_t sb,uint16_t decision,
+    uint32_t leaf) {
+    work->rdoq_rate_active=0u;work->rdoq_rate_ready=0u;
+    if (!work->rdoq_use_context || work->config->frame_header.m5_intra_modes<3u)
+        return SVT_AV2_ERROR_NONE;
+    if (!work->rdoq_rate_prefix || work->rdoq_target!=UINT32_MAX)
+        return SVT_AV2_ERROR_INVALID_STATE;
+    /* extend_prefix has rebuilt every prior leaf from the selected coefficients.
+     * Rebuild this leaf without a new proposal; stale rejected suffixes are not
+     * valid anchors. Other planes are fixed only for proposing levels. */
+    region_copy_buffer(work,work->prefix_recon,1);
+    SvtAv2BlockView blocks[3];
+    SvtAv2Error error=plane_blocks(work,leaf,blocks);
+    if (error!=SVT_AV2_ERROR_NONE) return error;
+    work->coeff_count=work->prefix_coeff_count;work->ids[leaf]=work->best_ids[leaf];
+    work->uv_y_cache=0u;
+    uint64_t sse[3]={0u,0u,0u};
+    error=reconstruct_leaf(work,leaf,work->best_ids[leaf],blocks,sse);
+    if (error!=SVT_AV2_ERROR_NONE) return error;
+    for (uint32_t p=0u;p<3u;++p) {
+        work->rdoq_rate_blocks[p]=work->blocks[leaf*3u+p];
+        const size_t count=(size_t)SVT_AV2_MIN(blocks[p].w,32u)*SVT_AV2_MIN(blocks[p].h,32u);
+        memcpy(work->rdoq_rate_coeffs+p*1024u,work->blocks[leaf*3u+p].qcoeff,count*sizeof(int32_t));
+        work->rdoq_rate_blocks[p].qcoeff=NULL;
+    }
+    size_t leaves=0u;
+    if (svt_av2_tile_rate_prefix_begin(work->rdoq_rate_prefix,work->rate,sb,decision,&leaves)!=0 ||
+        leaves!=work->leaf_count) return SVT_AV2_ERROR_INVALID_STATE;
+    for (uint32_t i=0u;i<leaf;++i) {
+        uint64_t rate=0u;
+        if (svt_av2_tile_rate_prefix_trial(work->rdoq_rate_prefix,i,
+            work->blocks+i*3u,1,&rate)!=0) return SVT_AV2_ERROR_INVALID_STATE;
+    }
+    work->rdoq_rate_leaf=leaf;work->rdoq_rate_ready=1u;
+    region_copy_buffer(work,work->prefix_recon,1);
+    return SVT_AV2_ERROR_NONE;
+}
+#endif
+
 #ifndef M6_RDOQ_WIDE
 #define M6_RDOQ_WIDE 0
 #endif
@@ -1483,6 +1595,12 @@ static SvtAv2Error refine_rdoq_multi(RdWork* work, size_t sb, int partial,
             if (error != SVT_AV2_ERROR_NONE) {
                 work->prefix_active = 0u; region_copy(work, 1); return error;
             }
+#if M6_RDOQ_CONTEXT
+            error=prepare_rdoq_rate_context(work,sb,best_decision,block/3u);
+            if (error!=SVT_AV2_ERROR_NONE) {
+                work->prefix_active=0u;region_copy(work,1);return error;
+            }
+#endif
             int32_t chosen_coeff[1024];
             size_t chosen_offset=0u,chosen_count=0u;
             uint32_t chosen_phase=3u;uint8_t chosen_type=0u;
@@ -1519,6 +1637,7 @@ static SvtAv2Error refine_rdoq_multi(RdWork* work, size_t sb, int partial,
                 work->rdoq_tx_types[block]=chosen_type;
             }
         }
+        work->rdoq_rate_active=0u;
         work->rdoq_target = UINT32_MAX;
         work->rdoq_phase = 0u;
         work->prefix_active = 0u; region_copy(work, 1);
@@ -1538,20 +1657,34 @@ static SvtAv2Error refine_rdoq_fast(RdWork* work,size_t sb,int partial,
     if (states==NULL) return SVT_AV2_ERROR_OUT_OF_MEMORY;
     states[0]=*work;
     const RdBasicChoice entry=*best;
-    RdBasicChoice winner=entry;
-    SvtAv2Error error=refine_rdoq_single(work,sb,partial,best_decision,&winner);
+    RdBasicChoice winner={UINT64_MAX,0u,0u,0u,UINT64_MAX};
+    uint32_t winner_route=0u;
     SvtAv2RdFrameStats aggregate=work->stats;
-    if (error==SVT_AV2_ERROR_NONE) {
-        states[1]=*work;
-        *work=states[0];work->stats=aggregate;region_copy(work,1);
+    SvtAv2Error error=SVT_AV2_ERROR_NONE;
+    const uint32_t routes=M6_RDOQ_CONTEXT?3u:2u;
+    for (uint32_t route=0u;route<routes;++route) {
+        *work=states[0];work->stats=aggregate;
+        work->rdoq_use_context=route==2u;work->rdoq_rate_active=0u;work->rdoq_rate_ready=0u;
+        region_copy(work,1);
         RdBasicChoice trial=entry;
-        error=refine_rdoq_multi(work,sb,partial,best_decision,&trial);
+#if M6_TX_CACHE
+        if (work->transform_cache) ++work->transform_cache->rdoq_route_trials[route];
+#endif
+        error=route?refine_rdoq_multi(work,sb,partial,best_decision,&trial):
+            refine_rdoq_single(work,sb,partial,best_decision,&trial);
         aggregate=work->stats;
-        if (error==SVT_AV2_ERROR_NONE && trial.cost<winner.cost) winner=trial;
-        else *work=states[1];
+        if (error!=SVT_AV2_ERROR_NONE) break;
+        if (trial.cost<winner.cost) {winner=trial;winner_route=route;states[1]=*work;}
     }
-    if (error!=SVT_AV2_ERROR_NONE) *work=states[0];
-    work->stats=aggregate;region_copy(work,1);free(states);
+    *work=states[error==SVT_AV2_ERROR_NONE?1u:0u];work->stats=aggregate;
+    work->rdoq_rate_active=0u;work->rdoq_rate_ready=0u;work->rdoq_use_context=0u;
+#if M6_TX_CACHE
+    if (error==SVT_AV2_ERROR_NONE && work->transform_cache)
+        ++work->transform_cache->rdoq_route_wins[winner_route];
+#else
+    (void)winner_route;
+#endif
+    region_copy(work,1);free(states);
     if (error==SVT_AV2_ERROR_NONE) *best=winner;
     return error;
 #else
@@ -1740,17 +1873,24 @@ static SvtAv2Error refine_tools_linear(RdWork* work,size_t sb,int partial,
             if (error!=SVT_AV2_ERROR_NONE) goto cleanup;
             uint8_t ranked[4]={255u,255u,255u,255u};
             uint64_t scores[4]={UINT64_MAX,UINT64_MAX,UINT64_MAX,UINT64_MAX};
+#if M6_SATD_ANGLES
+            uint8_t satd_ranked[4]={255u,255u,255u,255u};
+            uint64_t satd_scores[4]={UINT64_MAX,UINT64_MAX,UINT64_MAX,UINT64_MAX};
+#endif
             for (uint32_t mode=14u;mode<=61u;++mode) {
                 uint64_t sad[3]={0u,0u,0u};
                 error=predict(work,leaf,mode,blocks,sad,1);
                 if (error!=SVT_AV2_ERROR_NONE) goto cleanup;
+#if M6_SATD_ANGLES
+                angle_satd_rank(work,&blocks[0],mode,satd_ranked,satd_scores);
+#endif
                 for (uint32_t slot=0u;slot<4u;++slot) if (sad[0]<scores[slot] ||
                     (sad[0]==scores[slot] && mode<ranked[slot])) {
                     for (uint32_t j=3u;j>slot;--j) {scores[j]=scores[j-1u];ranked[j]=ranked[j-1u];}
                     scores[slot]=sad[0];ranked[slot]=(uint8_t)mode;break;
                 }
             }
-            uint8_t candidates[10];uint32_t count=4u;
+            uint8_t candidates[14];uint32_t count=4u;
             memcpy(candidates,ranked,sizeof(ranked));
             const uint32_t joint=svt_av2_intra_mode_joint(svt_av2_intra_mode_base(selected.y));
             if (joint>=5u) for (uint32_t slot=0u;slot<6u;++slot) {
@@ -1758,6 +1898,9 @@ static SvtAv2Error refine_tools_linear(RdWork* work,size_t sb,int partial,
                 uint32_t i=0u;while (i<count && candidates[i]!=mode) ++i;
                 if (i==count) candidates[count++]=mode;
             }
+#if M6_SATD_ANGLES
+            angle_satd_append(work,candidates,&count,satd_ranked);
+#endif
             const uint64_t anchor=cost;
             for (uint32_t index=0u;index<count;++index) {
                 RdLeafTools proposal=selected;
@@ -1957,10 +2100,17 @@ static SvtAv2Error refine_tools_once(RdWork* work, size_t sb, int partial,
             if (error != SVT_AV2_ERROR_NONE) { work->prefix_active = 0u; region_copy(work, 1); return error; }
             uint8_t ranked[4] = {255u,255u,255u,255u};
             uint64_t scores[4] = {UINT64_MAX,UINT64_MAX,UINT64_MAX,UINT64_MAX};
+#if M6_SATD_ANGLES
+            uint8_t satd_ranked[4]={255u,255u,255u,255u};
+            uint64_t satd_scores[4]={UINT64_MAX,UINT64_MAX,UINT64_MAX,UINT64_MAX};
+#endif
             for (uint32_t mode = 14u; mode <= 61u; ++mode) {
                 uint64_t sad[3] = {0u,0u,0u};
                 error = predict(work, leaf, mode, blocks, sad, 1);
                 if (error != SVT_AV2_ERROR_NONE) { work->prefix_active = 0u; region_copy(work, 1); return error; }
+#if M6_SATD_ANGLES
+                angle_satd_rank(work,&blocks[0],mode,satd_ranked,satd_scores);
+#endif
                 for (uint32_t slot = 0u; slot < 4u; ++slot) {
                     if (sad[0] < scores[slot] || (sad[0] == scores[slot] && mode < ranked[slot])) {
                         for (uint32_t j = 3u; j > slot; --j) { scores[j] = scores[j - 1u]; ranked[j] = ranked[j - 1u]; }
@@ -1968,7 +2118,7 @@ static SvtAv2Error refine_tools_once(RdWork* work, size_t sb, int partial,
                     }
                 }
             }
-            uint8_t candidates[10]; uint32_t count = 4u;
+            uint8_t candidates[14]; uint32_t count = 4u;
             memcpy(candidates, ranked, sizeof(ranked));
             const uint32_t base = svt_av2_intra_mode_base(work->best_ids[leaf]);
             const uint32_t joint = svt_av2_intra_mode_joint(base);
@@ -1980,6 +2130,9 @@ static SvtAv2Error refine_tools_once(RdWork* work, size_t sb, int partial,
                     if (i == count) candidates[count++] = mode;
                 }
             }
+#if M6_SATD_ANGLES
+            angle_satd_append(work,candidates,&count,satd_ranked);
+#endif
             uint32_t choice = work->best_ids[leaf];
             for (uint32_t index = 0u; index < count; ++index) {
                 const uint32_t mode = candidates[work->config->reverse_candidates ? count - 1u - index : index];
@@ -2250,7 +2403,8 @@ static SvtAv2Error refine_tools_once(RdWork* work, size_t sb, int partial,
                         work->leaf_count * 3u, NULL, 0u, 0, &r) != 0)) error = SVT_AV2_ERROR_INVALID_STATE;
                 if (error == SVT_AV2_ERROR_NONE) error = svt_av2_rd_cost(d, work->stats.lambda_q8, r, &cost);
                 if (error != SVT_AV2_ERROR_NONE) { work->prefix_active = 0u; region_copy(work, 1); return error; }
-                const uint32_t payload = (1u << (phase ? 29u : 26u)) | (phase << 8u) | block;
+                const uint32_t payload = (1u << (phase ? 29u : 26u)) | (phase << 8u) | block |
+                    (work->rdoq_use_context?(1u<<27u):0u);
                 const uint64_t id = plan_candidate_id(best_decision,payload,payload);
                 ++work->stats.candidate_count; ++work->stats.coeff_trials;
                 if (work->config->candidate_hook != NULL)
@@ -2674,6 +2828,9 @@ static SvtAv2Error refine_tree_finalists(RdWork* work,size_t sb,int partial,
 #endif
 }
 
+ #include "fine16_partition_search.inc"
+ #include "fine16_pair_search.inc"
+
 /* Keep equivalent old geometries in their established plan namespace. The
  * coordinate search retains its independent base5 code even after this map. */
 static uint16_t mixed8_plan(uint32_t code) {
@@ -3056,6 +3213,24 @@ static SvtAv2Error encode_sb(RdWork* work, size_t sb) {
         error=refine_tree_finalists(work,sb,partial,finalists,finalist_count,&best_decision,&tool_best);
     else error=refine_tools(work,sb,partial,best_decision,&tool_best);
     if (error!=SVT_AV2_ERROR_NONE) { region_copy(work,1); return error; }
+#if M6_FINE16
+    if (!partial && work->config->rd_mode==3u && work->config->partition_selection>=2u &&
+        work->config->tree_finalists) {
+        RdTreeSeed fine16_seeds[4];uint32_t fine16_count=0u;
+        error=fine16_prepare(work,sb,best_decision,fine16_seeds,&fine16_count);
+        if (error==SVT_AV2_ERROR_NONE && fine16_count)
+            error=fine16_refine(work,sb,fine16_seeds,fine16_count,&best_decision,&tool_best);
+#if M6_FINE16_PAIR
+        if (error==SVT_AV2_ERROR_NONE && fine16_count) {
+            RdTreeSeed pair_seeds[4];uint32_t pair_count=0u;
+            error=fine16_pair_prepare(work,sb,best_decision,fine16_seeds[0].decision,pair_seeds,&pair_count);
+            if (error==SVT_AV2_ERROR_NONE && pair_count)
+                error=fine16_pair_refine(work,sb,pair_seeds,pair_count,&best_decision,&tool_best);
+        }
+#endif
+        if (error!=SVT_AV2_ERROR_NONE) {region_copy(work,1);return error;}
+    }
+#endif
     if (work->output->decisions[sb]!=best_decision) {
         region_copy(work,1);return SVT_AV2_ERROR_INVALID_STATE;
     }
@@ -3100,7 +3275,7 @@ SvtAv2Error svt_av2_rd_frame_encode(const SvtAv2FrameBuffer* source,
             config->frame_header.m5_intra_modes<3u || config->partition_selection>7u ||
             config->intra_joint || config->coeff_optimization==1u || config->motion_optimization ||
             config->tree_finalists>4u)) ||
-        config->rd_lambda_model > 1u || (config->rd_lambda_model && (reference != NULL ||
+        config->rd_lambda_model > 2u || (config->rd_lambda_model && (reference != NULL ||
             config->frame_header.multi_frame)) ||
         (config->partition_selection >= 2u && config->frame_header.m5_intra_modes < 2u) ||
         config->frame_header.enable_mrls > 1u || (config->frame_header.enable_mrls &&
@@ -3154,11 +3329,13 @@ SvtAv2Error svt_av2_rd_frame_encode(const SvtAv2FrameBuffer* source,
     /* Allocation failure safely falls back to the original forward path. */
     if (config->rd_mode==3u && svt_av2_transform_path_cacheable(&config->transform,
         header->base_q_idx,header->bit_depth))
-        work->transform_cache=(RdTransformCache*)calloc(1u,sizeof(RdTransformCache));
+        work->transform_cache=rd_tx_memo_create();
 #endif
     work->stats.winner_hash = RD_HASH_OFFSET;
     uint32_t qstep;
-    SvtAv2Error error = config->rd_lambda_model ?
+    SvtAv2Error error = config->rd_lambda_model == 2u ?
+        svt_av2_rd_lambda_ai150(header->base_q_idx, source->bit_depth, &work->stats.lambda_q8, &qstep) :
+        config->rd_lambda_model ?
         svt_av2_rd_lambda_ai(header->base_q_idx, source->bit_depth, &work->stats.lambda_q8, &qstep) :
         svt_av2_rd_lambda(header->base_q_idx, source->bit_depth, &work->stats.lambda_q8, &qstep);
     if (error == SVT_AV2_ERROR_NONE)
@@ -3174,6 +3351,11 @@ SvtAv2Error svt_av2_rd_frame_encode(const SvtAv2FrameBuffer* source,
     if (error==SVT_AV2_ERROR_NONE && config->rd_mode==3u &&
         svt_av2_tile_rate_prefix_create(&work->basic_rate_prefix)!=0)
         error=SVT_AV2_ERROR_OUT_OF_MEMORY;
+#if M6_RDOQ_CONTEXT
+    if (error==SVT_AV2_ERROR_NONE && config->rd_mode==3u && config->coeff_optimization==2u &&
+        svt_av2_tile_rate_prefix_create(&work->rdoq_rate_prefix)!=0)
+        error=SVT_AV2_ERROR_OUT_OF_MEMORY;
+#endif
     if (error==SVT_AV2_ERROR_NONE && work->basic_rate_prefix)
         work->basic_memo=(RdBasicMemo*)calloc(1u,sizeof(*work->basic_memo));
     if (error == SVT_AV2_ERROR_NONE)
@@ -3195,15 +3377,12 @@ SvtAv2Error svt_av2_rd_frame_encode(const SvtAv2FrameBuffer* source,
 #endif
     if (error != SVT_AV2_ERROR_NONE)
         output->block_count = output->mode_count = output->coeff_count = output->decision_count = 0u;
+    svt_av2_tile_rate_prefix_free(work->rdoq_rate_prefix);
     svt_av2_tile_rate_prefix_free(work->basic_rate_prefix);
     free(work->basic_memo);
 #if M6_TX_CACHE
     if (work->transform_cache != NULL)
-        fprintf(stderr,"txcache hits=%llu misses=%llu replacements=%llu collisions=%llu slots=%u bytes=%llu ways=%u\n",
-            (unsigned long long)work->transform_cache->hits,(unsigned long long)work->transform_cache->misses,
-            (unsigned long long)work->transform_cache->replaces,(unsigned long long)work->transform_cache->collisions,
-            (unsigned)M6_TX_CACHE_SLOTS,
-            (unsigned long long)sizeof(RdTransformCache),(unsigned)M6_TX_CACHE_WAYS);
+        rd_tx_memo_report(work->transform_cache);
 #if M6_Y_BOUND
     if (work->transform_cache) fprintf(stderr,"ybound trials=%llu pruned=%llu verify=%u\n",
         (unsigned long long)work->transform_cache->bound_trials,
@@ -3239,6 +3418,16 @@ SvtAv2Error svt_av2_rd_frame_encode(const SvtAv2FrameBuffer* source,
     if (work->transform_cache) fprintf(stderr,"shared_tree F=%llu G=%llu\n",
         (unsigned long long)work->transform_cache->shared_f,
         (unsigned long long)work->transform_cache->shared_g);
+#endif
+#if M6_RDOQ_CONTEXT
+    if (work->transform_cache) fprintf(stderr,"rdoqcontext trials=%llu,%llu,%llu wins=%llu,%llu,%llu live_rate_calls=%llu\n",
+        (unsigned long long)work->transform_cache->rdoq_route_trials[0],
+        (unsigned long long)work->transform_cache->rdoq_route_trials[1],
+        (unsigned long long)work->transform_cache->rdoq_route_trials[2],
+        (unsigned long long)work->transform_cache->rdoq_route_wins[0],
+        (unsigned long long)work->transform_cache->rdoq_route_wins[1],
+        (unsigned long long)work->transform_cache->rdoq_route_wins[2],
+        (unsigned long long)work->transform_cache->rdoq_live_rate_calls);
 #endif
     free(work->transform_cache);
 #endif

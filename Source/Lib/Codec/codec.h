@@ -66,6 +66,7 @@ typedef struct SvtAv2EncoderContext {
     int                 recon_ready;  /* 1 = recon + scratch are live */
     SvtAv2TileCoeffBlock* coded_blocks;
     SvtAv2TileBlockMode* coded_modes;
+    uint32_t satd_angles;
     uint32_t m5_last_intra_mode;
     SvtAv2RdStats rd_stats;
     uint16_t* partition_decisions;
@@ -76,6 +77,7 @@ typedef struct SvtAv2EncoderContext {
     size_t coded_block_capacity, coded_coeff_capacity;
     size_t coded_block_count, coded_coeff_count;
     uint32_t            recon_frame_index; /* index of the exported recon frame */
+    SvtAv2ContentType content_type; /* private optional hint; calloc defaults to NONE */
 } SvtAv2EncoderContext;
 
 /* Releases every buffer owned by the context (pending frame and packet) and

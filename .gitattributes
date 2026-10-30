@@ -1,0 +1,5 @@
+# Keep hash-verified runtime assets byte-exact across Git checkouts.
+/tools/public-classifier/* -text
+/tools/single_frame.py -text
+/tools/quality_control.py -text
+/tools/joint_quality.py -text

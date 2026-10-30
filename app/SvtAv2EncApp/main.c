@@ -59,6 +59,7 @@ typedef struct AppOptions {
     uint32_t motion_optimization;
     uint32_t entropy_adaptation;
     uint32_t still_picture;
+    SvtAv2ContentType content_type; /* NONE unless supplied explicitly */
     int         verbose;
 } AppOptions;
 
@@ -93,7 +94,9 @@ static void print_usage(const char* program) {
            "  --partition-select <fixed|adaptive|fine|mixed|rect|longrect|mixedrect|mixed8|thinrect|mixedthin|thin64>  fine=64/32/16; mixed adds 8 and quadrant splits; rect adds 16x8/8x16; longrect adds six larger rectangles; mixedrect adds mixed rectangular quadrants; mixed8 adds mixed small rectangles; thinrect adds uniform 8x32/32x8; mixedthin adds mixed thin quadrants; thin64 adds uniform 8x64/64x8 (still + basic/directional + RD)\n"
            "  --rd-mode <off|exhaustive|pruned|fast>  M6 bounded RD (default: off)\n"
            "  --tree-refine <off|rd|wide>  rd=best two trees; wide preserves seeds before long rectangles; thinrect/mixedthin also preserve pre-thin seeds with up to eight finalists; thin64 preserves those eight plus both new shapes (still + fine or later + RD)\n"
-           "  --rd-lambda <original|avm-ai>  Experimental intra RD lambda model (still + RD; default original)\n"
+           "  --rd-lambda <original|avm-ai|avm-ai150>  Experimental intra RD lambda model (still + RD; default original)\n"
+           "  --content-type <animation|real> Externally supplied content hint (default: none)\n"
+           "                        Animation guard: compiled on + 10-bit 420 still + 1920x1080/3840x2160\n"
            "  --cfl-search <off|rd>  Also search classic explicit UV alpha (still + cfl + RD)\n"
            "  --mhccp-search <off|rd>  Also search causal MHCCP UV prediction (still + cfl + RD)\n"
            "  --intra-joint <off|rd>  Bounded Y mode/TX joint search (still + directional/cfl + RD + full TX; default off)\n"
@@ -274,12 +277,21 @@ static int app_parse_args(int argc, char** argv, AppOptions* options) {
             options->tree_refinement = strcmp(value, "wide") == 0 ? 2u : (uint32_t)(strcmp(value, "rd") == 0);
             ++i; continue;
         }
-        if (strcmp(arg, "--rd-lambda") == 0) {
-            if (!has_next || (strcmp(value, "original") != 0 && strcmp(value, "avm-ai") != 0)) {
-                fprintf(stderr, "error: --rd-lambda requires original or avm-ai\n");
+        if (strcmp(arg, "--content-type") == 0) {
+            if (!has_next || (strcmp(value,"animation")!=0 && strcmp(value,"real")!=0)) {
+                fprintf(stderr,"error: --content-type requires animation or real\n");
                 return -1;
             }
-            options->rd_lambda_model = (uint32_t)(strcmp(value, "avm-ai") == 0);
+            options->content_type=strcmp(value,"animation")==0 ?
+                SVT_AV2_CONTENT_ANIMATION : SVT_AV2_CONTENT_REAL;
+            ++i;continue;
+        }
+        if (strcmp(arg, "--rd-lambda") == 0) {
+            if (!has_next || (strcmp(value, "original") != 0 && strcmp(value, "avm-ai") != 0 && strcmp(value, "avm-ai150") != 0)) {
+                fprintf(stderr, "error: --rd-lambda requires original, avm-ai or avm-ai150\n");
+                return -1;
+            }
+            options->rd_lambda_model = strcmp(value, "avm-ai150") == 0 ? 2u : (uint32_t)(strcmp(value, "avm-ai") == 0);
             ++i; continue;
         }
         if (strcmp(arg, "--mrl-search") == 0) {
@@ -615,6 +627,9 @@ int main(int argc, char** argv) {
         SVT_AV2_PARAM_ENTROPY_ADAPTATION, &options.entropy_adaptation);
     if (err == SVT_AV2_ERROR_NONE) err = svt_av2_enc_set_parameter(handle,
         SVT_AV2_PARAM_STILL_PICTURE, &options.still_picture);
+    /* Omission preserves the historical setter sequence and NONE default. */
+    if (err == SVT_AV2_ERROR_NONE && options.content_type!=SVT_AV2_CONTENT_NONE)
+        err = svt_av2_enc_set_parameter(handle,SVT_AV2_PARAM_CONTENT_TYPE,&options.content_type);
     if (err == SVT_AV2_ERROR_NONE) err = svt_av2_enc_init(handle);
     if (err != SVT_AV2_ERROR_NONE) {
         fprintf(stderr, "error: svt_av2_enc_init failed (%s)\n", svt_av2_error_to_string(err));

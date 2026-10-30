@@ -314,7 +314,7 @@ SvtAv2Error svt_av2_deblock_luma_apply(SvtAv2FrameBuffer* recon,
     if (!recon || !blocks || !edge_calls || !changed_pixels || mode<1u || mode>3u ||
         delta< -2 || delta>1 || delta_h< -2 || delta_h>1 || (recon->bit_depth!=8u && recon->bit_depth!=10u) ||
         recon->chroma_format!=SVT_AV2_CHROMA_420 || (recon->visible_width&7u) ||
-        (recon->visible_height&7u) || recon->visible_width>1920u || recon->visible_height>1080u)
+        (recon->visible_height&7u) || recon->visible_width>4096u || recon->visible_height>2160u)
         return SVT_AV2_ERROR_INVALID_PARAMETER;
     *edge_calls=0u;*changed_pixels=0u;
     const uint32_t w=recon->visible_width,h=recon->visible_height,cols=w/4u,rows=h/4u;

@@ -86,9 +86,10 @@ int main(void) {
     SVT_TEST_CHECK_EQ_INT(svt_av2_enc_deinit(&h), SVT_AV2_ERROR_NONE);
 
     for (uint32_t still=0u; still<=1u; ++still)
-    for (uint32_t rd=0u; rd<=2u; ++rd) {
+    for (uint32_t rd=0u; rd<=2u; ++rd)
+    for (uint32_t ai=1u; ai<=2u; ++ai) {
         h = configure(still, 0u, rd);
-        const uint32_t ai=1u, bad=2u;
+        const uint32_t bad=3u;
         SVT_TEST_CHECK_EQ_INT(svt_av2_enc_get_config(h, &actual), 0);
         SVT_TEST_CHECK_EQ_INT(actual.rd_lambda_model, 0u);
         SVT_TEST_CHECK_EQ_INT(svt_av2_enc_set_parameter(h, SVT_AV2_PARAM_RD_LAMBDA_MODEL, &ai), 0);

@@ -1,0 +1,27 @@
+单帧质量验收
+
+quality_control.py 测量最终固定参考解码后的 raw yuv420p10le，尺寸仅支持
+1920x1080、3840x2160。所有局部掩码只从未压缩参考帧生成。
+
+python tools/quality_control.py --reference source.yuv --reconstructed decoded.yuv --baseline anchor-decoded.yuv --width 1920 --height 1080 --content animation --out local-qc.json
+
+animation 检查边缘梯度、边缘亮度、平坦区Y/U/V、边缘邻域高通误差。
+natural 检查纹理梯度、纹理细节、全图亮度误差。每个误差的回归上限为
+max(anchor * 1.02, anchor + 0.02)，数值统一为8-bit等价值；这是冻结的研发
+回归筛查阈值，没有主观JND验证。无有效掩码的项目保持null。
+
+baseline 必须在同一张源帧、同一模型下，分别选择达到相同AOM VMAF V1与NEG
+目标所需的码率。不能直接把相同QP的局部误差比较当作同质量验收。
+没有baseline时只输出诊断指标，不给质量通过结论。
+
+joint_quality.py 提供 QualityCurve 和 compare_joint：在log(bytes)上分别使用
+PCHIP、分段线性；保留质量倒挂，搜索同时满足V1和NEG的最低已测范围内码率，
+不允许外推。constraints=('v1',) 可单独报告主V1，但必须同时披露所选码率的
+NEG变化。默认同时约束V1与NEG。
+
+完整93至97结论另外要求候选和AOM各至少五个区间内实测点，并各有低于93、
+高于97的包围点。模型、源帧、解码器、选项及源代码身份必须一致；模块返回
+full_coverage本身不验证这些来源、密度及局部质量条件。
+
+依赖：Python 3、NumPy、SciPy。VMAF模型与解码器需另行提供；两个脚本不会
+修改模型，也不会把编码成功或局部筛查通过标为最终质量验收通过。

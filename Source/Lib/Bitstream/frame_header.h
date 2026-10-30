@@ -102,6 +102,8 @@ typedef struct SvtAv2FrameHeaderConfig {
     uint32_t enable_mrls; /* Private sequence-matching selector, default off. */
     uint32_t enable_mhccp; /* Optional filter0 multi-parameter chroma-from-luma syntax. */
     const SvtAv2Ccso64Plan* ccso64; /* Borrowed immutable 64-unit plan; NULL is oldoff. */
+    uint32_t enable_pc_wiener; /* Luma PC-Wiener, RU256. */
+    uint64_t pc_wiener_none_mask[2]; /* Up to 16x8 raster RUs: bit 1 selects NONE. */
     uint32_t deblock_y; /* bit0 vertical, bit1 horizontal. UV off. */
     int32_t deblock_delta; /* vertical, df_par_bits=2: -2..1, scale 8. */
     int32_t deblock_delta_h; /* horizontal, inherits V when not signaled. */

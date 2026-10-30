@@ -1,8 +1,20 @@
+#ifndef M6_SATD_ANGLES
+#define M6_SATD_ANGLES 0
+#endif
 #ifndef M6_DEBLOCK
 #define M6_DEBLOCK 0
 #endif
 #ifndef M6_DEBLOCK_TEST
 #define M6_DEBLOCK_TEST 0
+#endif
+#ifndef M6_PC_WIENER
+#define M6_PC_WIENER 0
+#endif
+#ifndef M6_CONTENT_GUARD
+#define M6_CONTENT_GUARD 0
+#endif
+#ifndef M6_PC_WIENER_TEST
+#define M6_PC_WIENER_TEST 0
 #endif
 
 /*
@@ -30,6 +42,12 @@
 #include "keyframe.h"
 #include "rd_frame.h"
 #include "deblock_luma.h"
+#if M6_PC_WIENER
+#include "../Restoration/pc_wiener.h"
+#if M6_CONTENT_GUARD
+#include "content_filter_guard.h"
+#endif
+#endif
 #include "inter_frame.h"
 #include "bit_writer.h" /* SVT_AV2_BW_ERROR_NO_SPACE */
 #include "intra_frame.h" /* svt_av2_intra_frame_encode (T012), M2 recon */
@@ -139,7 +157,7 @@ SvtAv2Error svt_av2_config_validate(const SvtAv2EncoderConfig* config) {
     if (config->rd_mode==3u && (!config->still_picture || config->intra_mode_selection<3u ||
         config->partition_selection>7u || config->intra_joint || config->coeff_optimization==1u ||
         config->motion_optimization)) return SVT_AV2_ERROR_INVALID_PARAMETER;
-    if (config->rd_lambda_model > 1u || (config->rd_lambda_model &&
+    if (config->rd_lambda_model > 2u || (config->rd_lambda_model &&
         (!config->still_picture || !config->rd_mode))) return SVT_AV2_ERROR_INVALID_PARAMETER;
     if (config->cfl_search > 1u || (config->cfl_search &&
         (!config->still_picture || !config->rd_mode || config->intra_mode_selection != 4u)))
@@ -513,7 +531,7 @@ SvtAv2Error svt_av2_enc_set_parameter(SvtAv2Handle handle, SvtAv2Parameter param
         context->config.tree_refinement = *(const uint32_t*)value;
         break;
     case SVT_AV2_PARAM_RD_LAMBDA_MODEL:
-        if (*(const uint32_t*)value > 1u) return SVT_AV2_ERROR_INVALID_PARAMETER;
+        if (*(const uint32_t*)value > 2u) return SVT_AV2_ERROR_INVALID_PARAMETER;
         context->config.rd_lambda_model = *(const uint32_t*)value;
         break;
     case SVT_AV2_PARAM_CFL_SEARCH:
@@ -536,6 +554,13 @@ SvtAv2Error svt_av2_enc_set_parameter(SvtAv2Handle handle, SvtAv2Parameter param
         if (*(const uint32_t*)value > 1u) return SVT_AV2_ERROR_INVALID_PARAMETER;
         context->config.angle_search = *(const uint32_t*)value;
         break;
+    case SVT_AV2_PARAM_CONTENT_TYPE: {
+        const SvtAv2ContentType type=*(const SvtAv2ContentType*)value;
+        if (type!=SVT_AV2_CONTENT_NONE && type!=SVT_AV2_CONTENT_ANIMATION &&
+            type!=SVT_AV2_CONTENT_REAL) return SVT_AV2_ERROR_INVALID_PARAMETER;
+        context->content_type=type;
+        break;
+    }
     case SVT_AV2_PARAM_COUNT:
     default: return SVT_AV2_ERROR_INVALID_PARAMETER;
     }
@@ -558,7 +583,7 @@ SvtAv2Error svt_av2_enc_init(SvtAv2Handle handle) {
         return err;
     }
     if (context->config.width % 8u != 0 || context->config.height % 8u != 0 ||
-        context->config.width > 1920u || context->config.height > 1080u ||
+        context->config.width > 4096u || context->config.height > 2160u ||
         !((context->config.bit_depth == SVT_AV2_BIT_DEPTH_8 && context->config.chroma_format == SVT_AV2_CHROMA_420) ||
           (context->config.bit_depth == SVT_AV2_BIT_DEPTH_10 &&
            (context->config.chroma_format == SVT_AV2_CHROMA_420 || context->config.chroma_format == SVT_AV2_CHROMA_444))) ||
@@ -742,7 +767,7 @@ SvtAv2Error svt_av2_enc_send_picture(SvtAv2Handle handle, const void* picture) {
  * nothing to do; a real failure is returned and latched in fatal_error. */
 
 /* Private experiment: unchanged r25 RD, then one bounded BO4 packet proposal. */
-#define CCSO_AUTO_UNITS 510u
+#define CCSO_AUTO_UNITS (64u * 34u)
 typedef struct CcsoAuto {
     uint64_t table[CCSO_AUTO_UNITS][2][4][3],raw[3],post[3],flag_rate[2],estimate;
     uint8_t map[CCSO_AUTO_UNITS][2],best_flags[2][CCSO_AUTO_UNITS];
@@ -756,11 +781,11 @@ static int ccso_auto_domain(const SvtAv2EncoderContext* c) {
     const SvtAv2EncoderConfig* q=&c->config;
     return q->still_picture && q->prediction_structure==SVT_AV2_PRED_ALL_INTRA && q->rd_mode==3u &&
         q->intra_mode_selection==4u && (q->partition_selection==5u || q->partition_selection==7u) && q->tree_refinement==2u &&
-        q->entropy_adaptation==1u && q->rd_lambda_model==1u && q->transform_selection==2u &&
+        q->entropy_adaptation==1u && (q->rd_lambda_model==1u || q->rd_lambda_model==2u) && q->transform_selection==2u &&
         q->coeff_optimization==2u && q->angle_search==1u && q->mrl_search==1u &&
         q->cfl_search==1u && q->mhccp_search==1u && !q->intra_joint && !q->motion_optimization &&
         q->chroma_format==SVT_AV2_CHROMA_420 && (q->bit_depth==8u || q->bit_depth==10u) &&
-        c->frame_width>=8u && c->frame_width<=1920u && c->frame_height>=8u && c->frame_height<=1080u &&
+        c->frame_width>=8u && c->frame_width<=4096u && c->frame_height>=8u && c->frame_height<=2160u &&
         !(c->frame_width&7u) && !(c->frame_height&7u);
 }
 static void ccso_auto_lut(uint32_t id,int8_t offsets[4]) {
@@ -880,6 +905,142 @@ static SvtAv2Error ccso_auto_packet(SvtAv2EncoderContext* c,CcsoAuto* w,int on,s
         ++w->no_space;if (capacity>SIZE_MAX/2u) return SVT_AV2_ERROR_OUT_OF_MEMORY;capacity*=2u;
     }
 }
+#if M6_PC_WIENER
+#if M6_CONTENT_GUARD
+static int content_guard_domain(const SvtAv2EncoderContext* c) {
+    return c->content_type==SVT_AV2_CONTENT_ANIMATION &&
+        c->config.bit_depth==SVT_AV2_BIT_DEPTH_10 &&
+        c->config.chroma_format==SVT_AV2_CHROMA_420 &&
+        c->config.still_picture==1u &&
+        c->config.prediction_structure==SVT_AV2_PRED_ALL_INTRA &&
+        ((c->frame_width==1920u && c->frame_height==1080u) ||
+         (c->frame_width==3840u && c->frame_height==2160u));
+}
+#endif
+static SvtAv2Error pc_wiener_try(SvtAv2EncoderContext* c,CcsoAuto* w,int ccso_on,size_t* bytes) {
+    const uint32_t width=c->frame_width,height=c->frame_height,cols=width/4u;
+    const uint32_t bd=(uint32_t)c->config.bit_depth,step=bd==10u?2u:1u;
+    const size_t pixels=(size_t)width*height,off_bytes=*bytes;
+    uint16_t* src=(uint16_t*)malloc(pixels*sizeof(*src));
+    uint16_t* dst=(uint16_t*)malloc(pixels*sizeof(*dst));
+    uint8_t* skip=(uint8_t*)calloc(pixels/16u,1u);
+    uint8_t* packet=(uint8_t*)malloc(off_bytes);
+    SvtAv2Error error=SVT_AV2_ERROR_OUT_OF_MEMORY;
+    if (!src || !dst || !skip || !packet) goto done;
+    memcpy(packet,c->packet,off_bytes);
+    for (size_t i=0u;i<c->coded_block_count;++i) {
+        const SvtAv2TileCoeffBlock* b=c->coded_blocks+i;
+        if (b->plane) continue;
+        uint8_t zero=1u;
+        const uint32_t cw=b->width<32u?b->width:32u,ch=b->height<32u?b->height:32u;
+        for (uint32_t j=0u;j<cw*ch;++j) if (b->qcoeff[j]) {zero=0u;break;}
+        for (uint32_t y=b->y/4u;y<(b->y+b->height)/4u && y<height/4u;++y)
+            for (uint32_t x=b->x/4u;x<(b->x+b->width)/4u && x<cols;++x)
+                skip[(size_t)y*cols+x]=zero;
+    }
+    for (uint32_t y=0u;y<height;++y) for (uint32_t x=0u;x<width;++x)
+        src[(size_t)y*width+x]=svt_av2_sample_load(c->recon.planes[0]+(size_t)y*c->recon.strides[0]+x*step,bd);
+    error=SVT_AV2_ERROR_INVALID_STATE;
+    if (svt_av2_pcwiener_filter_y(src,width,dst,width,width,height,bd,
+        w->header.base_q_idx,skip,cols)!=0) goto done;
+    uint64_t raw[3];memcpy(raw,ccso_on?w->post:w->raw,sizeof(raw));
+    const uint64_t old_y=raw[0];raw[0]=0u;
+    int forced=-1;
+#if M6_PC_WIENER_TEST
+    const char* value=getenv("SVT_AV2_TEST_PC_WIENER");
+    if (value) {
+        if (strcmp(value,"0") && strcmp(value,"1") && strcmp(value,"2")) {error=SVT_AV2_ERROR_INVALID_PARAMETER;goto done;}
+        forced=value[0]-'0';
+    }
+#endif
+    const uint32_t ru_cols=(width+128u)/256u ? (width+128u)/256u : 1u;
+    const uint32_t ru_rows=(height+128u)/256u ? (height+128u)/256u : 1u;
+    uint16_t cdf[6]={19969,0,0,1,3,4};
+    uint64_t none_mask[2]={0u,0u},check_y=0u;
+#if M6_CONTENT_GUARD
+    /* Existing test-only forced PCW behavior stays separate from automatic
+     * selection. Production activation is exclusively this API hint/domain. */
+    const uint32_t content_guard_active=(uint32_t)(content_guard_domain(c) && forced<0);
+    uint32_t content_guard_considered=0u,content_guard_vetoes=0u;
+    uint64_t content_edge_samples=0u,content_flat_samples=0u;
+#endif
+    for (uint32_t r=0u;r<ru_rows;++r) for (uint32_t col=0u;col<ru_cols;++col) {
+        const uint32_t left=col*256u,right=col+1u==ru_cols?width:left+256u;
+        const uint32_t top=r?r*256u-8u:0u,bottom=r+1u==ru_rows?height:(r+1u)*256u-8u;
+        uint64_t sse[2]={0u,0u},cost[2]={0u,0u};
+        uint16_t states[2][6];
+        for (uint32_t y=top;y<bottom;++y) for (uint32_t x=left;x<right;++x) {
+            const int target=(int)svt_av2_sample_load(c->frame_source.planes[0]+(size_t)y*c->frame_source.strides[0]+x*step,bd);
+            const int d0=target-(int)src[(size_t)y*width+x],d1=target-(int)dst[(size_t)y*width+x];
+            sse[0]+=(uint64_t)(d0*d0);sse[1]+=(uint64_t)(d1*d1);
+        }
+        for (uint32_t flag=0u;flag<2u;++flag) {
+            SvtAv2EntropyEncoder rate;svt_av2_entropy_rate_init(&rate);
+            memcpy(states[flag],cdf,sizeof(cdf));
+            if (svt_av2_ccso64_symbol(&rate,states[flag],flag,1)!=0) goto done;
+            const uint64_t region[3]={sse[flag],0u,0u};
+            if (ccso_auto_cost(c,region,rate.rate_q12,&cost[flag])!=0) goto done;
+        }
+        const uint32_t unit=r*ru_cols+col;
+        uint32_t on=forced>=0 ? (forced==2 ? (r+col)&1u : 1u) : cost[1]<cost[0];
+#if M6_CONTENT_GUARD
+        if (content_guard_active && on) {
+            if (right<=left || bottom<=top || right>width || bottom>height ||
+                right-left>384u || bottom-top>384u ||
+                c->frame_source.strides[0]<(size_t)width*step) {
+                error=SVT_AV2_ERROR_INVALID_STATE;goto done;
+            }
+            M6ContentFilterGuardStats guard_stats;
+            ++content_guard_considered;
+            const int allow=m6_content_filter_accept(c->frame_source.planes[0],
+                c->frame_source.strides[0],bd,src,dst,width,height,left,top,
+                right-left,bottom-top,&guard_stats);
+            content_edge_samples+=guard_stats.edge_samples;
+            content_flat_samples+=guard_stats.flat_samples;
+            if (!allow) {on=0u;++content_guard_vetoes;}
+        }
+#endif
+        memcpy(cdf,states[on],sizeof(cdf));
+        check_y+=sse[0];raw[0]+=sse[on];
+        if (!on) {
+            none_mask[unit/64u]|=UINT64_C(1)<<(unit&63u);
+            for (uint32_t y=top;y<bottom;++y)
+                memcpy(dst+(size_t)y*width+left,src+(size_t)y*width+left,(right-left)*sizeof(*dst));
+        }
+    }
+    if (check_y!=old_y) goto done;
+    uint64_t old_j=0u,new_j=0u;
+    if (ccso_auto_cost(c,ccso_on?w->post:w->raw,(uint64_t)off_bytes*32768u,&old_j)!=0) goto done;
+    w->header.enable_pc_wiener=1u;
+    memcpy(w->header.pc_wiener_none_mask,none_mask,sizeof(none_mask));
+    size_t new_bytes=0u;
+    error=ccso_auto_packet(c,w,ccso_on,&new_bytes);
+    w->header.enable_pc_wiener=0u;
+    memset(w->header.pc_wiener_none_mask,0,sizeof(w->header.pc_wiener_none_mask));
+    if (error!=0) goto done;
+    error=ccso_auto_cost(c,raw,(uint64_t)new_bytes*32768u,&new_j);
+    if (error!=0) goto done;
+    int accepted=new_j<old_j;
+    if (forced>=0) accepted=forced!=0;
+    if (accepted) {
+        *bytes=new_bytes;
+        for (uint32_t y=0u;y<height;++y) for (uint32_t x=0u;x<width;++x)
+            svt_av2_sample_store(c->recon.planes[0]+(size_t)y*c->recon.strides[0]+x*step,bd,dst[(size_t)y*width+x]);
+    } else memcpy(c->packet,packet,off_bytes);
+    fprintf(stderr,"PC_WIENER accepted=%d bytes=%zu/%zu SSE=%llu/%llu J=%llu/%llu none_mask=%llu none_mask_hi=%llu\n",
+        accepted,off_bytes,new_bytes,(unsigned long long)old_y,(unsigned long long)raw[0],
+        (unsigned long long)old_j,(unsigned long long)new_j,(unsigned long long)none_mask[0],(unsigned long long)none_mask[1]);
+#if M6_CONTENT_GUARD
+    fprintf(stderr,"CONTENT_GUARD type=%s active=%u considered=%u vetoes=%u edge_samples=%llu flat_samples=%llu forced=%d accepted=%d\n",
+        c->content_type==SVT_AV2_CONTENT_ANIMATION?"animation":c->content_type==SVT_AV2_CONTENT_REAL?"real":"none",
+        content_guard_active,content_guard_considered,content_guard_vetoes,
+        (unsigned long long)content_edge_samples,(unsigned long long)content_flat_samples,forced,accepted);
+#endif
+done:
+    free(src);free(dst);free(skip);free(packet);return error;
+}
+#endif
+
 static SvtAv2Error ccso_auto_encode_base(SvtAv2EncoderContext* c,size_t* bytes,uint32_t db,int delta,int delta_h) {
     CcsoAuto* w=NULL;SvtAv2Error error=ccso_auto_prepare(c,&w,0,db,delta,delta_h);if (error!=0) return error;
     const clock_t start=clock();size_t off_bytes=0u,on_bytes=0u;uint64_t off_j=0u,on_j=0u;
@@ -919,6 +1080,9 @@ static SvtAv2Error ccso_auto_encode_base(SvtAv2EncoderContext* c,size_t* bytes,u
         w->headers[w->mask].frame_bits,w->headers[w->mask].frame_bytes,(long long)w->scan_ticks,(long long)w->select_ticks,
         (long long)w->pack_ticks,(long long)w->apply_ticks,(long)CLOCKS_PER_SEC);
     fprintf(stderr,"CCSO_AUTO_MAP,");for (uint32_t u=0u;u<w->units;++u) fputc('0'+w->map[u][0]+2*w->map[u][1],stderr);fputc('\n',stderr);
+#if M6_PC_WIENER
+    error=pc_wiener_try(c,w,accepted,bytes);
+#endif
 done:
     free(w);return error;
 }
@@ -1014,6 +1178,8 @@ done:
 #endif
 }
 
+#include "satd_packet.inc"
+
 static SvtAv2Error encode_pending_frame(SvtAv2EncoderContext* context) {
     if (context->packet_pending || !context->frame_pending) {
         return SVT_AV2_ERROR_NONE;
@@ -1030,6 +1196,10 @@ static SvtAv2Error encode_pending_frame(SvtAv2EncoderContext* context) {
     if (ccso_auto_domain(context)) {
         const SvtAv2Error error=ccso_auto_encode(context,&stream_size);
         if (error!=SVT_AV2_ERROR_NONE) {context->fatal_error=1;return error;}
+#if M6_SATD_ANGLES
+        const SvtAv2Error satd_error=satd_packet(context,&stream_size);
+        if (satd_error!=SVT_AV2_ERROR_NONE) {context->fatal_error=1;return satd_error;}
+#endif
     } else {
     size_t capacity = svt_av2_tile_writer_max_payload_bytes(width, height) + 256u;
     if (capacity < 4096u) capacity = 4096u;
@@ -1245,6 +1415,7 @@ static SvtAv2Error encode_reconstruction(SvtAv2EncoderContext* context,
         rd.mhccp_search = context->config.mhccp_search;
         rd.intra_joint = context->config.intra_joint;
         rd.angle_search = context->config.angle_search;
+        rd.satd_angles = context->satd_angles;
         rd.partition_selection = context->config.partition_selection;
         svt_av2_frame_header_config_default(&rd.frame_header, width, height);
         rd.frame_header.base_q_idx = config.base_q_idx;

@@ -1,0 +1,3580 @@
+{
+  "schema_version": 1,
+  "scope": "Frozen development frames; no generalization claim",
+  "snapshot_sha256": "6139a641202ba607b39cc43e7fcea02f8515d2b7a2db592de9b2981c412a3863",
+  "quality_band": [
+    93,
+    97
+  ],
+  "speed_acceptance": "NOT_MEASURED",
+  "published_build_full_frame_equivalence": "REPORTED_SEPARATELY",
+  "groups": {
+    "animation-1080-a": {
+      "content": "2D",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "input_bitdepth": 10,
+      "original_bitdepth": 8,
+      "color_limitations": "Color metadata incomplete; research-only, no certified HDR/SDR claim",
+      "aom_points": [
+        {
+          "q": 56,
+          "bytes": 6083,
+          "v1": 57.455761,
+          "neg": 52.329141,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "ff62e59f6ff287bf918aa179721971add303ccc8f13ce90b3113fdb1929b9a8d",
+          "result_sha256": "1025e2980ee452b2736ba661373d8184fd54d8fb5cd814d95574c4f73192dcf0",
+          "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+          "stream_sha256": "27105afa8995cc64255c666708c76a0ac67073c00d26456d59a40cee6afb8e0c",
+          "decoded_sha256": "d55c96d9a6caa048762eee0b05ee1ef68c48d0dedad3c5b7e9d79825afb01d60",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 48,
+          "bytes": 9928,
+          "v1": 75.591019,
+          "neg": 70.397417,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "ff62e59f6ff287bf918aa179721971add303ccc8f13ce90b3113fdb1929b9a8d",
+          "result_sha256": "936da8410f25855fe831727b937e99641884e8a26109852a0f4cda4eaedfef67",
+          "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+          "stream_sha256": "9fb50f13895eb54f7622356cd7112cc03d83644f2856e21f8c6d1a613462d06f",
+          "decoded_sha256": "c735298230fabc2d03130cbc866492e52290aef0bcbd9ee1abfb74b216c033a9",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 40,
+          "bytes": 15022,
+          "v1": 85.797904,
+          "neg": 81.571989,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "ff62e59f6ff287bf918aa179721971add303ccc8f13ce90b3113fdb1929b9a8d",
+          "result_sha256": "94b79921169949b8b7b1198c95596c7a2602311a6b9571a82b6c6cffd64bdae7",
+          "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+          "stream_sha256": "7f296a48ee748fb427f8a766739ae798ce31cfed39cd7eee5a998df1dc56bcbf",
+          "decoded_sha256": "96dd4b1dcbcf2e3cc822b48741b9d12910578800480ec55c94a2e7cb8ea2e5fc",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 32,
+          "bytes": 22712,
+          "v1": 91.39692,
+          "neg": 88.15873,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "ff62e59f6ff287bf918aa179721971add303ccc8f13ce90b3113fdb1929b9a8d",
+          "result_sha256": "34cdff417d5065b3c713abdad328cd7ce60d2642ae9c3bd533e2a5e1e21be37b",
+          "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+          "stream_sha256": "a67a2c04c028178665b7d2e7c2bb6b8a7511a9e1b45f322dd1ff7123b94cacb2",
+          "decoded_sha256": "a98949eb059560da4b1aa6f38f6d62df1117edf259e16fb71e1691462fa77c28",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 28,
+          "bytes": 27733,
+          "v1": 93.250899,
+          "neg": 90.268264,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "ff62e59f6ff287bf918aa179721971add303ccc8f13ce90b3113fdb1929b9a8d",
+          "result_sha256": "6bc746917c97870bb5c0db9c3990db40603ad5be818f4afd42c513e2b427dd34",
+          "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+          "stream_sha256": "46d3c0a1f6b4ed87af8d5294b7f74220189f277aa7dfdf7b41c8a0d2c61ed91e",
+          "decoded_sha256": "235c2178850afacdaed24bf60bc72c1e387d65fd6a6c0b2c9abe005efc623f05",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 26,
+          "bytes": 30515,
+          "v1": 94.225022,
+          "neg": 91.167142,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "ff62e59f6ff287bf918aa179721971add303ccc8f13ce90b3113fdb1929b9a8d",
+          "result_sha256": "3aaeff9b7df8513d93fe48ac142753dc5551c62db8376c98b07852b5b814da24",
+          "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+          "stream_sha256": "bcc5eaea52d8a80314b8a95405c932e7e7b3c3f14aba17dc34323ade7cee028a",
+          "decoded_sha256": "437bf6bf794036a596f9809706dee1ef3bd5c46f53275932afdb87402267e4c0",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 24,
+          "bytes": 34350,
+          "v1": 95.144493,
+          "neg": 91.983045,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "ff62e59f6ff287bf918aa179721971add303ccc8f13ce90b3113fdb1929b9a8d",
+          "result_sha256": "8455d0c543560393a3812a8a4629c1dfffb6a472d769c56eadb0945e2a077aa4",
+          "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+          "stream_sha256": "a867787c0500b3ac47fb3033b664f162492440e26729dd11438cc4b9020d3df3",
+          "decoded_sha256": "37486a1918243cc244f10d434d866c892665a75609d09b94ad78df9033e10f60",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 20,
+          "bytes": 40084,
+          "v1": 95.768759,
+          "neg": 92.970398,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "ff62e59f6ff287bf918aa179721971add303ccc8f13ce90b3113fdb1929b9a8d",
+          "result_sha256": "0e183f91deefce79c6e6b197e88b567a1fd52c4bde7be4517ed579a136fcbb24",
+          "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+          "stream_sha256": "9051ab4b16c67e913b02cab0a853d020d89288d1dacabce30ff0f5d6fce41c4d",
+          "decoded_sha256": "143070ef52362c4855c9f8ced2fd0970807bd82a85e0672130dc06b2b6855f07",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 16,
+          "bytes": 48502,
+          "v1": 96.524045,
+          "neg": 93.84837,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "ff62e59f6ff287bf918aa179721971add303ccc8f13ce90b3113fdb1929b9a8d",
+          "result_sha256": "4e4c0732c1fbb1a194acdc1e19dea3f6d0a41081dab1cd4e70aa976965ef9084",
+          "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+          "stream_sha256": "184988e271635e7a9ba445e7bea373f5733440870dfae584e21e82cb6a284922",
+          "decoded_sha256": "6b8a0954ceada0346a82fa46cdee1a29e703272db77bc198253790c2c8b62ec4",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 12,
+          "bytes": 64530,
+          "v1": 97.568711,
+          "neg": 94.770391,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "ff62e59f6ff287bf918aa179721971add303ccc8f13ce90b3113fdb1929b9a8d",
+          "result_sha256": "f7d54d87f4ea2c24ec0fc9fb2e765601c3a3e11a2a281e12e8495d3e38e7a5cb",
+          "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+          "stream_sha256": "e94335db47679ff95bc0bd6cd5a4721d6066acb5226625469a27cd335de3eb16",
+          "decoded_sha256": "5f8f2bea44493738216c364cf4a63e04805f3e4d11cd9d3108376bdd9f2fe4bb",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        }
+      ],
+      "aom_coverage": {
+        "points": 10,
+        "inside_93_97": 5,
+        "below_93": true,
+        "above_97": true,
+        "eligible": true
+      },
+      "previous_best": [
+        {
+          "status": "COMPLETE_GLOBAL_RESEARCH_COMPARISON",
+          "coverage": {
+            "native": {
+              "points": 10,
+              "inside_93_97": 8,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            },
+            "aom": {
+              "points": 10,
+              "inside_93_97": 5,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            }
+          },
+          "points": [
+            {
+              "q": 116,
+              "bytes": 26298,
+              "v1": 92.591462,
+              "neg": 89.680725,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "dd5a95f8918a1192d8d481a8676b497b199d4bbbd7525c7342e98569eacefad9",
+              "configuration_key": "0a0c802eab80571455ca736863dc44a95a0cd2799829e3e216ec63b16b892d92",
+              "result_sha256": "8693c4ee1101e23be4d7976f3fcc8b8a17a24debed266273f08256d2a648c059",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "34f38e3ef0ed11b8ba78375b53a64c014e2b7e4d48431cc667ae46d59f19202e",
+              "decoded_sha256": "a50aef24220ca60ab283e77e6cbfd4fd4206ca6612a96fdb0c64f48edca84d79",
+              "encoder_sha256": "0a3a7f206dca7c97df948b4c6f76b4adcc67e229b6b7a2b24b54a839d160d46d"
+            },
+            {
+              "q": 113,
+              "bytes": 28058,
+              "v1": 93.555932,
+              "neg": 90.39076,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "dd5a95f8918a1192d8d481a8676b497b199d4bbbd7525c7342e98569eacefad9",
+              "configuration_key": "0a0c802eab80571455ca736863dc44a95a0cd2799829e3e216ec63b16b892d92",
+              "result_sha256": "6b880efce4c6f1e8b0ed90271839183934ab4ad9b09c8b589e764329a290e8de",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "ca34144809fea5daaee3fce9020ab3744f2cf5e768dc6684d8cc84c66597d7de",
+              "decoded_sha256": "a2d6a5931dcc9d48b1758a27209d7d30b4d96c83b16c4b5e05918a3a270c9dff",
+              "encoder_sha256": "0a3a7f206dca7c97df948b4c6f76b4adcc67e229b6b7a2b24b54a839d160d46d"
+            },
+            {
+              "q": 110,
+              "bytes": 30013,
+              "v1": 93.872384,
+              "neg": 90.827214,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "dd5a95f8918a1192d8d481a8676b497b199d4bbbd7525c7342e98569eacefad9",
+              "configuration_key": "0a0c802eab80571455ca736863dc44a95a0cd2799829e3e216ec63b16b892d92",
+              "result_sha256": "1e26fe311f02d86923810fccf531ea5c1eb7ed2d9f5bbef332e8f810d7c2b823",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "180d580b216b18f94379010692dfc6440ccf3810168ffead0ccd8628153fd124",
+              "decoded_sha256": "d1455d3c1eb23d75c9644a3b941641aabb1a0d50d5108e92d4659c84ca00f47a",
+              "encoder_sha256": "0a3a7f206dca7c97df948b4c6f76b4adcc67e229b6b7a2b24b54a839d160d46d"
+            },
+            {
+              "q": 108,
+              "bytes": 31737,
+              "v1": 94.315891,
+              "neg": 91.371511,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "dd5a95f8918a1192d8d481a8676b497b199d4bbbd7525c7342e98569eacefad9",
+              "configuration_key": "0a0c802eab80571455ca736863dc44a95a0cd2799829e3e216ec63b16b892d92",
+              "result_sha256": "162a6a981bfa7455ac59e9b44e73b6fb34cc21a7dfd7de69504cc990a3103b0f",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "7a0991c9bdd2fdee46cf3d81177733003b75825f8a517fdde849b0dae83efc6d",
+              "decoded_sha256": "c49b3a4fbe24efbe02255a47ca6c733a49066ca51fbaa7deecfa10e3fd8b260a",
+              "encoder_sha256": "0a3a7f206dca7c97df948b4c6f76b4adcc67e229b6b7a2b24b54a839d160d46d"
+            },
+            {
+              "q": 106,
+              "bytes": 33372,
+              "v1": 94.62689,
+              "neg": 91.695465,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "dd5a95f8918a1192d8d481a8676b497b199d4bbbd7525c7342e98569eacefad9",
+              "configuration_key": "0a0c802eab80571455ca736863dc44a95a0cd2799829e3e216ec63b16b892d92",
+              "result_sha256": "08057bea492c550a633873c86c115bd1b20fd3ca44514958036fa1fe1d673c6a",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "d3d3eca1476f9d002f009416c00ad3b9944188a595ab87d36cfce231d28ed60d",
+              "decoded_sha256": "86b9cd39f4bfb576451c071544b436f9aeeecfde2a9b78f66e735f3dd2c49c48",
+              "encoder_sha256": "0a3a7f206dca7c97df948b4c6f76b4adcc67e229b6b7a2b24b54a839d160d46d"
+            },
+            {
+              "q": 104,
+              "bytes": 35005,
+              "v1": 94.855093,
+              "neg": 92.057093,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "dd5a95f8918a1192d8d481a8676b497b199d4bbbd7525c7342e98569eacefad9",
+              "configuration_key": "0a0c802eab80571455ca736863dc44a95a0cd2799829e3e216ec63b16b892d92",
+              "result_sha256": "f46e134078a68ef8f64438089f17c1436dd832849fe857a05172336e60d5e4b7",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "eb73c120ed19c251cac97ce33f158d917dbf290ec642bdc221de3a129749a355",
+              "decoded_sha256": "3a510674550bda6b674cb2f71e9747bc5cd3df6f9ae301ed098e4601ae206688",
+              "encoder_sha256": "0a3a7f206dca7c97df948b4c6f76b4adcc67e229b6b7a2b24b54a839d160d46d"
+            },
+            {
+              "q": 100,
+              "bytes": 38154,
+              "v1": 95.786448,
+              "neg": 92.575408,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "dd5a95f8918a1192d8d481a8676b497b199d4bbbd7525c7342e98569eacefad9",
+              "configuration_key": "0a0c802eab80571455ca736863dc44a95a0cd2799829e3e216ec63b16b892d92",
+              "result_sha256": "721a69fbc5f42fe57c9d47cb342d1f7a75f92a9fed59a6c9da5d936c83715a75",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "52c510b7e4751ff4b11c1bf15739df9a7c0fe0831bda8e1355dc268e00b9fdab",
+              "decoded_sha256": "5505abf1d574532406389289aadf71585e2cb14ec3b93952615a8a67f98d624d",
+              "encoder_sha256": "0a3a7f206dca7c97df948b4c6f76b4adcc67e229b6b7a2b24b54a839d160d46d"
+            },
+            {
+              "q": 92,
+              "bytes": 46420,
+              "v1": 96.329948,
+              "neg": 93.508396,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "dd5a95f8918a1192d8d481a8676b497b199d4bbbd7525c7342e98569eacefad9",
+              "configuration_key": "0a0c802eab80571455ca736863dc44a95a0cd2799829e3e216ec63b16b892d92",
+              "result_sha256": "f25cbb1ac36271781dad002c431591d80ddd7f78e17bb743fc417bd0c8d31538",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "0b44d895f470f3d24b5a80df09fce72f06109cddc1cc0726d1e126a4023753ce",
+              "decoded_sha256": "96504cdec78bfb25632d651c3459ed43b8585f8ba7eec8107c7574ca45c83d20",
+              "encoder_sha256": "0a3a7f206dca7c97df948b4c6f76b4adcc67e229b6b7a2b24b54a839d160d46d"
+            },
+            {
+              "q": 84,
+              "bytes": 57391,
+              "v1": 96.991942,
+              "neg": 94.313859,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "dd5a95f8918a1192d8d481a8676b497b199d4bbbd7525c7342e98569eacefad9",
+              "configuration_key": "0a0c802eab80571455ca736863dc44a95a0cd2799829e3e216ec63b16b892d92",
+              "result_sha256": "6a186c50c9c0b764618f3375afbc1dd32331b536f1812256c1f2a6b2d26357c2",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "9a2dc4d3910002e8b45ac2fb6bac95e24373e7ac26e879b786e9afd541092fdd",
+              "decoded_sha256": "a28018bcbf4ab46358137246b0d327d3ebc9e6e2acd796ad9513391af7146456",
+              "encoder_sha256": "0a3a7f206dca7c97df948b4c6f76b4adcc67e229b6b7a2b24b54a839d160d46d"
+            },
+            {
+              "q": 82,
+              "bytes": 60770,
+              "v1": 97.187936,
+              "neg": 94.520488,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "dd5a95f8918a1192d8d481a8676b497b199d4bbbd7525c7342e98569eacefad9",
+              "configuration_key": "0a0c802eab80571455ca736863dc44a95a0cd2799829e3e216ec63b16b892d92",
+              "result_sha256": "286facd8a094e6ebca9b53b4a3b1e50e6a9668ae795bc9b1709f6d48f6054856",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "a3dc7056657f26de5b3ff9166f6de1e790dfb0dab17fd35b8e0a582284be6bce",
+              "decoded_sha256": "c69a24c52b801e73593c66fa29a2861bd2df7cd79cb76a09d57e3f5eb549668c",
+              "encoder_sha256": "0a3a7f206dca7c97df948b4c6f76b4adcc67e229b6b7a2b24b54a839d160d46d"
+            }
+          ],
+          "dual": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 1.0301900496049456,
+              "worst_sample_ratio": 1.0651890426310864
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 1.0276025429361555,
+              "worst_sample_ratio": 1.0577480835409454
+            }
+          },
+          "primary_v1": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 1.0104144364439613,
+              "neg_delta_at_selected_rate": {
+                "mean": -0.035578381226369984,
+                "worst_sample": -0.42710735483868234,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 1.0651890426310864
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 1.01045468407951,
+              "neg_delta_at_selected_rate": {
+                "mean": -0.02709335079526439,
+                "worst_sample": -0.4146749676743582,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 1.0577480835409454
+            }
+          },
+          "eligible_band_comparison": true,
+          "local_quality_acceptance": "SEPARATE_FINAL_DECODED_GATE_REQUIRED"
+        }
+      ],
+      "new_candidates": [
+        {
+          "status": "INCOMPLETE_GLOBAL_COMPARISON",
+          "coverage": {
+            "native": {
+              "points": 3,
+              "inside_93_97": 3,
+              "below_93": false,
+              "above_97": false,
+              "eligible": false
+            },
+            "aom": {
+              "points": 10,
+              "inside_93_97": 5,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            }
+          },
+          "points": [
+            {
+              "q": 110,
+              "bytes": 29493,
+              "v1": 93.928498,
+              "neg": 90.580844,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "3f58bbee5155926b2b1799cf8470ffbd9ca97659de9ded8b60e6236435da6a7d",
+              "configuration_key": "c4173eb4a50798b9625225c8e99681bce7cfdbe2efae0f20df181ade85e6426e",
+              "result_sha256": "e34365d7e9ec8ca2a3a031c952479ba92514070e6af7be8b1758fcec2d072fb9",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "fac38a6b5379a3e428b2122b18942ef96e2f3c03a4e57c53f0f2b97af9ef45b3",
+              "decoded_sha256": "524467f49454a5aa59d0a1a6aa2d6f6d970d118a6a553031206e482495a45d27",
+              "encoder_sha256": "9db6e57c7d68ff1bd45f3b1cc6bf8ea3dace8a2df4ff24b2e950ceea326829f6"
+            },
+            {
+              "q": 100,
+              "bytes": 37367,
+              "v1": 95.45891,
+              "neg": 92.336536,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "3f58bbee5155926b2b1799cf8470ffbd9ca97659de9ded8b60e6236435da6a7d",
+              "configuration_key": "c4173eb4a50798b9625225c8e99681bce7cfdbe2efae0f20df181ade85e6426e",
+              "result_sha256": "51ae249c34579d89f2ed4c1357e776f5bcdcea715cb6963b25d0e5fd6410858d",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "b0319beec9b748dd7411582354c168ca974eb542f25054e8d4e48c9af8987043",
+              "decoded_sha256": "2603e976010c115fdec0db801ef2ef9ef6ff85fa9bc715568ca28a535cb8934b",
+              "encoder_sha256": "9db6e57c7d68ff1bd45f3b1cc6bf8ea3dace8a2df4ff24b2e950ceea326829f6"
+            },
+            {
+              "q": 90,
+              "bytes": 47928,
+              "v1": 96.416798,
+              "neg": 93.588488,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "3f58bbee5155926b2b1799cf8470ffbd9ca97659de9ded8b60e6236435da6a7d",
+              "configuration_key": "c4173eb4a50798b9625225c8e99681bce7cfdbe2efae0f20df181ade85e6426e",
+              "result_sha256": "d5f5822738d3aede14512de5a16dfac47ae5525f0b07566ed6344725bfc91389",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "3f5ad18728401bb8d4ae85a53d13a29661f7c566f5c772c186543bbcc6337f03",
+              "decoded_sha256": "df31ba7ddb0349872c53745af338a9113e21255638564a7be38bc13b36073bf4",
+              "encoder_sha256": "9db6e57c7d68ff1bd45f3b1cc6bf8ea3dace8a2df4ff24b2e950ceea326829f6"
+            }
+          ],
+          "dual": {
+            "pchip": {
+              "full_coverage": false,
+              "worst_sample_ratio": null
+            },
+            "linear": {
+              "full_coverage": false,
+              "worst_sample_ratio": null
+            }
+          },
+          "primary_v1": {
+            "pchip": {
+              "full_coverage": false,
+              "worst_sample_ratio": null
+            },
+            "linear": {
+              "full_coverage": false,
+              "worst_sample_ratio": null
+            }
+          },
+          "eligible_band_comparison": false,
+          "local_quality_acceptance": "SEPARATE_FINAL_DECODED_GATE_REQUIRED"
+        },
+        {
+          "status": "INCOMPLETE_INSUFFICIENT_POINTS",
+          "coverage": {
+            "native": {
+              "points": 1,
+              "inside_93_97": 1,
+              "below_93": false,
+              "above_97": false,
+              "eligible": false
+            },
+            "aom": {
+              "points": 10,
+              "inside_93_97": 5,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            }
+          },
+          "points": [
+            {
+              "q": 100,
+              "bytes": 37986,
+              "v1": 95.259939,
+              "neg": 92.611835,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "149dcd9d441c67742768258f03cd7c46d65f802e6f39613c29967d848af7bca4",
+              "configuration_key": "466c7926ce63471c276d26b4b9cc878728c112ae0b12c66f6271a9b65fa1661a",
+              "result_sha256": "9c95724f20b384e7dd839f79aeef7f819a3d903f3460645772c43748c6dbdf5e",
+              "source_sha256": "c0ef42a0f71c4e3326a7bcb3d26679916a0ebd768ed8c0c5b59aed83cac2ae09",
+              "stream_sha256": "7a4979b6fb2a0552b348ce65f7a5be12cf8ac7403843fe2c94de0fcccb6816fb",
+              "decoded_sha256": "8c899f07312e27b23c41ec64b03d6ef80259b64a7f16f2983a85dfed1c6c4938",
+              "encoder_sha256": "757253db7c38b5a22d1918d05a9cd6416c060e1c4f4f2b750dfb7a74943c275c"
+            }
+          ],
+          "dual": {},
+          "primary_v1": {},
+          "eligible_band_comparison": false,
+          "local_quality_acceptance": "SEPARATE_FINAL_DECODED_GATE_REQUIRED"
+        }
+      ]
+    },
+    "rendered-1080-a": {
+      "content": "3D",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "input_bitdepth": 10,
+      "original_bitdepth": 8,
+      "color_limitations": "Color metadata incomplete; research-only, no certified HDR/SDR claim",
+      "aom_points": [
+        {
+          "q": 56,
+          "bytes": 16368,
+          "v1": 65.792658,
+          "neg": 55.262968,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "2b370321fdd15068933fbf915eab4474f22d268163a9e59ba93f4f63fb57d8a6",
+          "result_sha256": "c272badfa88e512c705ef598dd265df6ae6a7f13c985111ad64f7b96ba4a984f",
+          "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+          "stream_sha256": "73b5f4a04a4c731242ad355154011a6618a292f6f16ff7076b9379fcd838d3ce",
+          "decoded_sha256": "8268bef0af966d65c2cc365371c552e5a3589a5604bc543a2db7cc1db137dca1",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 48,
+          "bytes": 28858,
+          "v1": 81.782898,
+          "neg": 73.285499,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "2b370321fdd15068933fbf915eab4474f22d268163a9e59ba93f4f63fb57d8a6",
+          "result_sha256": "577909c9fae7d4a77d706e46b6dc20fff35c61778d5feb69f47d3995f0a064e1",
+          "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+          "stream_sha256": "63d907a0e3a71e8586a3116c566c53b0fb0238838149fb1a25da8e4292951b9d",
+          "decoded_sha256": "0d96037dbd5761a6b06858d66ea57fef5352828453092dc5f9ae256c9c8c88ff",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 40,
+          "bytes": 46361,
+          "v1": 88.553228,
+          "neg": 83.822789,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "2b370321fdd15068933fbf915eab4474f22d268163a9e59ba93f4f63fb57d8a6",
+          "result_sha256": "e4c74ed679dcdbdb954bbbb2e8182df8789434141a8a086749faef260bb684ce",
+          "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+          "stream_sha256": "91b9719fdb8083efaae484bbbe25fc25174ad5b9188378b7fd84182d06aa5389",
+          "decoded_sha256": "b160fbfdc14fe6f4f0b3c91c9e28cbc1e0fc47556b9ca73f3b64113b6ad7be06",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 34,
+          "bytes": 64587,
+          "v1": 92.823646,
+          "neg": 89.067221,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "2b370321fdd15068933fbf915eab4474f22d268163a9e59ba93f4f63fb57d8a6",
+          "result_sha256": "a8ca98b307390828f7e64fd146c777708fb5da9216574bbd21d7042e022528c6",
+          "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+          "stream_sha256": "68549d32ce83f910c56d70b16219a7c14f716754bf659f0f3e677ea25095f048",
+          "decoded_sha256": "b863ef436fca67d5cfae44072cc2af2e7a553959805005a064f2858cc79d6b46",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 32,
+          "bytes": 72176,
+          "v1": 93.592912,
+          "neg": 90.054771,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "2b370321fdd15068933fbf915eab4474f22d268163a9e59ba93f4f63fb57d8a6",
+          "result_sha256": "b6b7f874a54ccbce759e1179c4ea7fea26c1f021321f89ddc1f2d0d5f9948c0f",
+          "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+          "stream_sha256": "45a57ad6ca1927a7c4f77f283c1ee461eb79b7fbd1daffc988ff579ff06e10ce",
+          "decoded_sha256": "ca6f93b0604451bcc80824a91da137f2b39c037719da80b3cfea5d1ec80a7924",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 28,
+          "bytes": 88487,
+          "v1": 95.081529,
+          "neg": 91.938746,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "2b370321fdd15068933fbf915eab4474f22d268163a9e59ba93f4f63fb57d8a6",
+          "result_sha256": "226d127dc278b84923f87577fe3441a0c7ee16742378450d15869262730571da",
+          "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+          "stream_sha256": "7f4a5889b25c91a736acd2e0b031da22105fabdd6205d45ee46d8e3f0af01d18",
+          "decoded_sha256": "bb7aa783afcd853d7c1c42269d2c7ff70a6013e3521b44fe4a20b2df580c56f1",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 26,
+          "bytes": 98266,
+          "v1": 95.741172,
+          "neg": 92.663098,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "2b370321fdd15068933fbf915eab4474f22d268163a9e59ba93f4f63fb57d8a6",
+          "result_sha256": "25a666437b94a21ec69f6b710d2e9aac88b2d57685b9a8b2eadbdb5c54b8a260",
+          "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+          "stream_sha256": "af2f01c309f36daa87bfd652f9730d596fa194a1d9fcf22fe6763234f94b9e6b",
+          "decoded_sha256": "64e016ac8cda1f55fe64515b35cb8b1f804044122b5891b9feb4f661de7fb944",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 24,
+          "bytes": 110261,
+          "v1": 96.402996,
+          "neg": 93.29283,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "2b370321fdd15068933fbf915eab4474f22d268163a9e59ba93f4f63fb57d8a6",
+          "result_sha256": "706e3218bcfdacf8e3b2b9ad247f7a397e9c04726c3c0b574c5cb073cb6ce846",
+          "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+          "stream_sha256": "5de7cb04cc1876bc3de11962cdd4e7813e98c73b1ba101d8a1f60fa5c0a7b15d",
+          "decoded_sha256": "7b6be105869dd95a092cb47419cf330daeccd311f34ccc5715364fee90468716",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 20,
+          "bytes": 128865,
+          "v1": 96.921231,
+          "neg": 94.06776,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "2b370321fdd15068933fbf915eab4474f22d268163a9e59ba93f4f63fb57d8a6",
+          "result_sha256": "f891035f5a39c328b51a8d8aa06d1b324ea7022ee14c65e4a85b012aa178049a",
+          "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+          "stream_sha256": "82d5cb2fdb35b0b96d3ec23da659e0e82314393d668ca97a04f73ed80af26211",
+          "decoded_sha256": "1c1315fdfa3189cc9439c2df0bd432265d98765d949550f4059b9d3346e74520",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 16,
+          "bytes": 157136,
+          "v1": 97.759618,
+          "neg": 94.81013,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "2b370321fdd15068933fbf915eab4474f22d268163a9e59ba93f4f63fb57d8a6",
+          "result_sha256": "ae27c500b907711c1eea1ccedd11a86ff5827fa4ac7582b37bcd450d4a9737e3",
+          "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+          "stream_sha256": "cd96d6190b5ad845751391ecfea944b78e2d349d8a6bb2ba387f54d711faad52",
+          "decoded_sha256": "8ba6e28362c21a2b1799d0ee6f9c292c53d0b6831ebae32fcae17c333a8f4f4f",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        }
+      ],
+      "aom_coverage": {
+        "points": 10,
+        "inside_93_97": 5,
+        "below_93": true,
+        "above_97": true,
+        "eligible": true
+      },
+      "previous_best": [
+        {
+          "status": "COMPLETE_GLOBAL_RESEARCH_COMPARISON",
+          "coverage": {
+            "native": {
+              "points": 7,
+              "inside_93_97": 5,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            },
+            "aom": {
+              "points": 10,
+              "inside_93_97": 5,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            }
+          },
+          "points": [
+            {
+              "q": 120,
+              "bytes": 70703,
+              "v1": 92.689871,
+              "neg": 89.200126,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "94e64b2902dfab0aa0325f0af5d85731b3db8965a52fcfe16a85c086204b11a2",
+              "configuration_key": "f88a35364628da64c1f095a4313d05279f220dab087efd285f56f23f02b8b3a7",
+              "result_sha256": "8fd13df0d5f0e0c3f05837992c90131fe02b23c732e3526939ae0b885167b685",
+              "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+              "stream_sha256": "b2a35d81e6b5ed2af1e1433b8b7b38e6ae29209c6f51c5abbc3afd73b6547971",
+              "decoded_sha256": "62751a76515594431b8eb520acdb2ee08b0151ef28580316ef750716d261af1e",
+              "encoder_sha256": "706637df13b429e96950ef8975a6343724a0a1e5849ab4b4bfe898e1fc144159"
+            },
+            {
+              "q": 114,
+              "bytes": 81145,
+              "v1": 93.897629,
+              "neg": 90.539664,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "94e64b2902dfab0aa0325f0af5d85731b3db8965a52fcfe16a85c086204b11a2",
+              "configuration_key": "f88a35364628da64c1f095a4313d05279f220dab087efd285f56f23f02b8b3a7",
+              "result_sha256": "8aa22593395757cafd535e55c90f7284f20b266ffd3f02cb346990215cb40881",
+              "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+              "stream_sha256": "de3ade1259cd8dafafd6882943a45bbeac658d5fb59ad3668c3501ac19516225",
+              "decoded_sha256": "8677e86d7008aa2dc4ef6a705d1893e3f6a1723be500f61174f5630f3216801b",
+              "encoder_sha256": "706637df13b429e96950ef8975a6343724a0a1e5849ab4b4bfe898e1fc144159"
+            },
+            {
+              "q": 110,
+              "bytes": 88894,
+              "v1": 94.626269,
+              "neg": 91.414589,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "94e64b2902dfab0aa0325f0af5d85731b3db8965a52fcfe16a85c086204b11a2",
+              "configuration_key": "f88a35364628da64c1f095a4313d05279f220dab087efd285f56f23f02b8b3a7",
+              "result_sha256": "5fd7ad063c71d2205abc5df862469f0d7cd76524681703d3287f6142bdbdca7f",
+              "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+              "stream_sha256": "a3932b229e31a9eb7e730a63421d4d86905744f183aa354b8b12171cc119400f",
+              "decoded_sha256": "2154a53fa8b0d9509eb9ba2c1a1eb2dcbe561a34db79cdb485596beb6d859c14",
+              "encoder_sha256": "706637df13b429e96950ef8975a6343724a0a1e5849ab4b4bfe898e1fc144159"
+            },
+            {
+              "q": 104,
+              "bytes": 103279,
+              "v1": 95.550368,
+              "neg": 92.43968,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "94e64b2902dfab0aa0325f0af5d85731b3db8965a52fcfe16a85c086204b11a2",
+              "configuration_key": "f88a35364628da64c1f095a4313d05279f220dab087efd285f56f23f02b8b3a7",
+              "result_sha256": "0df7990cf1f37d394b17fe8d691149aafa8c5fa268a165b55f56e34eff94962d",
+              "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+              "stream_sha256": "4281b5486b0d00981e2ffc346b5803cbfa3f14e0701d9dc7bc6c715deb2cfc14",
+              "decoded_sha256": "130170a9b9cf1f66c73b280821a00fbef5a35b96bcb228ffc634bf76eb1c3f1e",
+              "encoder_sha256": "706637df13b429e96950ef8975a6343724a0a1e5849ab4b4bfe898e1fc144159"
+            },
+            {
+              "q": 98,
+              "bytes": 119213,
+              "v1": 96.248986,
+              "neg": 93.327969,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "94e64b2902dfab0aa0325f0af5d85731b3db8965a52fcfe16a85c086204b11a2",
+              "configuration_key": "f88a35364628da64c1f095a4313d05279f220dab087efd285f56f23f02b8b3a7",
+              "result_sha256": "8a98ae18f9085b43a1a3ba6c87c220f260e1af31c87fe57f22ebadfa0f4a8f60",
+              "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+              "stream_sha256": "462d419d5a37d205501b4584ad43a190e5638e1b2796e667029a18b794e112b6",
+              "decoded_sha256": "35692d306295bec314737c1c43268e3ec9dd3ba1e763fab0b01816ee51305054",
+              "encoder_sha256": "706637df13b429e96950ef8975a6343724a0a1e5849ab4b4bfe898e1fc144159"
+            },
+            {
+              "q": 94,
+              "bytes": 129517,
+              "v1": 96.612533,
+              "neg": 93.724986,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "94e64b2902dfab0aa0325f0af5d85731b3db8965a52fcfe16a85c086204b11a2",
+              "configuration_key": "f88a35364628da64c1f095a4313d05279f220dab087efd285f56f23f02b8b3a7",
+              "result_sha256": "a7ec08576c6bbf3cfab152df10389e748f3d487b4235639e5270bc975837d03e",
+              "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+              "stream_sha256": "03756d55c8b0357ffcc5870c667f4c0b007100f0fcb48578c66f06e59bf19530",
+              "decoded_sha256": "0b2a6cb8bda6b7024fcb53acfca57f99b64303aaa1291705df6a3550c2a3f9e3",
+              "encoder_sha256": "706637df13b429e96950ef8975a6343724a0a1e5849ab4b4bfe898e1fc144159"
+            },
+            {
+              "q": 88,
+              "bytes": 150416,
+              "v1": 97.238824,
+              "neg": 94.342407,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "94e64b2902dfab0aa0325f0af5d85731b3db8965a52fcfe16a85c086204b11a2",
+              "configuration_key": "f88a35364628da64c1f095a4313d05279f220dab087efd285f56f23f02b8b3a7",
+              "result_sha256": "6b64d614640f055e9f9ad52f9bea8c08bbd6f6100db06a9d9fe4847ae4e938fa",
+              "source_sha256": "21ff01932c5146f4dfed95f9023ef8c1689674afab2758433fdf2464235b116b",
+              "stream_sha256": "201c6842a846b4e3ad210f302a05bcc108bff012002bcf71bf43a0697a3c0617",
+              "decoded_sha256": "d9be7823f1171b9b5cd65558723408cb60db1f870c13876f71abe00025225dda",
+              "encoder_sha256": "706637df13b429e96950ef8975a6343724a0a1e5849ab4b4bfe898e1fc144159"
+            }
+          ],
+          "dual": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 1.0890108449084144,
+              "worst_sample_ratio": 1.119053803864801
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 1.0888441327633729,
+              "worst_sample_ratio": 1.11983430204361
+            }
+          },
+          "primary_v1": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 1.0879547455962226,
+              "neg_delta_at_selected_rate": {
+                "mean": 0.0766989429303695,
+                "worst_sample": -0.040062227069014966,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 1.119053803864801
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 1.088189453283323,
+              "neg_delta_at_selected_rate": {
+                "mean": 0.08369030327636506,
+                "worst_sample": -0.038448011189686326,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 1.11983430204361
+            }
+          },
+          "eligible_band_comparison": true,
+          "local_quality_acceptance": "SEPARATE_FINAL_DECODED_GATE_REQUIRED"
+        }
+      ],
+      "new_candidates": []
+    },
+    "live-1080-a": {
+      "content": "Real",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "input_bitdepth": 10,
+      "original_bitdepth": 8,
+      "color_limitations": "Color metadata incomplete; research-only, no certified HDR/SDR claim",
+      "aom_points": [
+        {
+          "q": 56,
+          "bytes": 5291,
+          "v1": 54.68551,
+          "neg": 52.436179,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "d273db05ad6b4204fd085745c5db08a467c9bc807aa34dbdd9fb43d4d75396b7",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "e6cd88603cb328ecd00757ecfef2e0e47f635baf08d72a92d569b6583ca850d9",
+          "decoded_sha256": "bbaa9255551cd55d1dc6e45b6da41d4d36ab3bdd2d7e17b6ac6c497294d9f7a1",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 48,
+          "bytes": 9653,
+          "v1": 71.925344,
+          "neg": 69.141903,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "fb9234f21a55012199116f0c754fbc33d0ee5c033c65e513cf1e6f98b3d5eda1",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "5cb4afa519c09701fd201278929df89aa795d027c0421c84d1db0d3d5738beff",
+          "decoded_sha256": "ebc40bd25976d1006feef0274f83c400a486d7e3ba904e4c689f53fec9b61a23",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 40,
+          "bytes": 17208,
+          "v1": 82.438056,
+          "neg": 80.208585,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "50add40f92258546a022e1098540f0c59a7c6a45b26f32ad24c7fe9d0265303f",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "158843873e3e3f6f42cd19fced629c7991cb5713e97a6968fac2c31bd3959ff8",
+          "decoded_sha256": "e9d643c8720b6004862308dffd416333d0dcdda8e6dd889158b750fbc75a60cc",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 32,
+          "bytes": 34628,
+          "v1": 89.011457,
+          "neg": 87.933811,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "4e82405f24384f0e0d74697b551aa5b339574fcc76f93c73018e84662f81efc6",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "2b73ece8c1ca784b2dea5c44a543a5647404db35a4f39548e6ae3a8969d3ef47",
+          "decoded_sha256": "de846e9ceea0bd38f868dbe6aeeade6404b87c3934449a0373e3913818c1fb3f",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 26,
+          "bytes": 53642,
+          "v1": 92.76597,
+          "neg": 91.303541,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "80cdfe3a72e9bb5e649ccdb8b8d3111599d9d37bd11ec4eaa12fe6fe2d04aae6",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "0ba3aa806a2d287b9afc6c45bea9465c0bfda2caf4aae171b88ca2e6edb7ee32",
+          "decoded_sha256": "e32579da982bfe2209212126bcb40a99e6c14f471481bea8fc2165f5b6788c02",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 25,
+          "bytes": 59863,
+          "v1": 93.418421,
+          "neg": 91.787268,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "6da2dc45babbed4ab50087966b919f72f3de6ce6a3dec7302016d096a12023ce",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "49d046986ad8a992518c433ed86047eb452c682be51e9728162f1d00941471f1",
+          "decoded_sha256": "481c47278252e5af2a0950ccb8e051516d287229ec5b881c22acf1c5fda879b1",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 24,
+          "bytes": 67488,
+          "v1": 94.017038,
+          "neg": 92.325053,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "c204758bb192777e0d1660057a0980607c9b0c708c5f4c495b299898aa312b8d",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "a9c736cfd4b3530a766ecc4e36cd88672a45ccd35552b65184edc246aec9656a",
+          "decoded_sha256": "f276195dcf12444d2d95e6b6da44d21b64fd21c7ca021818c0cea37cea6e3a3f",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 23,
+          "bytes": 73608,
+          "v1": 94.149089,
+          "neg": 92.494208,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "ff3201a7c72cbd08a2556278a2858e5879f9f14e62e83e63b770aeee0d6d1217",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "233779a338815e4f843aea54a4af1e7efc43dd1317bf15175d3d732a590ec4ec",
+          "decoded_sha256": "c762202bcf04f49eac4e3d9b4738336ca3cbdd5d882b03eec044aa5faf8d35e8",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 22,
+          "bytes": 79796,
+          "v1": 94.623695,
+          "neg": 92.825463,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "25b5d945758e2675e0e070d31334e5e2a5a903f36053c6f7a9c5616c15f13fd7",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "475264a003aa4fb9fb82d9908bdc0c4b8ecc5cf7f839d2c1d07e94cd37ad36b2",
+          "decoded_sha256": "681120cf64d1ca986a264c0744f23662b8554e6db2c84db9479a86fc3df99879",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 20,
+          "bytes": 94223,
+          "v1": 94.994211,
+          "neg": 93.272228,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "945b42d675f320d6509b506bc685e4eceb4fe8471f0ecb15a4794ebb0de45d88",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "760d20c90642ddbf920c0982610382bc25d306ead356aa1a05383819622f91df",
+          "decoded_sha256": "5294915a41dc3b70fe9d0e22c685c9f8489f5ae403f3f64a0cde1490b7b54f02",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 16,
+          "bytes": 131743,
+          "v1": 96.546144,
+          "neg": 94.162419,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "68ea1adbd42444674432410b827b851060b784665995adf06c6be2c917749d35",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "0f617010718cda8a3c8757ffa4200cf55bfd71d4a0d2b55def63a4dcd0fc6335",
+          "decoded_sha256": "8574b4ad0c7fa2f2c4df679c2127177c71e507bf343bc86d331dd594efe993ba",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 12,
+          "bytes": 168741,
+          "v1": 97.94639,
+          "neg": 95.154792,
+          "dimensions": {
+            "width": 1920,
+            "height": 1080,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+            "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "a2377e06001729ad4738709bdb28334dca48803b523f5a1b423a19b4b86a6d99",
+          "result_sha256": "970695e0702bd122c24e4ca3e5ec6fd3e2e6000bb7dc2ce91eedd15f9ac4220e",
+          "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+          "stream_sha256": "84e6986791ca00ce3ba90e4222f4b607938a85dd31d44b093d608dff62e707cb",
+          "decoded_sha256": "e2993afcf03dbf66e0a941f2fe4445e11d147966fd79d27467d7197ac2f602fe",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        }
+      ],
+      "aom_coverage": {
+        "points": 12,
+        "inside_93_97": 6,
+        "below_93": true,
+        "above_97": true,
+        "eligible": true
+      },
+      "previous_best": [
+        {
+          "status": "COMPLETE_GLOBAL_RESEARCH_COMPARISON",
+          "coverage": {
+            "native": {
+              "points": 13,
+              "inside_93_97": 10,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            },
+            "aom": {
+              "points": 12,
+              "inside_93_97": 6,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            }
+          },
+          "points": [
+            {
+              "q": 106,
+              "bytes": 48379,
+              "v1": 92.274475,
+              "neg": 91.385295,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "b9ab16478e50807c1c236bdc1ad3e0ba443d2e48efb0b63b16cade3592ccac9f",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "37f29f26ab168705e8ae54e9c73a4f4869d85cfca0907042648898fb4f546b56",
+              "decoded_sha256": "acf64e00d48277a9eb1ac8dbd5fa1b30f207eef1e2b3ef9b336d413fd4af4c32",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 104,
+              "bytes": 51822,
+              "v1": 92.777984,
+              "neg": 91.872785,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "4ddfe537edbb6d92407a1e58901fe0c83679b2a3ac9d10ad9ad2b2253dfb02a4",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "0b6cef13735e4c3016084f0b1a789a0e99c7974e4279e4e4172cd08714e17e9b",
+              "decoded_sha256": "d60200ca08be93503bae06b12af8e5d7736a73118a901a0b668cc9f204a37d3a",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 102,
+              "bytes": 54305,
+              "v1": 93.327609,
+              "neg": 92.135316,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "869e25048c09517a6366aaf9110459278aa824c7ea1a2a9d5d2adac6fb21f165",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "9445424c06a70da783502c3ebe0f6d3b229530d7cac8aa41e27ba0ec00985cee",
+              "decoded_sha256": "00861dcde03df46159f209b5901ca367c378347763ad0c733be1e9f011ea2cc0",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 101,
+              "bytes": 57375,
+              "v1": 93.431597,
+              "neg": 92.416956,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "3ed78184b0376d1965139a111c73e2662fc7e13492994d60ce9de4f6f7e54101",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "e830bd3e0c5403cc4999e06de1d9eba89e8565176eb48bcc9bb78e915e7c0d28",
+              "decoded_sha256": "a26b2949defbdc483628242ff7e792da6b877626e4f668c67697ce7501819d5a",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 100,
+              "bytes": 59206,
+              "v1": 93.549637,
+              "neg": 92.53512,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "edaf3298158953294bab63458ae9cbe726e7ef3d3a755ec3a0405c279788f96f",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "510c86429db1cb4a54e68a98e9058101e9039a4cf479af8211faadc25d30e479",
+              "decoded_sha256": "df7dc754204b4e74d152c4972fcb0c48aa2a5a2644d028a6d0df2ccf1701737e",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 99,
+              "bytes": 60996,
+              "v1": 94.037543,
+              "neg": 92.662787,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "31bf10024f3380bd1c5dc972025e1f6aaad864a88cca7c2b176f621215fd4d72",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "1f8f8df023dc273efad85ed922c4eaf7229f225b3f8b84e3f268f5078c871d7d",
+              "decoded_sha256": "5cea713ca097a9f57fab521370b1f2e0600789fbd67f86b4a745fd1511a01a17",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 98,
+              "bytes": 65635,
+              "v1": 94.523825,
+              "neg": 92.899686,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "a116b5f24fa5cf536cf28932984dc32b47fcbc2f8f5087bf7bc80b3f8193efba",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "67f471019d3f6ed4beaf1210e7e447d5cad6ecf9a9149bcfdfbe27758167619d",
+              "decoded_sha256": "81dfb12130413782ea6c47a22f85d206ea79d56b26ce728762de2d6bc1107796",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 96,
+              "bytes": 70604,
+              "v1": 94.701499,
+              "neg": 93.132214,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "ec27b62d60ca769983a5e02d2c6ecc59f03e1508c1430d92d905e0baee0a8b09",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "e4763e730c9b905badffaf5a7cb02754c477785c9e8ef6464aadc73def9a648d",
+              "decoded_sha256": "f90148d15ae9269e3a01d6b7db6c6bb119f1ff5d6100efb92fa76dec4c6474de",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 94,
+              "bytes": 79182,
+              "v1": 95.328249,
+              "neg": 93.418437,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "dc39f1828a3d7bb9da8a8b3201a5d0771e79a455970cec705f305aeaf8a913bd",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "996a9846e40a20f094343907242c1bb45f6a56f80f4715a3b898bd42d35e9b3a",
+              "decoded_sha256": "65c94e2bdd4d8e4a4b660b222349e6d738398b033d96b73a48df33464918b596",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 92,
+              "bytes": 88780,
+              "v1": 95.401826,
+              "neg": 93.635571,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "0ab7ecacdd5d153ca2c6cdb6cca2fe162c3efac711239783f2e620c744b77f33",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "2240c6b7a5a6d15b09cb473cad19ead7a53483588b8e43e44c1c9eb32e2d50b2",
+              "decoded_sha256": "e9fbc715103d44b937156fc1767c3484368980816a054fbaf7ae4a02825106a2",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 88,
+              "bytes": 113283,
+              "v1": 96.307769,
+              "neg": 94.112546,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "5560aff8420cf32430ef5106fe4a0285a0b8e425cbc159829ed5651fd3daa28d",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "a55ff565baf7550a4947f63a1ad1501a3a872d7010277a6197db795168ecee5d",
+              "decoded_sha256": "e37c33ebce9a3657162c8225ae3513bf7bc7e37a4d49d74317c82aa1f7330e65",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 84,
+              "bytes": 133657,
+              "v1": 97.08612,
+              "neg": 94.480743,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "628566011285f8dda1c34205e16fe022d30fc38e935b863109e07dcc8ac4adea",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "a37b4260283bb6c07be8e88391fe3889a9c617500b66c22e700795064264f2c7",
+              "decoded_sha256": "98c607a8f9ebea055e26f294085ce0be0d85b7e0cbbe5f69f637386e9b956cda",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            },
+            {
+              "q": 82,
+              "bytes": 143140,
+              "v1": 96.944332,
+              "neg": 94.648894,
+              "dimensions": {
+                "width": 1920,
+                "height": 1080,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "cdb62c255f17a17b6dc2b97fba5429c4b303aa5523a8b0d0316d8a112cfd893f",
+                "neg": "d93838a11ca89173a420e7cc0e44ea30635459151c4b0955b2ae129826780b0f"
+              },
+              "source_manifest_sha256": "557a6eedd61c33a85fd440ef4df008524ccfa9d82792c15c8292dee30907d192",
+              "configuration_key": "b0f7a21adb158fb8a5d9996d9dbee3b3ee9fdc0a11a614a5886ccd72f2161bf9",
+              "result_sha256": "6fc6434700d3a9950699ddbc8018ebd7486eb70ca6df7c0851d2c2c1795cda40",
+              "source_sha256": "2bc4b47f61a45a77c363f521bc809cf8a63f169cee2902ea75025b2f4da7776a",
+              "stream_sha256": "2f94d2bbb728159502b56c3a70ff0cb3a7db64e81c5e995d9b4ec81a15f04c8f",
+              "decoded_sha256": "548336ce8c150a81e2639735c0534d9df53d2403ac7c91fef9716ba7696ed091",
+              "encoder_sha256": "d381d26319ad4ac3d46b3341cc841a6e0f1d30f12b5fc1c517e39f9533cb0401"
+            }
+          ],
+          "dual": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 0.8809283606235171,
+              "worst_sample_ratio": 0.9665559317046447
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 0.8818384606320536,
+              "worst_sample_ratio": 0.9633232535597371
+            }
+          },
+          "primary_v1": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 0.8771824382663816,
+              "neg_delta_at_selected_rate": {
+                "mean": 0.1912737992643549,
+                "worst_sample": -0.10043245601077899,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 0.9665559317046447
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 0.8805654686209163,
+              "neg_delta_at_selected_rate": {
+                "mean": 0.1965609645347287,
+                "worst_sample": -0.045015793123511116,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 0.9633232535597371
+            }
+          },
+          "eligible_band_comparison": true,
+          "local_quality_acceptance": "SEPARATE_FINAL_DECODED_GATE_REQUIRED"
+        }
+      ],
+      "new_candidates": []
+    },
+    "animation-2160-a": {
+      "content": "2D",
+      "dimensions": [
+        3840,
+        2160
+      ],
+      "input_bitdepth": 10,
+      "original_bitdepth": 10,
+      "color_limitations": "Color metadata incomplete; research-only, no certified HDR/SDR claim",
+      "aom_points": [
+        {
+          "q": 34,
+          "bytes": 18599,
+          "v1": 92.830089,
+          "neg": 97.422608,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "8ed0543877b1d9b9bf66da9b5c3098ed2844c717baf29172291c031fd05d215f",
+          "result_sha256": "fc5bb20d05c64936f7662f760182936e72756c4835dd3e39c993f36435f123bb",
+          "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+          "stream_sha256": "6cfc049aa0933ff44b06c9c91bcae2344f3e7116c20d34a67dfa9247431615fb",
+          "decoded_sha256": "a2abb05e81917bb856b9abef12e3f4610fc1a7a7fdac41db585ee26810aa0f4f",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 32,
+          "bytes": 20869,
+          "v1": 93.400277,
+          "neg": 97.830319,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "8ed0543877b1d9b9bf66da9b5c3098ed2844c717baf29172291c031fd05d215f",
+          "result_sha256": "597eaf1878f05822ff528933f14baf7c4b59ccb2ff5266dc86a8589a38d1f6fc",
+          "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+          "stream_sha256": "8fd09fcf0a238176822498c9ec3d0634046bd12e48bfa2f0f6555745c46bfe1d",
+          "decoded_sha256": "2155fd89f5ac4552335b0d133bc4dd284df2eb3351c8020b1d9f8e9d58017f23",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 28,
+          "bytes": 24805,
+          "v1": 94.321156,
+          "neg": 98.397904,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "8ed0543877b1d9b9bf66da9b5c3098ed2844c717baf29172291c031fd05d215f",
+          "result_sha256": "69f7b50841271287e8580a584bd94fa04bff1b2479363666b877f044ec3cba08",
+          "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+          "stream_sha256": "71177f8ef40a7579a426e0a81ec5dfe01b316518fdcf6cd05928750d95d4298a",
+          "decoded_sha256": "cc6ad9baa06e30e28000b2dadb8463afdb2083164481386bffe33dc26000de5c",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 24,
+          "bytes": 30088,
+          "v1": 95.294846,
+          "neg": 98.952113,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "8ed0543877b1d9b9bf66da9b5c3098ed2844c717baf29172291c031fd05d215f",
+          "result_sha256": "bcc34948cd5775c3229a2cc333cbef3682dbfb81e029754aa6d363a95ef64338",
+          "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+          "stream_sha256": "362fe59cb2db377e652c244abe457afdc21d099674424955d0082cc0e235eb11",
+          "decoded_sha256": "348808b87c89e3694a5757e58a72c5b256084ecf74b8d78b34fef4f046f2d1e1",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 20,
+          "bytes": 34366,
+          "v1": 96.069702,
+          "neg": 99.30489,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "8ed0543877b1d9b9bf66da9b5c3098ed2844c717baf29172291c031fd05d215f",
+          "result_sha256": "cb222096ea464c5f026e93f8f03a2dfcf45b45d4a92c538c0964a8abaeae833e",
+          "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+          "stream_sha256": "9d658fb1c48180e86bbfa3f4d9cd2cd937bdf7878204394675a401fa376e3277",
+          "decoded_sha256": "c750a1f0d5e225ae70b175b23508dcc65d7d58e3dc01877395357fb571944c90",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 16,
+          "bytes": 40308,
+          "v1": 96.64718,
+          "neg": 99.609002,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "8ed0543877b1d9b9bf66da9b5c3098ed2844c717baf29172291c031fd05d215f",
+          "result_sha256": "87a14e4577777630ce7bdea280c599877da81633170e67a77475b6e1b882517a",
+          "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+          "stream_sha256": "8011584897b592c32fa97a86ea95bb164ac80adfc66a825c966903f8c2e76c2f",
+          "decoded_sha256": "28a36eae9cabccf41442d475ec934d81317c5a90755734eeae2657104b82fcc8",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 12,
+          "bytes": 50712,
+          "v1": 97.145924,
+          "neg": 99.925756,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "8ed0543877b1d9b9bf66da9b5c3098ed2844c717baf29172291c031fd05d215f",
+          "result_sha256": "f6918517f268bcdcd6b5e949158668054d9d669f294c8a37e141302b9a2a98ab",
+          "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+          "stream_sha256": "00af5e1f453f64b7bb0333e8f04c14bb60c33329214e44945e90a54ab08a5533",
+          "decoded_sha256": "137001cdd456a2308cd943eefb51dd46f4847d22ee737227217b385369ebb58d",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        }
+      ],
+      "aom_coverage": {
+        "points": 7,
+        "inside_93_97": 5,
+        "below_93": true,
+        "above_97": true,
+        "eligible": true
+      },
+      "previous_best": [
+        {
+          "status": "COMPLETE_GLOBAL_RESEARCH_COMPARISON",
+          "coverage": {
+            "native": {
+              "points": 8,
+              "inside_93_97": 6,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            },
+            "aom": {
+              "points": 7,
+              "inside_93_97": 5,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            }
+          },
+          "points": [
+            {
+              "q": 120,
+              "bytes": 20135,
+              "v1": 92.734477,
+              "neg": 97.352909,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "f3f6593a5b87648a1a794bcd4b51ec53a8af17aceedd6127ec82cb754a8748c3",
+              "result_sha256": "5fbdc5a945ec81b147459ce27906883322f550dc6b66b0492d5983a910eab0dc",
+              "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+              "stream_sha256": "939b2a836bc386866636d1e1a42e68316589177a54d451085dfdb861a34cb257",
+              "decoded_sha256": "423f7e2afc3f8344ff04ef3a495de25c81ba09ee562c58ea00039754dd2f15b7",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 112,
+              "bytes": 23792,
+              "v1": 94.016831,
+              "neg": 98.039176,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "f3f6593a5b87648a1a794bcd4b51ec53a8af17aceedd6127ec82cb754a8748c3",
+              "result_sha256": "1e51e8a0e7cc6a215a17e8bcb02fcc3969aaa27f430a75bf404c8cd5f82f026e",
+              "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+              "stream_sha256": "68323df83c6b8512da8d100af4f241c2ae2b9977f495c10622c4831ee27d9dd0",
+              "decoded_sha256": "8e27b1430ae04b1931670c48550a498d62a796ee9655e4296e005599382fdabc",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 108,
+              "bytes": 25986,
+              "v1": 94.32885,
+              "neg": 98.328762,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "f3f6593a5b87648a1a794bcd4b51ec53a8af17aceedd6127ec82cb754a8748c3",
+              "result_sha256": "c22da896427bfd44bf90d91ba80769eb282993a5126dd8c63a8d891a03346bae",
+              "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+              "stream_sha256": "d1008d3c73ff28c63799ebc066791233603439697d805ac154951b5c011d5962",
+              "decoded_sha256": "7bbdc62c59e0d6b04ce3cc24db5c14056cdf09178d0bde6c0730a8a110aadaaa",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 104,
+              "bytes": 28369,
+              "v1": 94.822787,
+              "neg": 98.61588,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "f3f6593a5b87648a1a794bcd4b51ec53a8af17aceedd6127ec82cb754a8748c3",
+              "result_sha256": "5642f1bfe5966d027907c5e40f1afd4c8c48346805c590c9727cca5286d2d3af",
+              "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+              "stream_sha256": "23face6d98203ed4dcd2928d01677bb983f4c937cfe4534e777ca086bf414f16",
+              "decoded_sha256": "767501f7fb4ea6841c46cf1a5d3828f90e2ac7c6100153fdd96d8f1a02610405",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 96,
+              "bytes": 33431,
+              "v1": 95.901134,
+              "neg": 99.110772,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "f3f6593a5b87648a1a794bcd4b51ec53a8af17aceedd6127ec82cb754a8748c3",
+              "result_sha256": "7e0db0510b66cb27898c73b88f2593b7c5c78d240c5551614088b274726c8dfe",
+              "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+              "stream_sha256": "0d7a12bd0450c5e863270370df797a082073c280a5b9aadee0a4b35834892aec",
+              "decoded_sha256": "ce553b9772e6a5af456dc44fa21f33235b51ac9cf46ab0f3827629b9165bf665",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 88,
+              "bytes": 39664,
+              "v1": 96.445718,
+              "neg": 99.449541,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "f3f6593a5b87648a1a794bcd4b51ec53a8af17aceedd6127ec82cb754a8748c3",
+              "result_sha256": "788b2901a20921be9795743f46261ccc6fb26bfbc9197098302456c3852bdc9a",
+              "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+              "stream_sha256": "54667bab3741e9640ed63e46dbe06b3977d861b46674113a3230478f41017495",
+              "decoded_sha256": "8d0742144eeb1d1d08faaa9d8edc01cfec137c5fa70fd82e8693da26a3ab1a9e",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 80,
+              "bytes": 47657,
+              "v1": 96.947316,
+              "neg": 99.722499,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "f3f6593a5b87648a1a794bcd4b51ec53a8af17aceedd6127ec82cb754a8748c3",
+              "result_sha256": "92de337dfdeea0fe86ac2ace99553755d4f4d16a950f4943134ab88ca231a420",
+              "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+              "stream_sha256": "bd6f4fd3f40ad555e27446054e91cf031243560af12cf6d44cf64d16b5b6f339",
+              "decoded_sha256": "a1abe93d12f4d784c09810c7c77680ceca1220123b90227470dc858c63d5a613",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 72,
+              "bytes": 57184,
+              "v1": 97.323725,
+              "neg": 99.922152,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "f3f6593a5b87648a1a794bcd4b51ec53a8af17aceedd6127ec82cb754a8748c3",
+              "result_sha256": "71fa6c994f7b32aa03d2043ddcd0bc9fb881576a0dbd43cb2f2526d166ecccff",
+              "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+              "stream_sha256": "775b70ce05b6e23896135f835a3a4a493ac9d19703c652d687668e481121fe5a",
+              "decoded_sha256": "f93911cb1eee8bb17f223db46452e589e1134aeda18a9f706105a86b624e0636",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            }
+          ],
+          "dual": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 1.0696088293474348,
+              "worst_sample_ratio": 1.1136575246106573
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 1.0705959777132263,
+              "worst_sample_ratio": 1.1118063423591265
+            }
+          },
+          "primary_v1": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 1.0300216827458182,
+              "neg_delta_at_selected_rate": {
+                "mean": -0.10775461089404514,
+                "worst_sample": -0.1944275019383923,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 1.0733660586343703
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 1.0330758744936916,
+              "neg_delta_at_selected_rate": {
+                "mean": -0.09777776406967531,
+                "worst_sample": -0.1710082224564644,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 1.0828452340301904
+            }
+          },
+          "eligible_band_comparison": true,
+          "local_quality_acceptance": "SEPARATE_FINAL_DECODED_GATE_REQUIRED"
+        }
+      ],
+      "new_candidates": [
+        {
+          "status": "INCOMPLETE_GLOBAL_COMPARISON",
+          "coverage": {
+            "native": {
+              "points": 3,
+              "inside_93_97": 3,
+              "below_93": false,
+              "above_97": false,
+              "eligible": false
+            },
+            "aom": {
+              "points": 7,
+              "inside_93_97": 5,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            }
+          },
+          "points": [
+            {
+              "q": 120,
+              "bytes": 21026,
+              "v1": 93.4142,
+              "neg": 97.577839,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "149dcd9d441c67742768258f03cd7c46d65f802e6f39613c29967d848af7bca4",
+              "configuration_key": "d8e2ebb314f0685b56c7acaacc5c601a0e0ade5d06c5d99b6927a9385ca24be2",
+              "result_sha256": "23923d1d5f90ae5a575645eed272d32e263bd3896532c029bb4d00a373a1a6ad",
+              "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+              "stream_sha256": "fe78e46d482ea7aa10bbd9033cb725f0a9001a791528040e2be84de7975522bd",
+              "decoded_sha256": "fa45f0717596d7058008c78a9d5f78ffa8f8e05aa88c2a2a84e2673b0ceeb664",
+              "encoder_sha256": "757253db7c38b5a22d1918d05a9cd6416c060e1c4f4f2b750dfb7a74943c275c"
+            },
+            {
+              "q": 104,
+              "bytes": 29694,
+              "v1": 95.279973,
+              "neg": 98.766922,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "149dcd9d441c67742768258f03cd7c46d65f802e6f39613c29967d848af7bca4",
+              "configuration_key": "d8e2ebb314f0685b56c7acaacc5c601a0e0ade5d06c5d99b6927a9385ca24be2",
+              "result_sha256": "54e73c541a62c4e980aaaa7bff4957009185a7a0e60b8bcad686ec9ac38bec67",
+              "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+              "stream_sha256": "e689a332d83bf08723a9f3d53d27e02a97a2725b5fed339755c1d975ac072d06",
+              "decoded_sha256": "489722dbf5c6325486550b01b514d9d92a35fa1442061eac7220ae182a8267bf",
+              "encoder_sha256": "757253db7c38b5a22d1918d05a9cd6416c060e1c4f4f2b750dfb7a74943c275c"
+            },
+            {
+              "q": 88,
+              "bytes": 41745,
+              "v1": 96.49026,
+              "neg": 99.498601,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "149dcd9d441c67742768258f03cd7c46d65f802e6f39613c29967d848af7bca4",
+              "configuration_key": "d8e2ebb314f0685b56c7acaacc5c601a0e0ade5d06c5d99b6927a9385ca24be2",
+              "result_sha256": "adee1c5532769c709d603cbb8d75689227c81f6cff5b4cd3575df1278a576c00",
+              "source_sha256": "8392ba3c33d0f359e27b17d96e19874e62dc735e2f11bdcf59527d15cf8e6a13",
+              "stream_sha256": "6245d47c4800a7e4bf7854ae432be06d4ca8328aeefa1a079b38c2cf6c8de40c",
+              "decoded_sha256": "3996015880c6199b8c42d77664ebb879148d4b7485ccc558b569445185e85d31",
+              "encoder_sha256": "757253db7c38b5a22d1918d05a9cd6416c060e1c4f4f2b750dfb7a74943c275c"
+            }
+          ],
+          "dual": {
+            "pchip": {
+              "full_coverage": false,
+              "worst_sample_ratio": null
+            },
+            "linear": {
+              "full_coverage": false,
+              "worst_sample_ratio": null
+            }
+          },
+          "primary_v1": {
+            "pchip": {
+              "full_coverage": false,
+              "worst_sample_ratio": null
+            },
+            "linear": {
+              "full_coverage": false,
+              "worst_sample_ratio": null
+            }
+          },
+          "eligible_band_comparison": false,
+          "local_quality_acceptance": "SEPARATE_FINAL_DECODED_GATE_REQUIRED"
+        }
+      ]
+    },
+    "rendered-2160-a": {
+      "content": "3D",
+      "dimensions": [
+        3840,
+        2160
+      ],
+      "input_bitdepth": 10,
+      "original_bitdepth": 10,
+      "color_limitations": "Color metadata incomplete; research-only, no certified HDR/SDR claim",
+      "aom_points": [
+        {
+          "q": 36,
+          "bytes": 31249,
+          "v1": 91.712456,
+          "neg": 95.113819,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "38dad76587973ed5972af6a3af27e2943c81e8f9bff1564a5837bf24e03f695c",
+          "result_sha256": "11a4a79a185644e644f9ff2300876a6cfa3515b111745e681b2b542775cd53c8",
+          "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+          "stream_sha256": "84c37ac9dea991ac7485c9e7b6d58d196722184c1018d626597319f0712c35fd",
+          "decoded_sha256": "f7f606c8fc3c1c6f796cbead2b1df51dc5a80f09a482a5c6a58c79c716293f69",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 34,
+          "bytes": 35106,
+          "v1": 93.037408,
+          "neg": 95.870203,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "38dad76587973ed5972af6a3af27e2943c81e8f9bff1564a5837bf24e03f695c",
+          "result_sha256": "aab4d9ac562a4866b8c0047f3f0928fd980d3f3c9ff9201817994f1ba06b0cc4",
+          "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+          "stream_sha256": "de89f1745663b876f1b1869251915fc01af21986187e72967d8781109c9a8471",
+          "decoded_sha256": "b3eb09a4da387e58cfa1bc305fd58742d6550ddfa3aa395a8504aeec6610a2c5",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 32,
+          "bytes": 40535,
+          "v1": 93.513258,
+          "neg": 96.426057,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "38dad76587973ed5972af6a3af27e2943c81e8f9bff1564a5837bf24e03f695c",
+          "result_sha256": "d5b0ea475e65ea9b0cb77c40be0c93fcaed7f71dd0c3d10a8fc34046afe2c844",
+          "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+          "stream_sha256": "92b782fb18c5cf06644e9a36fe436ad05a00da55d0d8cbcee0e38c94f1d9b8a0",
+          "decoded_sha256": "407f5dd868de1cc56fee87d909f71a77df20e54b813926012a5f72855267ba5c",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 30,
+          "bytes": 45542,
+          "v1": 94.668843,
+          "neg": 96.996044,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "38dad76587973ed5972af6a3af27e2943c81e8f9bff1564a5837bf24e03f695c",
+          "result_sha256": "3652aa0ae21d51474fe0f7aacc3bcdef08fd388c8e7eed0080f401f4d92538a8",
+          "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+          "stream_sha256": "07ead65e1f4ae177555f4ea0e97eaed6718b717deeae939fff92924e5d5442ab",
+          "decoded_sha256": "68a93b1f92b1edb54adf72639d207af003706cd35b78f4bc365d43f05619273a",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 28,
+          "bytes": 49348,
+          "v1": 95.19185,
+          "neg": 97.360169,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "38dad76587973ed5972af6a3af27e2943c81e8f9bff1564a5837bf24e03f695c",
+          "result_sha256": "5debfe6cf5568bdcc45184752133f6524e50df7a2429ce0a57aa2c9959cf1cca",
+          "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+          "stream_sha256": "356c3afdc6f79779d33c7e2cb071b1f3789d6262011c9d449023a44acf1b4acb",
+          "decoded_sha256": "f5edb91218c443a74e64975eeba62512d19e08de7082d931eabb7f46862cffb0",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 26,
+          "bytes": 54398,
+          "v1": 95.790982,
+          "neg": 97.705299,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "38dad76587973ed5972af6a3af27e2943c81e8f9bff1564a5837bf24e03f695c",
+          "result_sha256": "3f27c409c05dff236a8ca52af755757e446ba59de8ec9d859c8d7d7cfe662e61",
+          "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+          "stream_sha256": "5842db0c2999e69d28f5dbfd60dd248e2ce5ff7888b1dc7d82b597965d95a316",
+          "decoded_sha256": "5738da8ab892036e0185df99b89e79e0ccc85f20d791d71cf7874d72ab445a7d",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 24,
+          "bytes": 61114,
+          "v1": 96.524961,
+          "neg": 98.101618,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "38dad76587973ed5972af6a3af27e2943c81e8f9bff1564a5837bf24e03f695c",
+          "result_sha256": "c1b5e9aae7a207d63ec9a763ca70c9c7caf4b3fd5868c1de949b1586c3a6672b",
+          "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+          "stream_sha256": "02a4378ed39ef937709d2da6ab3311e0237ffbeed7cc4cb74d350d63bbf19527",
+          "decoded_sha256": "b02d666bb6fedea22a7bc6d8bdd8dc68414c7b12359fdc12d5396ceba4af689f",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 22,
+          "bytes": 66042,
+          "v1": 96.758407,
+          "neg": 98.325883,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "38dad76587973ed5972af6a3af27e2943c81e8f9bff1564a5837bf24e03f695c",
+          "result_sha256": "c2f5248054a7829b6030dc060f037c7b0677f0ca4e0d0df684aef24a747b1f55",
+          "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+          "stream_sha256": "3e9ca69d22e4548c423ac69c5eb811b0a2abfa1c4cc9dabd6ff609949313cc21",
+          "decoded_sha256": "c69fd1df969e9b95b1f115b78e6282e075b13343e80a699c673f887207b99018",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 20,
+          "bytes": 71210,
+          "v1": 97.075499,
+          "neg": 98.518372,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "38dad76587973ed5972af6a3af27e2943c81e8f9bff1564a5837bf24e03f695c",
+          "result_sha256": "0ddb83cabaee8181ce985dec9771821af6eb33e98767be2b4b1b681666fc4956",
+          "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+          "stream_sha256": "1857f3f6293573f6aac48da84a21913039f6dfecdbbc1cc214fbe55a9feeee2c",
+          "decoded_sha256": "06869fe710aa9603f70456c8755fe31fc5e7d8a8f20d52b8bb0757b43fed539d",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 16,
+          "bytes": 86954,
+          "v1": 97.866234,
+          "neg": 98.93613,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "38dad76587973ed5972af6a3af27e2943c81e8f9bff1564a5837bf24e03f695c",
+          "result_sha256": "942a51319b4e165f2317b9ba4a9cd3a45b2b8cb2136f3dbfbe19ef1f0bbbc699",
+          "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+          "stream_sha256": "453cad62a10f7ea17ae0660570a2913d354fea64a2d04133f504f77e70870064",
+          "decoded_sha256": "bd8809281e3cdabd81fdacc09a46ae6fc0d33704db1811755e059e84dccbf20d",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        }
+      ],
+      "aom_coverage": {
+        "points": 10,
+        "inside_93_97": 7,
+        "below_93": true,
+        "above_97": true,
+        "eligible": true
+      },
+      "previous_best": [
+        {
+          "status": "COMPLETE_GLOBAL_RESEARCH_COMPARISON",
+          "coverage": {
+            "native": {
+              "points": 9,
+              "inside_93_97": 5,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            },
+            "aom": {
+              "points": 10,
+              "inside_93_97": 7,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            }
+          },
+          "points": [
+            {
+              "q": 136,
+              "bytes": 26692,
+              "v1": 89.136672,
+              "neg": 93.744825,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "738d9eff098a9c1c63d9a2bc85c9e112dae14a8fff1eb1342035be9cc99c5f2b",
+              "result_sha256": "31f0824602aa64d7fb21725e77a2eb62a4a6e53d1ba66ed309d5a3defff81f62",
+              "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+              "stream_sha256": "3142f14fe52b68f8c0e495d931b4ff8c528ee56864d92043db8f4b3065f0c8b1",
+              "decoded_sha256": "590b755b87f80d5b68c693d701238f773339b2244c1e9608c4ded38ad1508a5b",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 124,
+              "bytes": 35180,
+              "v1": 92.298481,
+              "neg": 95.656765,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "738d9eff098a9c1c63d9a2bc85c9e112dae14a8fff1eb1342035be9cc99c5f2b",
+              "result_sha256": "87d9ece2bb56d9e4dc1823e8a8ec77ca0f0af6127f90927efd362d757e2e5ad2",
+              "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+              "stream_sha256": "ae0e2b313187952c2e3a1bc3a7e58c547e00f1ebbb6087ab1ebe49093999d320",
+              "decoded_sha256": "161b6a606d759f1376436ef794f606a39bbbc5fe27a3ddb3fbdda370efa0b2bf",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 120,
+              "bytes": 38858,
+              "v1": 93.368872,
+              "neg": 96.211937,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "738d9eff098a9c1c63d9a2bc85c9e112dae14a8fff1eb1342035be9cc99c5f2b",
+              "result_sha256": "71ea84182f7464bc581d3642af9a4c1859cdce217a12d4cb874fba40a12adb56",
+              "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+              "stream_sha256": "dcc04a24f7a847195305867f24ef95c0f3c352fc202486586856f4f29259b1c4",
+              "decoded_sha256": "0418a77af51a39432d29d6ecbcfcc66f538d98b561b206a51a7e5607b41db80b",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 116,
+              "bytes": 42506,
+              "v1": 94.153061,
+              "neg": 96.663575,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "738d9eff098a9c1c63d9a2bc85c9e112dae14a8fff1eb1342035be9cc99c5f2b",
+              "result_sha256": "871024c93ed95d3b80c61bdd2a2ac774652e65fca7fbd82aa4948815932aead6",
+              "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+              "stream_sha256": "ac862bda0d545a4fbf286cfd77e30d996a59256b47ba1c168bb59459470f4f3e",
+              "decoded_sha256": "08db72bc5bb140e478a6b498c3eb5c8eeaec4e17ec61630a55e829f17f919097",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 112,
+              "bytes": 47132,
+              "v1": 94.714808,
+              "neg": 97.095437,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "738d9eff098a9c1c63d9a2bc85c9e112dae14a8fff1eb1342035be9cc99c5f2b",
+              "result_sha256": "1ece42fea71e050115d16adbbca78ac0f0b6446dda88d2249f52bcfcc57549e0",
+              "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+              "stream_sha256": "ef05da32aeeb2d7a34a2a87cc28768f02eddb39fc88454beeaa2fa36408804be",
+              "decoded_sha256": "49e7da3a698c39feea79c088f53401b05fef7dce7c291e1af87d6307df770a2c",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 108,
+              "bytes": 52473,
+              "v1": 95.416815,
+              "neg": 97.48926,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "738d9eff098a9c1c63d9a2bc85c9e112dae14a8fff1eb1342035be9cc99c5f2b",
+              "result_sha256": "17e56212b9ae1faee28e334fdfa6b4a4aac47c8da937d0c02c582c33164c3b6b",
+              "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+              "stream_sha256": "3964442ec4ba6b0c2bee4454735795ff697c9499e43907597576deca54683094",
+              "decoded_sha256": "930cb570214dbde064049ca589ff7613a3afb91e0cf711a84f50924269d0d05a",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 104,
+              "bytes": 58108,
+              "v1": 96.03797,
+              "neg": 97.797254,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "738d9eff098a9c1c63d9a2bc85c9e112dae14a8fff1eb1342035be9cc99c5f2b",
+              "result_sha256": "65d851d6c5ecbd1a8886edde18edd05a2298b3afc89c9bc3a2709a6eb3724364",
+              "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+              "stream_sha256": "430d497cf9abc63940249f73bb446859c7170aee9a39537a5db65ca434016fc8",
+              "decoded_sha256": "53271babf84d74c7ff9cf15e29595995ee201b6c595e61def4f6a64275b32fc0",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 96,
+              "bytes": 71445,
+              "v1": 97.064806,
+              "neg": 98.368614,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "738d9eff098a9c1c63d9a2bc85c9e112dae14a8fff1eb1342035be9cc99c5f2b",
+              "result_sha256": "48184ece7e54b5cf244423f0a895769980db9fa01a31e03bb8a6f26b100625fd",
+              "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+              "stream_sha256": "66a4199dcbbb17529d45639fedaf8d0dd0ad3ae0e6b144ac20670b69159398da",
+              "decoded_sha256": "d00829b75961f6bed1f895157020ae6146e999c47d82dc5ad0c36554158448a4",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 80,
+              "bytes": 111840,
+              "v1": 98.433732,
+              "neg": 99.220095,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "738d9eff098a9c1c63d9a2bc85c9e112dae14a8fff1eb1342035be9cc99c5f2b",
+              "result_sha256": "fbd8dad596be08afc2f67c2f89a7b24c083e6fc50c355dfba5fc210f9e8ddc8a",
+              "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+              "stream_sha256": "d72166fc14313cd07cfdc7c8ecea1308f651c6a5a824835149090b0af396b408",
+              "decoded_sha256": "6458a00246e615963f458a2dd64e84083a4e06f2b5f839eda9ba55e8cecc07c6",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            }
+          ],
+          "dual": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 1.0287785706509447,
+              "worst_sample_ratio": 1.074725493615943
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 1.0295403215149168,
+              "worst_sample_ratio": 1.0788881499029483
+            }
+          },
+          "primary_v1": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 1.0144757200130785,
+              "neg_delta_at_selected_rate": {
+                "mean": -0.033854882960562674,
+                "worst_sample": -0.15036393059131115,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 1.074725493615943
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 1.0166300236539212,
+              "neg_delta_at_selected_rate": {
+                "mean": -0.030052944708724924,
+                "worst_sample": -0.13998659040362327,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 1.0733127248428236
+            }
+          },
+          "eligible_band_comparison": true,
+          "local_quality_acceptance": "SEPARATE_FINAL_DECODED_GATE_REQUIRED"
+        }
+      ],
+      "new_candidates": [
+        {
+          "status": "INCOMPLETE_INSUFFICIENT_POINTS",
+          "coverage": {
+            "native": {
+              "points": 1,
+              "inside_93_97": 1,
+              "below_93": false,
+              "above_97": false,
+              "eligible": false
+            },
+            "aom": {
+              "points": 10,
+              "inside_93_97": 7,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            }
+          },
+          "points": [
+            {
+              "q": 104,
+              "bytes": 57770,
+              "v1": 95.909177,
+              "neg": 97.819937,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "c87df3fcd7e4c34aca53c9c516864a5c8ab3634550165442b6f28724970fb564",
+              "configuration_key": "3448f095308d19647ead8dce55f471bee08195260f78ae9bb7dffa5cf9aec677",
+              "result_sha256": "ded1eb10f2aa6f091c9cb822d20a3701edec70c41b94ca116c66b9df427172fc",
+              "source_sha256": "9f4ecdf02ce2b2305eb1d1c0df020175a57370ed2c2038b76915b8c5f5ee2f9e",
+              "stream_sha256": "b393ed509bd0e86ea665148270beb192ea7c6863ca750d616720b4d21d753547",
+              "decoded_sha256": "52ffa8db78eb6b8fb8f0c332961e467af2d1ed050cf62894701c022122d13ee2",
+              "encoder_sha256": "6d4f5179bb5748a53e71ed20dc68392f24177cb239b7386a6084a58c3bc9a112"
+            }
+          ],
+          "dual": {},
+          "primary_v1": {},
+          "eligible_band_comparison": false,
+          "local_quality_acceptance": "SEPARATE_FINAL_DECODED_GATE_REQUIRED"
+        }
+      ]
+    },
+    "live-2160-a": {
+      "content": "Real",
+      "dimensions": [
+        3840,
+        2160
+      ],
+      "input_bitdepth": 10,
+      "original_bitdepth": null,
+      "color_limitations": "Color metadata incomplete; research-only, no certified HDR/SDR claim",
+      "aom_points": [
+        {
+          "q": 30,
+          "bytes": 12646,
+          "v1": 92.740007,
+          "neg": 98.744367,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "1fe5ebf7456c5a02353e2309da34bcd7549c064d79ec2be4135cef00570bd2b0",
+          "result_sha256": "d90c77ffc66dd53bd7d812e659be3a05875710e1cee3acfd10bbd9334f8475b4",
+          "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+          "stream_sha256": "e16cfb8038b86f1ae71afc399b206fd0743f28179e448795513a8aacf93286a8",
+          "decoded_sha256": "bf0543d0216d418c58d887086349a26d76468b1f225bca19936b0a4130d7d456",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 28,
+          "bytes": 15504,
+          "v1": 93.885268,
+          "neg": 99.029578,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "1fe5ebf7456c5a02353e2309da34bcd7549c064d79ec2be4135cef00570bd2b0",
+          "result_sha256": "6cb1e3c8a9f4a707185e2281b9aa757c90937bcdd183b98443c5f2c10b3ea438",
+          "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+          "stream_sha256": "af026f020a170bb2e5768030b3f17673b93023cbc2adbf9763e6349df52cf7d4",
+          "decoded_sha256": "4df1dcc591f69e3369d76ced74d208a4460306c093f480d9f98430f13274f432",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 26,
+          "bytes": 20064,
+          "v1": 94.717419,
+          "neg": 99.216641,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "1fe5ebf7456c5a02353e2309da34bcd7549c064d79ec2be4135cef00570bd2b0",
+          "result_sha256": "0b48c5bf80c5f28bea9ec0fdb3c84805d024c24ec178b356cf78fcab28f65ebb",
+          "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+          "stream_sha256": "5b7fad4b1198070611a6c3a3d64f5240edfdc8113b8ad35a059ab1d96890360c",
+          "decoded_sha256": "b88de25e867594a531ade2717e3bbf5c057f842f4c5ef09b534c7a6f85b6f8c2",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 24,
+          "bytes": 26757,
+          "v1": 95.923797,
+          "neg": 99.493545,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "1fe5ebf7456c5a02353e2309da34bcd7549c064d79ec2be4135cef00570bd2b0",
+          "result_sha256": "834cea4b08b72adb029ee9ab4331362713c93eb420e1d3717d7131ca2475f2d2",
+          "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+          "stream_sha256": "325181ca289a9f798fd9ab90db83712220721afd91ea3420b3e2f75a18bfc150",
+          "decoded_sha256": "9c15fb368dc8435fed9caa49a8c2dc848c8c4ca350589607406dfd4359cd73cb",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 22,
+          "bytes": 29993,
+          "v1": 96.423098,
+          "neg": 99.629174,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "1fe5ebf7456c5a02353e2309da34bcd7549c064d79ec2be4135cef00570bd2b0",
+          "result_sha256": "6ab805ab73853957b9a9aa6175aeb6a93ce1957e8b4059ce0f045b801a6fa987",
+          "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+          "stream_sha256": "f46209d93a143db33395ff3b6af27684a4a55ad186e1489dea9e35113a8dfc0c",
+          "decoded_sha256": "751ad99fd6241106649a15e509f736884543cd4e4d0791908b7e3f1eeb9a645d",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 20,
+          "bytes": 32768,
+          "v1": 96.631711,
+          "neg": 99.750246,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "1fe5ebf7456c5a02353e2309da34bcd7549c064d79ec2be4135cef00570bd2b0",
+          "result_sha256": "7a94f25b8eaeb46d62ad0f3bfe598805effe6e3f1485c56630f1d188508dcb7e",
+          "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+          "stream_sha256": "ed3dcdeee6f2575e71a0b0c6f3b92b654a18c4ddd5293f8075b22d0ca83ac8eb",
+          "decoded_sha256": "18cc2be3ff08b7cc0686c6520d4178ea051028c4955bb7ae5b9f7ce36fd28d53",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        },
+        {
+          "q": 16,
+          "bytes": 39295,
+          "v1": 97.228615,
+          "neg": 99.976587,
+          "dimensions": {
+            "width": 3840,
+            "height": 2160,
+            "bitdepth": 10,
+            "chroma": "420",
+            "frames": 1
+          },
+          "models": {
+            "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+            "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+          },
+          "source_manifest_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+          "configuration_key": "1fe5ebf7456c5a02353e2309da34bcd7549c064d79ec2be4135cef00570bd2b0",
+          "result_sha256": "6163e3db1b3484778f279c11d2c0bb70a3383bb194b3c428fed2d0ed5e2477c9",
+          "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+          "stream_sha256": "930e85bf4ecdba3f281a66ba1f8ef9748fba724ff67ae4aed1d4c91eeb9017e9",
+          "decoded_sha256": "95d4bee539e5649958d666b97c0623d60d6c1dd8a64193b10084477819d92ecb",
+          "encoder_sha256": "5a5c13f153129aeca7cc1d97bf3b20dda502444d98029d27dbc5482537e78e13"
+        }
+      ],
+      "aom_coverage": {
+        "points": 7,
+        "inside_93_97": 5,
+        "below_93": true,
+        "above_97": true,
+        "eligible": true
+      },
+      "previous_best": [
+        {
+          "status": "COMPLETE_GLOBAL_RESEARCH_COMPARISON",
+          "coverage": {
+            "native": {
+              "points": 10,
+              "inside_93_97": 5,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            },
+            "aom": {
+              "points": 7,
+              "inside_93_97": 5,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            }
+          },
+          "points": [
+            {
+              "q": 136,
+              "bytes": 5420,
+              "v1": 88.485825,
+              "neg": 96.915193,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "6b135468aa06b930930ee9e3936cd6e61976e7cda8a69c306f70f73debce0590",
+              "result_sha256": "3a0f81ad4f2333c84d6765395b8c98593b71e64c8287033bcc3f63d82890edf2",
+              "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+              "stream_sha256": "97455fc4d714a0de79b52f21114d0d05a7113efd0d7c9f0e93a419cdf5a365fb",
+              "decoded_sha256": "7e7ead8680b67c10bd34128c71d4b67f23d95e8a04c67c5956c2cfe77a41dfe2",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 124,
+              "bytes": 8165,
+              "v1": 90.708351,
+              "neg": 97.976037,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "6b135468aa06b930930ee9e3936cd6e61976e7cda8a69c306f70f73debce0590",
+              "result_sha256": "b13155fcc1fcab439c7defce182b06fb24269e25e47409ba1309e1625bb42325",
+              "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+              "stream_sha256": "1b2219c373a895b50e563fde1577e6426ae794d56ff89ab619508584e718e7ef",
+              "decoded_sha256": "bcc1a9b2da69cc1495c981088cf6f8e2a42a0d4237adaa13d06a7e894677e102",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 116,
+              "bytes": 12191,
+              "v1": 92.807207,
+              "neg": 98.587349,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "6b135468aa06b930930ee9e3936cd6e61976e7cda8a69c306f70f73debce0590",
+              "result_sha256": "b1527a848586266e1c79dd2cc8dc96bb4740b644bba43f13855fb775f8d26658",
+              "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+              "stream_sha256": "2988e047a548cf462b46f284da0a06321b9ce25cac51544863425f688d0ba934",
+              "decoded_sha256": "ac1eccb5ee5d807884f7277d62fa2b08d1c0a8d4fa33c5e7155847a7acd00dbb",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 108,
+              "bytes": 19039,
+              "v1": 94.608424,
+              "neg": 99.139106,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "6b135468aa06b930930ee9e3936cd6e61976e7cda8a69c306f70f73debce0590",
+              "result_sha256": "4889f49f17c306b89ee9ab1f5c798584b2f876afa429b40fa920b28d215966c1",
+              "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+              "stream_sha256": "2de0af236b11e7b9b55ab2e91aae4fd8f757d2c3ed5bc729c505c6c9426a3b8e",
+              "decoded_sha256": "d9b73c6f7619cdb1eaacb581af5499a596c1ce6a2ba847429b1777d58c3a7659",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 104,
+              "bytes": 25015,
+              "v1": 95.60345,
+              "neg": 99.315788,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "6b135468aa06b930930ee9e3936cd6e61976e7cda8a69c306f70f73debce0590",
+              "result_sha256": "0132f1a39b0b955fa97cef7fdef37dec0ad7cd75331250e1265cd1807cbe01d9",
+              "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+              "stream_sha256": "d2fba8d61d7e61984f52f1932a58a39b83c7e610454c279b513dbf7581252765",
+              "decoded_sha256": "144f7b61ae3681f4ab6e0fbc4749ae7e4b68c5ca64c62fd6e59b233766793c50",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 100,
+              "bytes": 29851,
+              "v1": 96.358204,
+              "neg": 99.560456,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "6b135468aa06b930930ee9e3936cd6e61976e7cda8a69c306f70f73debce0590",
+              "result_sha256": "aa30c4ef945fc4e1787bc7acad8cb115293a190ad1671deab97490596b1d6323",
+              "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+              "stream_sha256": "5487b20b5774e0fcf5e19868f60219d43d5fab3905484f1714625b0e0daa2e73",
+              "decoded_sha256": "61e32643fc0fc6337ca5d8a53c2076105b76c9d9a28b9a6db1fc325eac00792d",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 98,
+              "bytes": 32031,
+              "v1": 96.490403,
+              "neg": 99.563319,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "6b135468aa06b930930ee9e3936cd6e61976e7cda8a69c306f70f73debce0590",
+              "result_sha256": "51036f0ce57832607112c9d8aaaf31145fbd354507188c71687f7e2f2cfacaca",
+              "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+              "stream_sha256": "2a05e0d00271599a24c71c513642029983a7a749116561c43f35970c3e86a8ba",
+              "decoded_sha256": "16e8adfb8afd37f2c2b6f6ddd84650a787300c7838c4ec20f72954746bbc7827",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 96,
+              "bytes": 33530,
+              "v1": 96.741838,
+              "neg": 99.63868,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "6b135468aa06b930930ee9e3936cd6e61976e7cda8a69c306f70f73debce0590",
+              "result_sha256": "882141d3876935a4e6909a8f9f6fbec2d9422ebc6ca4c2d06d6228f013b0c030",
+              "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+              "stream_sha256": "d97e9c12a2bfa2503409df5c69aafc0bca56658407e7c5de53354121f92c5b48",
+              "decoded_sha256": "faa04ecf4d55568f50873d07460e3a46bf3a3d7186f40118cf059f6ba493d0fc",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 88,
+              "bytes": 40651,
+              "v1": 97.13179,
+              "neg": 99.865864,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "6b135468aa06b930930ee9e3936cd6e61976e7cda8a69c306f70f73debce0590",
+              "result_sha256": "0f60f8d5872c4d015c649aafb9c4256b172cbaa785b107b0d1cfdaae59404ebf",
+              "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+              "stream_sha256": "0250d674598a4fbc19808608c1ff35e808d7163c24bf137da55c760fa05354be",
+              "decoded_sha256": "fcb2b9686fee59ea226301da7f6059780403708466be020c71f960ade7b20916",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            },
+            {
+              "q": 80,
+              "bytes": 50712,
+              "v1": 97.959769,
+              "neg": 100.0,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "5e9e520443c8b39fcd232892827176ded8588b82f7894e8740c5abc33521c673",
+              "configuration_key": "6b135468aa06b930930ee9e3936cd6e61976e7cda8a69c306f70f73debce0590",
+              "result_sha256": "739f57382f77137f3cd91bd884794557ee604ac4de8be467ca9c1d8fca2d1825",
+              "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+              "stream_sha256": "dfebb6bc0a628194e3a8495515c470ff828b071837939908efa196891f74c14c",
+              "decoded_sha256": "7ef45ca1cbf5c4c01394f098ea0525f0631168554c9dcd60233e745aa93b31be",
+              "encoder_sha256": "cb7271f47182aa4045fc243900848b486a805c72cd9d67f30821a38ed5e45cbc"
+            }
+          ],
+          "dual": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 1.0895287079620346,
+              "worst_sample_ratio": 1.1534073331413737
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 1.0987730271463463,
+              "worst_sample_ratio": 1.1538676156428211
+            }
+          },
+          "primary_v1": {
+            "pchip": {
+              "full_coverage": true,
+              "mean_ratio": 0.9987893474319904,
+              "neg_delta_at_selected_rate": {
+                "mean": -0.0926335971075531,
+                "worst_sample": -0.16383387575640995,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 1.041721870496808
+            },
+            "linear": {
+              "full_coverage": true,
+              "mean_ratio": 1.0017170087433265,
+              "neg_delta_at_selected_rate": {
+                "mean": -0.09785715632612782,
+                "worst_sample": -0.16270833680648877,
+                "every_sample_nonnegative": false
+              },
+              "worst_sample_ratio": 1.0391573624314088
+            }
+          },
+          "eligible_band_comparison": true,
+          "local_quality_acceptance": "SEPARATE_FINAL_DECODED_GATE_REQUIRED"
+        }
+      ],
+      "new_candidates": [
+        {
+          "status": "INCOMPLETE_INSUFFICIENT_POINTS",
+          "coverage": {
+            "native": {
+              "points": 1,
+              "inside_93_97": 1,
+              "below_93": false,
+              "above_97": false,
+              "eligible": false
+            },
+            "aom": {
+              "points": 7,
+              "inside_93_97": 5,
+              "below_93": true,
+              "above_97": true,
+              "eligible": true
+            }
+          },
+          "points": [
+            {
+              "q": 96,
+              "bytes": 33411,
+              "v1": 96.435932,
+              "neg": 99.632977,
+              "dimensions": {
+                "width": 3840,
+                "height": 2160,
+                "bitdepth": 10,
+                "chroma": "420",
+                "frames": 1
+              },
+              "models": {
+                "v1": "3e696240ee7cc047e2867a004fe0a57caa50e8bfb24161726bbcb31cce3f3883",
+                "neg": "27f91a94e5f2d59f68855711873bc2e2eefa5200cf0a302b90923774f3d1c54d"
+              },
+              "source_manifest_sha256": "c87df3fcd7e4c34aca53c9c516864a5c8ab3634550165442b6f28724970fb564",
+              "configuration_key": "5fc6cb9a3e0964c15b2c1ba1b6b8f4fbe8cb29b417112bd225521e01db0c1b81",
+              "result_sha256": "dcc3527fc7076005d5d3c53fc051b0711ca1a6868af05dccf83746e656896d30",
+              "source_sha256": "c525954e12391536e795867d2e869b0ece2172dfb0cf5529a4008cc5b82b4664",
+              "stream_sha256": "d21d440d06f04deaaca4f21a46dcc511ebc1ee00ae5716108a0cf6143aa7a669",
+              "decoded_sha256": "ec221592f35987e7ffb5d0b99dbca3c1b0215af469ce4d5e39af363a5bedff98",
+              "encoder_sha256": "6d4f5179bb5748a53e71ed20dc68392f24177cb239b7386a6084a58c3bc9a112"
+            }
+          ],
+          "dual": {},
+          "primary_v1": {},
+          "eligible_band_comparison": false,
+          "local_quality_acceptance": "SEPARATE_FINAL_DECODED_GATE_REQUIRED"
+        }
+      ]
+    }
+  }
+}

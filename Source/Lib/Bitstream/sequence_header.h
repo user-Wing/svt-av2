@@ -107,6 +107,7 @@ typedef struct SvtAv2SequenceHeaderConfig {
     uint32_t enable_mrls; /* Optional Y multi-reference-line syntax. */
     uint32_t enable_mhccp; /* Optional filter0 multi-parameter chroma-from-luma syntax. */
     uint32_t enable_ccso64; /* Internal forced64 BO-only; default0. */
+    uint32_t enable_pc_wiener; /* Single-picture luma PC-Wiener, RU256. */
 } SvtAv2SequenceHeaderConfig;
 
 /* Fills cfg with the frozen M1 defaults for the given frame size:

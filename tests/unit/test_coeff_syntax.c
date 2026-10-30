@@ -486,7 +486,7 @@ static void test_picture_context_and_zero_update(void) {
     SVT_TEST_CHECK_EQ_INT(svt_av2_coeff_write_block(&enc, &pi, 0, q, &nb), 0);
     SVT_TEST_CHECK(nb.above_level[400] == 0 && nb.above_dc[400] == 0);
     SVT_TEST_CHECK(nb.left_level[260] == 0 && nb.left_dc[260] == 0);
-    pi.units_w = 481;
+    pi.units_w = SVT_AV2_COEFF_CTX_UNITS + 1;
     SVT_TEST_CHECK_EQ_INT(svt_av2_coeff_write_block(&enc, &pi, 0, q, &nb),
                           SVT_AV2_COEFF_ERR_UNSUPPORTED);
 }

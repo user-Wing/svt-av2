@@ -49,9 +49,9 @@ extern "C" {
 #define SVT_AV2_COEFF_MAX_TX_DIM 64
 #define SVT_AV2_COEFF_MAX_TX_AREA (SVT_AV2_COEFF_MAX_TX_DIM * SVT_AV2_COEFF_MAX_TX_DIM)
 
-/* Per-plane 4x4-unit neighbour context extent for the M2 maximum 1920x1080
+/* Per-plane 4x4-unit neighbour context extent for the M2 maximum 4096x2160
  * picture. Absolute x4/y4 indexing preserves neighbours across superblocks. */
-#define SVT_AV2_COEFF_CTX_UNITS 480
+#define SVT_AV2_COEFF_CTX_UNITS 1024
 
 /* Status: OK plus the encoder statuses. Errors are explicit; a block is never
  * partially encoded and then reported as success. */

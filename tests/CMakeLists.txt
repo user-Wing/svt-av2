@@ -38,7 +38,7 @@ endforeach()
 
 unset(SVT_AV2_T001_UNIT_TESTS)
 
-foreach(_test test_root_asym test_flip_primary_tx test_thin64_domains test_intra_thin64 test_intra_thin64_combo test_intra_mixedthin test_intra_mixedthin_combo test_intra_thinrect_uv test_thinrect_domains test_intra_thinrect_combo test_intra_thinrect test_mhccp_fault test_mhccp_boundaries test_mhccp_rd test_intra_mhccp test_mixed8_rd test_intra_mixed8 test_classic_cfl_rd test_intra_classic_cfl test_intra_large_mrl test_smallrect_primary_tx test_tree_wide test_intra_lambda test_intra_longrect_angles test_intra_mixed32 test_mixed32_rd test_intra_longrect_cfl test_mrl_rect_rd test_intra_mrl_rect test_tree_finalists test_mrl_axes test_mrl_rd test_intra_mrl test_full_primary_tx test_intra_angles_uv64 test_intra_angles test_primary_tx test_i1_modes test_intra_rect_angles test_intra_rect test_intra_longrect test_intra_cfl test_m6_rd test_m6_rate test_m6_coeff test_m6_motion test_m6_wide test_m7_entropy test_adaptive_rd)
+foreach(_test test_root_asym test_flip_primary_tx test_thin64_domains test_intra_thin64 test_intra_thin64_combo test_intra_mixedthin test_intra_mixedthin_combo test_intra_thinrect_uv test_thinrect_domains test_intra_thinrect_combo test_intra_thinrect test_mhccp_fault test_mhccp_boundaries test_mhccp_rd test_intra_mhccp test_mixed8_rd test_intra_mixed8 test_intra_fine16 test_intra_fine16_pair test_classic_cfl_rd test_intra_classic_cfl test_intra_large_mrl test_smallrect_primary_tx test_tree_wide test_intra_lambda test_intra_longrect_angles test_intra_mixed32 test_mixed32_rd test_intra_longrect_cfl test_mrl_rect_rd test_intra_mrl_rect test_tree_finalists test_mrl_axes test_mrl_rd test_intra_mrl test_full_primary_tx test_intra_angles_uv64 test_intra_angles test_primary_tx test_i1_modes test_intra_rect_angles test_intra_rect test_intra_longrect test_intra_cfl test_m6_rd test_m6_rate test_m6_coeff test_m6_motion test_m6_wide test_m7_entropy test_adaptive_rd)
     add_executable(${_test} "unit/${_test}.c")
     target_link_libraries(${_test} PRIVATE svt_av2_encoder_core svt_av2_bitstream)
     if(NOT MSVC)
@@ -471,3 +471,23 @@ if(SVT_AV2_ENABLE_SANITIZERS)
     set_tests_properties(test_intra_thin64 test_intra_thin64_combo PROPERTIES TIMEOUT 3600)
 endif()
 target_include_directories(test_thin64_domains PRIVATE "${CMAKE_SOURCE_DIR}/Source/Lib/Transform")
+
+# memo1 exact cache internal fixture
+add_executable(test_memo1_internal unit/test_memo1_internal.c)
+target_link_libraries(test_memo1_internal PRIVATE svt_av2_encoder_core svt_av2_quantization svt_av2_transform)
+svt_av2_set_target_flags(test_memo1_internal)
+add_test(NAME test_memo1_internal COMMAND test_memo1_internal)
+set_tests_properties(test_memo1_internal PROPERTIES TIMEOUT 180 FAIL_REGULAR_EXPRESSION "FAIL ")
+
+set_tests_properties(test_intra_fine16 PROPERTIES TIMEOUT 1200)
+
+add_executable(test_pc_wiener unit/test_pc_wiener.c)
+target_link_libraries(test_pc_wiener PRIVATE svt_av2_restoration)
+svt_av2_set_target_flags(test_pc_wiener)
+add_test(NAME test_pc_wiener COMMAND test_pc_wiener)
+set_tests_properties(test_pc_wiener PROPERTIES TIMEOUT 60 FAIL_REGULAR_EXPRESSION "FAIL ")
+
+add_executable(test_uhd unit/test_uhd.c)
+target_link_libraries(test_uhd PRIVATE svt_av2_encoder_core svt_av2_bitstream svt_av2_transform svt_av2_restoration)
+svt_av2_set_target_flags(test_uhd)
+add_test(NAME test_uhd COMMAND test_uhd)

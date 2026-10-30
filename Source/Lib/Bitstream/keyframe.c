@@ -215,7 +215,7 @@ static int write_closed_loop_key_obu(SvtAv2BitWriter* bw, uint32_t width,
 
 static int encode_sequence_header_ex(uint32_t width, uint32_t height,
                                          uint32_t bit_depth, uint32_t chroma_format, uint32_t low_delay_p,
-                                         uint32_t still_picture, uint32_t chroma_dct_only, uint32_t enable_cfl_intra, uint32_t enable_mrls, uint32_t enable_mhccp, uint32_t enable_ccso64,
+                                         uint32_t still_picture, uint32_t chroma_dct_only, uint32_t enable_cfl_intra, uint32_t enable_mrls, uint32_t enable_mhccp, uint32_t enable_ccso64, uint32_t enable_pc_wiener,
                                          uint8_t* out, size_t out_cap,
                                          size_t* out_size) {
     if (out == NULL || out_size == NULL) {
@@ -236,6 +236,7 @@ static int encode_sequence_header_ex(uint32_t width, uint32_t height,
     scfg.enable_mrls = enable_mrls;
     scfg.enable_mhccp = enable_mhccp;
     scfg.enable_ccso64 = enable_ccso64;
+    scfg.enable_pc_wiener = enable_pc_wiener;
     scfg.seq_profile_idc = chroma_format == 3u ? 4u : 0u;
     /* The caller must have verified a level exists; a size with no level is
      * refused rather than written with a bogus seq_level_idx. */
@@ -295,7 +296,7 @@ static int encode_sequence_header_ex(uint32_t width, uint32_t height,
 
 int svt_av2_encode_sequence_header_multi(uint32_t width, uint32_t height,
     uint8_t* out, size_t out_cap, size_t* out_size) {
-    return encode_sequence_header_ex(width, height, 8u, 1u, 0u, 0u, 0u, 0u, 0u, 0u, 0u, out, out_cap, out_size);
+    return encode_sequence_header_ex(width, height, 8u, 1u, 0u, 0u, 0u, 0u, 0u, 0u, 0u, 0u, out, out_cap, out_size);
 }
 
 int svt_av2_encode_keyframe_64x64_multi(const uint8_t* y, size_t y_stride,
@@ -346,14 +347,14 @@ static int encode_packet_ccso64(uint32_t width, uint32_t height,
     size_t block_count, const SvtAv2TileBlockMode* modes, size_t mode_count, uint32_t low_delay_p,
     uint32_t m5_intra_modes, const uint16_t* partition_decisions, size_t partition_decision_count,
     uint32_t entropy_adaptation, uint32_t still_picture, uint32_t transform_selection, uint32_t enable_mrls, uint32_t enable_mhccp,
-    const SvtAv2Ccso64Plan* ccso64, uint32_t deblock_y, int32_t deblock_delta, int32_t deblock_delta_h, uint8_t* out, size_t out_cap, size_t* out_size) {
+    const SvtAv2Ccso64Plan* ccso64, uint32_t deblock_y, int32_t deblock_delta, int32_t deblock_delta_h, uint32_t enable_pc_wiener, const uint64_t pc_wiener_none_mask[2], uint8_t* out, size_t out_cap, size_t* out_size) {
     if (out_size == NULL || out == NULL) return SVT_AV2_BW_ERROR_NULL;
     *out_size = 0;
     size_t prefix = 0;
     int st = 0;
     if (frame_index == 0u) {
         st = encode_sequence_header_ex(width, height, bit_depth, chroma_format, low_delay_p,
-            still_picture, m5_intra_modes >= 2u, m5_intra_modes == 4u, enable_mrls, enable_mhccp, ccso64 != NULL, out, out_cap, &prefix);
+            still_picture, m5_intra_modes >= 2u, m5_intra_modes == 4u, enable_mrls, enable_mhccp, ccso64 != NULL, enable_pc_wiener, out, out_cap, &prefix);
         if (st != 0) return st;
     } else {
         SvtAv2BitWriter delimiter;
@@ -380,6 +381,8 @@ static int encode_packet_ccso64(uint32_t width, uint32_t height,
     cfg.enable_mrls = enable_mrls;
     cfg.enable_mhccp = enable_mhccp;
     cfg.ccso64 = ccso64;
+    cfg.enable_pc_wiener = enable_pc_wiener;
+    if (pc_wiener_none_mask) memcpy(cfg.pc_wiener_none_mask, pc_wiener_none_mask, sizeof(cfg.pc_wiener_none_mask));
     cfg.deblock_y = deblock_y;cfg.deblock_delta = deblock_delta;cfg.deblock_delta_h = deblock_delta_h;
     cfg.partition_decisions = partition_decisions;
     cfg.partition_decision_count = partition_decision_count;
@@ -407,7 +410,7 @@ static int encode_packet(uint32_t width, uint32_t height,
     uint8_t* out, size_t out_cap, size_t* out_size) {
     return encode_packet_ccso64(width,height,bit_depth,chroma_format,base_q_idx,
         frame_index,blocks,block_count,modes,mode_count,low_delay_p,intra_modes,
-        decisions,decision_count,entropy,still,transform,mrl,mh,NULL,0u,0,0,out,out_cap,out_size);
+        decisions,decision_count,entropy,still,transform,mrl,mh,NULL,0u,0,0,0u,0u,out,out_cap,out_size);
 }
 
 int svt_av2_encode_intra_packet_ex(uint32_t width, uint32_t height,
@@ -528,7 +531,7 @@ int svt_av2_ccso64_header_size(const SvtAv2FrameHeaderConfig* cfg,SvtAv2Ccso64He
     uint8_t data[256];size_t prefix=0u;
     int st=encode_sequence_header_ex(cfg->frame_width,cfg->frame_height,cfg->bit_depth,
         cfg->chroma_format,0u,1u,cfg->m5_intra_modes>=2u,cfg->m5_intra_modes==4u,
-        cfg->enable_mrls,cfg->enable_mhccp,cfg->ccso64!=NULL,data,sizeof(data),&prefix);
+        cfg->enable_mrls,cfg->enable_mhccp,cfg->ccso64!=NULL,cfg->enable_pc_wiener,data,sizeof(data),&prefix);
     SvtAv2BitWriter bw;svt_av2_bit_writer_init(&bw,data,sizeof(data));
     if (st==0) st=svt_av2_bit_writer_write_bit(&bw,1u);
     if (st==0) st=svt_av2_frame_header_write(&bw,cfg);
@@ -546,7 +549,7 @@ int svt_av2_encode_still_picture_ccso64_packet(const SvtAv2FrameHeaderConfig* cf
     return encode_packet_ccso64(cfg->frame_width,cfg->frame_height,cfg->bit_depth,cfg->chroma_format,
         cfg->base_q_idx,0u,blocks,count,NULL,0u,0u,cfg->m5_intra_modes,cfg->partition_decisions,
         cfg->partition_decision_count,cfg->entropy_adaptation,1u,transform,cfg->enable_mrls,
-        cfg->enable_mhccp,cfg->ccso64,cfg->deblock_y,cfg->deblock_delta,cfg->deblock_delta_h,out,capacity,bytes);
+        cfg->enable_mhccp,cfg->ccso64,cfg->deblock_y,cfg->deblock_delta,cfg->deblock_delta_h,cfg->enable_pc_wiener,cfg->pc_wiener_none_mask,out,capacity,bytes);
 }
 
 int svt_av2_encode_still_picture_ccso64(uint32_t width, uint32_t height,
@@ -565,7 +568,7 @@ int svt_av2_encode_still_picture_ccso64(uint32_t width, uint32_t height,
         (transform && intra_modes < 2u) || (mrl && intra_modes < 3u)) return SVT_AV2_BW_ERROR_RANGE;
     const int st = encode_packet_ccso64(width,height,bit_depth,chroma_format,
         base_q_idx,0u,blocks,block_count,NULL,0u,0u,intra_modes,decisions,
-        decision_count,entropy,1u,transform,mrl,mh,ccso64,0u,0,0,out,out_cap,out_size);
+        decision_count,entropy,1u,transform,mrl,mh,ccso64,0u,0,0,0u,0u,out,out_cap,out_size);
     if (st == 0) svt_av2_ccso64_apply(ccso64,recon);
     return st;
 }
